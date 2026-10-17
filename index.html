@@ -125,6 +125,125 @@
     .marquee:hover .marquee-track {
       animation-play-state: paused;
     }
+
+    /* Keep the desktop composition while making the landing page fit phones. */
+    @media (max-width: 767px) {
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      nav {
+        padding: 0.65rem 1rem;
+      }
+
+      nav > div {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      nav > div > a img {
+        height: 2rem;
+        max-width: min(72vw, 230px);
+        object-fit: contain;
+      }
+
+      nav ul {
+        justify-content: center;
+        gap: 0.35rem 0.9rem;
+        padding: 0.25rem 0;
+        font-size: 0.75rem;
+      }
+
+      body > section:first-of-type {
+        min-height: 100svh;
+        height: auto;
+        padding: 8.5rem 0 3rem;
+      }
+
+      body > section:first-of-type > div.relative {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.75rem;
+        padding-inline: 1.25rem;
+      }
+
+      body > section:first-of-type > div.relative > div:first-child > div {
+        font-size: clamp(2.7rem, 13vw, 4rem);
+        line-height: 1;
+      }
+
+      body > section:first-of-type h1 {
+        white-space: normal;
+        font-size: 1.35rem;
+      }
+
+      body > section:first-of-type .animate-vertical-slide {
+        font-size: clamp(1.35rem, 6vw, 2rem);
+      }
+
+      body > section:first-of-type .mt-8.flex {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      body > section:nth-of-type(3) {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+        padding: 2.5rem 1.25rem;
+      }
+
+      body > section:nth-of-type(3) > img {
+        width: 100%;
+        height: auto;
+        padding-inline: 0;
+      }
+
+      body > section:nth-of-type(3) .w-3\/4 {
+        width: 100%;
+      }
+
+      #services {
+        padding: 3rem 1.25rem;
+      }
+
+      #services [class*="px-54"] {
+        padding-inline: 0;
+      }
+
+      #services h2 {
+        font-size: 2.25rem;
+      }
+
+      #services > div > div.flex {
+        flex-direction: column;
+        gap: 1rem;
+        padding-inline: 0;
+      }
+
+      #services > div > div.flex > div {
+        width: 100%;
+        max-width: none;
+      }
+
+      body > section.flex.justify-center {
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 2.5rem 1.25rem;
+      }
+
+      body > section.flex.justify-center > div {
+        width: 100%;
+        max-width: none;
+      }
+
+      footer {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
   </style>
   <title>Rydberg Starck</title>
 </head>
