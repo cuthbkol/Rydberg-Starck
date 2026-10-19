@@ -1,12 +1,508 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Build confidence with practical digital and technical skills."><title>Training and Skills Development | Rydberg Starck</title><link href="../output.css" rel="stylesheet"></head>
-<body class="bg-[#071518] text-white font-sans"><header class="sticky top-0 z-50 border-b border-white/10 bg-black backdrop-blur"><nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4"><a href="../index.html" aria-label="Rydberg Starck home"><img src="../assets/Images/rydberg-starck-nav.png" alt="Rydberg Starck — Infinite Possibilities" class="h-12 w-auto"></a><div class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-white/85"><a href="../index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="lab.html">Lab</a><a href="blog.html">Blog</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div></nav></header>
-<main><section class="relative overflow-hidden"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80" alt="" class="absolute inset-0 h-full w-full object-cover opacity-25"><div class="absolute inset-0 bg-gradient-to-r from-[#071518] via-[#071518]/90 to-[#126262]/60"></div><div class="relative mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-2 md:items-center md:py-28"><div><p class="mb-4 font-bold uppercase tracking-[.22em] text-cyan-300">Rydberg Starck Limited</p><h1 class="text-4xl font-black leading-tight md:text-6xl">Training and Skills Development</h1><p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">Build confidence with practical digital and technical skills.</p><a href="contact.html" class="mt-8 inline-flex rounded-full bg-[#1ca0a2] px-7 py-3 font-bold text-white transition hover:bg-cyan-500">Talk to our team</a></div><div class="rounded-3xl border border-white/15 bg-white/10 p-8 backdrop-blur"><p class="whitespace-pre-line leading-relaxed text-white/80">Our training programs help young people, teams, and entrepreneurs use technology to learn, work, and grow. Sessions can be tailored to different experience levels and delivered through guided, hands-on learning.</p><ul class="mt-7 grid gap-4"><li class='flex gap-3'><span class='text-cyan-300'>✦</span><span>Digital literacy and productivity</span></li>
-<li class='flex gap-3'><span class='text-cyan-300'>✦</span><span>Coding and software development</span></li>
-<li class='flex gap-3'><span class='text-cyan-300'>✦</span><span>Entrepreneurship and business tools</span></li>
-<li class='flex gap-3'><span class='text-cyan-300'>✦</span><span>Technical and engineering skills</span></li></ul></div></div></section>
-<section class="mx-auto max-w-7xl px-6 py-16"><h2 class="text-3xl font-extrabold text-white">Explore more</h2><div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"><a class='rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-[#126262]' href='digital-solutions.html'><span class='text-sm font-bold uppercase tracking-widest text-cyan-300'>Service</span><h3 class='mt-3 text-xl font-extrabold'>Digital Technology Solutions</h3><p class='mt-3 text-white/70'>Practical software and digital platforms designed around the way your organization works.</p></a>
-<a class='rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-[#126262]' href='training.html'><span class='text-sm font-bold uppercase tracking-widest text-cyan-300'>Service</span><h3 class='mt-3 text-xl font-extrabold'>Training and Skills Development</h3><p class='mt-3 text-white/70'>Build confidence with practical digital and technical skills.</p></a>
-<a class='rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-[#126262]' href='research-development.html'><span class='text-sm font-bold uppercase tracking-widest text-cyan-300'>Service</span><h3 class='mt-3 text-xl font-extrabold'>Research and Development</h3><p class='mt-3 text-white/70'>Explore useful ideas, test prototypes, and turn promising concepts into working solutions.</p></a>
-<a class='rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:bg-[#126262]' href='consultancy.html'><span class='text-sm font-bold uppercase tracking-widest text-cyan-300'>Service</span><h3 class='mt-3 text-xl font-extrabold'>Consultancy</h3><p class='mt-3 text-white/70'>Make informed technology decisions and move from strategy to implementation.</p></a></div></section></main>
-<footer class="border-t border-white/10 bg-[#111c24] px-6 py-9 text-center text-sm text-white/70"><p>© 2026 Rydberg Starck Limited · Blantyre, Malawi</p><p class="mt-2"><a class="hover:text-cyan-300" href="mailto:ychimole@rydbergstarck.com">ychimole@rydbergstarck.com</a> · <a class="hover:text-cyan-300" href="contact.html">Contact us</a></p></footer></body></html>
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore Catalyst at Rydberg Starck: digital skills, entrepreneurship, incubation and technology programs, including the Zantchito program gallery.">
+  <meta name="theme-color" content="#071518">
+  <title>Catalyst | Rydberg Starck</title>
+  <script>try { if (localStorage.getItem("rsl-theme") === "light") document.documentElement.dataset.theme = "light"; } catch (_) {}</script>
+  <link href="../output.css" rel="stylesheet">
+  <style>
+    @keyframes gallery-photo-reveal {
+      from { opacity: .45; transform: scale(1.025); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes gallery-progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    #zantchito-slide.photo-enter { animation: gallery-photo-reveal 700ms cubic-bezier(.2,.75,.25,1) both; }
+    #gallery-progress-fill { transform: scaleX(0); transform-origin: left; }
+    #gallery-progress-fill.is-running { animation: gallery-progress 6s linear forwards; }
+    #zantchito-carousel:fullscreen {
+      box-sizing: border-box;
+      width: 100vw;
+      height: 100vh;
+      max-width: none;
+      padding: clamp(1rem, 3vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 0;
+      border-radius: 0;
+      background: radial-gradient(ellipse at top, #12383b, #071518 68%);
+    }
+    #zantchito-carousel:fullscreen figure {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #zantchito-carousel:fullscreen #zantchito-slide {
+      flex: 1;
+      min-height: 0;
+      max-height: calc(100vh - 11rem);
+      aspect-ratio: auto;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #zantchito-slide.photo-enter,
+      #gallery-progress-fill.is-running { animation: none; }
+    }
+
+    .page-progress{transform-origin:left;transform:scaleX(0)}
+    .catalyst-grid{background-image:linear-gradient(rgba(113,219,226,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(113,219,226,.045) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 95%)}
+    .theme-switch-track{position:relative;display:inline-flex;width:2rem;height:1.15rem;align-items:center;border-radius:999px;background:rgba(255,255,255,.28);padding:2px;transition:background 250ms ease}
+    .theme-switch-track>span{display:block;width:.85rem;height:.85rem;border-radius:50%;background:#fff;transition:transform 250ms cubic-bezier(.2,.7,.2,1)}
+    .catalyst-reveal{transition:opacity 650ms ease,transform 650ms cubic-bezier(.2,.7,.2,1)}
+    .has-catalyst-reveal .catalyst-reveal{opacity:0;transform:translateY(22px)}
+    .has-catalyst-reveal .catalyst-reveal.is-visible{opacity:1;transform:none}
+    .program-card{min-height:100%}.program-card>span:nth-child(2){line-height:1.2}
+    @media(prefers-reduced-motion:reduce){.catalyst-reveal,.has-catalyst-reveal .catalyst-reveal,.has-catalyst-reveal .catalyst-reveal.is-visible{opacity:1;transform:none;transition:none}}
+    #catalyst-stories:fullscreen{box-sizing:border-box;width:100vw;height:100vh;padding:clamp(1rem,3vw,3rem);display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at top,#12383b,#071518 68%);border:0;border-radius:0}
+    #catalyst-stories:fullscreen figure{display:flex;flex:1;min-height:0;flex-direction:column;justify-content:center}
+    #catalyst-stories:fullscreen #catalyst-story-slide{flex:1;min-height:0;max-height:calc(100vh - 12rem);aspect-ratio:auto}
+    #catalyst-story-progress{transform:scaleX(0);transform-origin:left}
+    #catalyst-story-progress.is-running{animation:catalyst-story-timer 7s linear forwards}
+    @keyframes catalyst-story-timer{to{transform:scaleX(1)}}
+    html[data-theme="light"]{color-scheme:light}html[data-theme="dark"]{color-scheme:dark}
+    html[data-theme="light"] body{background:#f2f7f7;color:#10282a}
+    html[data-theme="light"] header{border-color:#d4e1e2;background:rgba(245,251,252,.96)}html[data-theme="light"] header img{filter:brightness(0)}
+    html[data-theme="light"] header nav>div{color:#123638}html[data-theme="light"] header nav a{color:#31575b}html[data-theme="light"] header nav a:hover,html[data-theme="light"] header nav a[aria-current="page"]{color:#0e8285}
+    html[data-theme="light"] .theme-toggle{color:#123638;border-color:rgba(14,130,133,.28);background:rgba(255,255,255,.86)}html[data-theme="light"] .theme-switch-track{background:#0e8285}html[data-theme="light"] .theme-switch-track>span{transform:translateX(.85rem)}
+    html[data-theme="light"] #catalyst-hero{color:#10282a;background:#eaf4f5;border-color:#d5e2e3}html[data-theme="light"] #catalyst-hero>img{opacity:.48}
+    html[data-theme="light"] .catalyst-hero-overlay{background:linear-gradient(90deg,rgba(243,250,251,.78),rgba(243,250,251,.64) 58%,rgba(243,250,251,.48))}
+    html[data-theme="light"] #catalyst-hero h1{color:#10282a}html[data-theme="light"] #catalyst-hero h1 span,html[data-theme="light"] #catalyst-hero .text-cyan-300{color:#0e8285}
+    html[data-theme="light"] #catalyst-hero p,html[data-theme="light"] #catalyst-hero div span:not(.text-cyan-300){color:#40585b}
+    html[data-theme="light"] #catalyst-hero a[href="#programs"]{background:#0e8285;color:#fff}html[data-theme="light"] #catalyst-hero a[href="#zantchito"]{border-color:#b7d0d1;background:rgba(255,255,255,.72);color:#173a3d}
+    html[data-theme="light"] #programs{color:#10282a}html[data-theme="light"] #programs h2,html[data-theme="light"] #program-detail-title{color:#10282a}html[data-theme="light"] #programs>div:first-child p:last-child{color:#40585b}
+    html[data-theme="light"] .program-card{border-color:#d2e0e1;background:#fff;color:#10282a;box-shadow:0 12px 32px rgba(13,55,58,.055)}html[data-theme="light"] .program-card:hover{border-color:#78b8ba;background:#fff}
+    html[data-theme="light"] .program-card>span:first-child,html[data-theme="light"] .program-card>span:last-child{color:#0e8285}html[data-theme="light"] .program-card>span:nth-child(3){color:#40585b}
+    html[data-theme="light"] .program-card[aria-pressed="true"]{border-color:#0e8285;background:#e2f2f2;color:#10282a}
+    html[data-theme="light"] #program-detail-panel{border-color:#cbdfe0;background:linear-gradient(135deg,#fff,#eaf5f5);color:#10282a}html[data-theme="light"] #program-detail-panel p,html[data-theme="light"] #program-detail-panel ul{color:#40585b}html[data-theme="light"] #program-detail-panel #program-detail-audience,html[data-theme="light"] #program-detail-panel li>span:first-child{color:#0e8285}html[data-theme="light"] #program-detail-link{background:#0e8285;color:#fff}
+    html[data-theme="light"] #zantchito{border-color:#d3e1e2;background:linear-gradient(180deg,#eaf3f4,#f6f9f9);color:#10282a}html[data-theme="light"] #zantchito h2,html[data-theme="light"] #zantchito h3{color:#10282a}html[data-theme="light"] #zantchito p{color:#40585b}html[data-theme="light"] #zantchito .text-cyan-300{color:#0e8285}html[data-theme="light"] #zantchito a.text-cyan-200{color:#0e8285}
+    html[data-theme="light"] #zantchito figure{border-color:#cbdfe0;box-shadow:0 16px 40px rgba(13,55,58,.1)}html[data-theme="light"] #zantchito figcaption{background:#fff;color:#40585b}
+    html[data-theme="light"] .gallery-phase{border-color:#cbdfe0;background:#fff;color:#31575b}html[data-theme="light"] .gallery-phase[aria-pressed="true"]{border-color:#0e8285;background:#0e8285;color:#fff}
+    html[data-theme="light"] #zantchito-carousel{border-color:#cbdfe0;background:#fff;box-shadow:0 20px 50px rgba(13,55,58,.1)}html[data-theme="light"] #zantchito-caption{border-color:#d6e3e4;color:#40585b}html[data-theme="light"] #zantchito-count{color:#40585b}
+    html[data-theme="light"] #gallery-prev,html[data-theme="light"] #gallery-next,html[data-theme="light"] #gallery-fullscreen{border-color:#cbdfe0;color:#21484b}html[data-theme="light"] #gallery-prev:hover,html[data-theme="light"] #gallery-next:hover,html[data-theme="light"] #gallery-fullscreen:hover{background:#eaf5f5}html[data-theme="light"] #gallery-autoplay{background:#0e8285;color:#fff}
+    html[data-theme="light"] main>section:last-child{color:#10282a}html[data-theme="light"] main>section:last-child h2{color:#10282a}html[data-theme="light"] main>section:last-child p{color:#40585b}html[data-theme="light"] main>section:last-child p.text-cyan-300{color:#0e8285}html[data-theme="light"] main>section:last-child>a{background:#0e8285;color:#fff}
+    html[data-theme="light"] footer{border-color:#d3e1e2;background:#e7f0f1;color:#40585b}html[data-theme="light"] footer a{color:#31575b}
+
+    html[data-theme="light"] #zantchito-carousel:fullscreen{background:radial-gradient(ellipse at top,#12383b,#071518 68%);color:#fff}
+    html[data-theme="light"] #zantchito-carousel:fullscreen #zantchito-caption,html[data-theme="light"] #zantchito-carousel:fullscreen #zantchito-count{color:#f1f5f9;border-color:rgba(255,255,255,.18)}
+    html[data-theme="light"] #zantchito-carousel:fullscreen #gallery-prev,html[data-theme="light"] #zantchito-carousel:fullscreen #gallery-next,html[data-theme="light"] #zantchito-carousel:fullscreen #gallery-fullscreen{color:#fff;border-color:rgba(255,255,255,.3)}
+    html[data-theme="light"] #zantchito-carousel:fullscreen #gallery-prev:hover,html[data-theme="light"] #zantchito-carousel:fullscreen #gallery-next:hover,html[data-theme="light"] #zantchito-carousel:fullscreen #gallery-fullscreen:hover{background:rgba(255,255,255,.1)}
+    html[data-theme="light"] #catalyst-stories{color:#fff}
+  </style>
+</head>
+<body class="bg-[#071518] font-sans text-white antialiased"><div id="page-progress" class="page-progress fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-cyan-300 via-[#1ca0a2] to-[#F58220]" aria-hidden="true"></div>
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#071518]/95 backdrop-blur">
+    <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label="Main navigation">
+      <a href="../index.html" aria-label="Rydberg Starck home"><img src="../assets/Images/rydberg-starck-nav.png" alt="Rydberg Starck — Infinite Possibilities" class="h-11 w-auto"></a>
+      <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-white/85">
+        <a class="transition hover:text-cyan-300" href="../index.html">Home</a>
+        <a class="transition hover:text-cyan-300" href="about.html">About</a>
+        <a class="text-cyan-300" href="training.html" aria-current="page">Catalyst</a>
+        <a class="transition hover:text-cyan-300" href="projects.html">Projects</a>
+        <a class="transition hover:text-cyan-300" href="lab.html">Lab</a>
+        <a class="transition hover:text-cyan-300" href="blog.html">Digital Malawi Project</a>
+        <a class="transition hover:text-cyan-300" href="gallery.html">Gallery</a>
+        <a class="transition hover:text-cyan-300" href="contact.html">Contact</a>
+        <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode" class="theme-toggle inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-2 text-xs font-bold text-white backdrop-blur transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"><span data-theme-label>Day mode</span><span class="theme-switch-track" aria-hidden="true"><span></span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="catalyst-hero" class="relative isolate overflow-hidden border-b border-white/10">
+      <img src="../assets/Images/zantchito-gallery/training-001.jpg" alt="Participants taking part in a Zantchito training session" class="absolute inset-0 -z-20 h-full w-full object-cover opacity-40">
+      <div class="catalyst-hero-overlay absolute inset-0 -z-10 bg-gradient-to-r from-[#071518]/95 via-[#071518]/80 to-[#126262]/45"></div><div class="catalyst-grid pointer-events-none absolute inset-0 -z-10"></div>
+      <div class="mx-auto max-w-7xl px-6 py-20 sm:py-24 md:py-28">
+        <p class="mb-4 text-sm font-bold uppercase tracking-[.22em] text-cyan-300">Catalyst · Capacity and opportunity</p>
+        <h1 class="max-w-4xl text-4xl font-black leading-tight sm:text-5xl md:text-7xl">Skills to start. <span class="text-cyan-300">Support to grow.</span></h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 sm:text-xl">Catalyst brings together learning, mentorship and enterprise support for people at different stages of their digital journey.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#programs" class="inline-flex items-center rounded-full bg-[#1ca0a2] px-6 py-3 font-bold transition hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-200">Explore programs</a>
+          <a href="#zantchito" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3 font-bold backdrop-blur transition hover:bg-white/20">Discover Zantchito</a>
+        </div>
+<div class="mt-10 grid max-w-xl grid-cols-3 gap-3 border-t border-white/15 pt-5"><div><span class="block font-mono text-2xl font-black text-cyan-300">07</span><span class="mt-1 block text-xs font-semibold uppercase tracking-wider text-white/65">Learning pathways</span></div><div><span class="block font-mono text-2xl font-black text-cyan-300">05</span><span class="mt-1 block text-xs font-semibold uppercase tracking-wider text-white/65">Zantchito stages</span></div><div><span class="block font-mono text-2xl font-black text-cyan-300">01</span><span class="mt-1 block text-xs font-semibold uppercase tracking-wider text-white/65">Shared mission</span></div></div>
+      </div>
+    </section>
+
+    <section id="catalyst-stories" class="relative isolate overflow-hidden border-y border-cyan-300/15 bg-[#071518] text-white">
+      <div class="catalyst-grid pointer-events-none absolute inset-0 -z-10 opacity-70"></div>
+      <div class="mx-auto max-w-7xl px-6 py-16 sm:py-20">
+        <div class="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end">
+          <div><p class="text-sm font-bold uppercase tracking-[.2em] text-cyan-300">Catalyst · Program stories</p><h2 class="mt-3 text-3xl font-black sm:text-4xl">Learning that moves the future forward.</h2></div>
+          <p class="max-w-2xl leading-relaxed text-white/70">Explore the work in motion, starting with Starck Flight Academy and the Kalibu Academy Drone Club. Each album offers a quick look at the learners, teams and communities building Malawi’s digital future.</p>
+        </div>
+        <div class="mt-7 flex flex-wrap gap-2" role="group" aria-label="Choose a Catalyst photo collection">
+          <button type="button" data-catalyst-album="flight" aria-pressed="true" class="catalyst-album rounded-full border border-cyan-300 bg-cyan-300 px-4 py-2 text-sm font-bold text-[#071518] transition">Starck Flight Academy</button>
+          <button type="button" data-catalyst-album="kids" aria-pressed="false" class="catalyst-album rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Kids Coding</button>
+          <button type="button" data-catalyst-album="youth" aria-pressed="false" class="catalyst-album rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Digital Malawi · Youth Skills</button>
+          <button type="button" data-catalyst-album="mass" aria-pressed="false" class="catalyst-album rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">ICT Mass Literacy</button>
+          <button type="button" data-catalyst-album="egenco" aria-pressed="false" class="catalyst-album rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">EGENCO Corporate Training</button>
+          <button type="button" data-catalyst-album="ictam" aria-pressed="false" class="catalyst-album rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">ICTAM Awards</button>
+          <button type="button" data-catalyst-album="girls" aria-pressed="false" class="catalyst-album rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Girls in ICT</button>
+        </div>
+        <p id="catalyst-story-album-label" class="mt-4 font-mono text-xs font-bold uppercase tracking-[.16em] text-cyan-200">Starck Flight Academy / Kalibu Academy Drone Club</p>
+        <div id="catalyst-story-carousel" class="mt-3 overflow-hidden rounded-3xl border border-white/10 bg-white/[.04] shadow-[0_25px_80px_rgba(0,0,0,.35)]" aria-label="Catalyst photo slideshow">
+          <figure><div class="relative"><img id="catalyst-story-slide" src="../assets/Images/catalyst-gallery/starck-flight-academy-kalibu-01.jpg" alt="Kalibu Academy students gather around a drone during a Starck Flight Academy session" class="aspect-[16/10] max-h-[620px] w-full object-contain sm:aspect-[16/9]" decoding="async"><div class="absolute inset-x-0 bottom-0 h-1 overflow-hidden bg-white/15"><span id="catalyst-story-progress" class="block h-full w-full bg-gradient-to-r from-cyan-300 via-[#1ca0a2] to-[#F58220]"></span></div></div><figcaption id="catalyst-story-caption" class="border-t border-white/10 px-5 py-3 text-sm text-white/75" aria-live="polite"></figcaption></figure>
+          <div class="flex flex-wrap items-center justify-between gap-3 p-4 sm:px-6"><div class="flex gap-2"><button id="catalyst-story-prev" type="button" aria-label="Previous Catalyst photo" class="rounded-full border border-white/20 px-4 py-2 font-bold hover:bg-white/10">← <span class="hidden sm:inline">Previous</span></button><button id="catalyst-story-next" type="button" aria-label="Next Catalyst photo" class="rounded-full border border-white/20 px-4 py-2 font-bold hover:bg-white/10"><span class="hidden sm:inline">Next</span> →</button></div><p id="catalyst-story-count" class="text-sm text-white/60" aria-live="polite"></p><div class="flex gap-2"><button id="catalyst-story-play" type="button" aria-pressed="false" class="rounded-full bg-cyan-300 px-4 py-2 font-bold text-[#071518] hover:bg-cyan-200">Play slideshow</button><button id="catalyst-story-fullscreen" type="button" aria-label="Enter full screen" class="rounded-full border border-white/20 px-4 py-2 font-bold hover:bg-white/10">⛶ <span class="hidden sm:inline">Full screen</span></button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="mx-auto max-w-7xl px-6 py-16 sm:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm font-bold uppercase tracking-[.2em] text-cyan-300">Our programs</p>
+        <h2 class="mt-3 text-3xl font-black sm:text-4xl">Different pathways. Practical skills.</h2>
+        <p class="mt-5 leading-relaxed text-white/70">Explore Catalyst programs for organizations, young people, entrepreneurs and communities.</p>
+      </div>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="group" aria-label="Choose a Catalyst program">
+        <button type="button" data-program="corporates" aria-pressed="false" class="program-card rounded-2xl border border-white/10 bg-white/[.04] p-6 text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[.07] focus:outline-none focus:ring-2 focus:ring-cyan-300"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-300">01 · For organizations</span><span class="mt-3 block text-xl font-extrabold">Digital Skills Training for Corporates</span><span class="mt-3 block leading-relaxed text-white/65">Practical digital capability building for teams, shaped around the tools and skills they need at work.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+        <button type="button" data-program="youth" aria-pressed="false" class="program-card rounded-2xl border border-white/10 bg-white/[.04] p-6 text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[.07] focus:outline-none focus:ring-2 focus:ring-cyan-300"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-300">02 · For young people</span><span class="mt-3 block text-xl font-extrabold">Digital Skills for Youth &amp; Women</span><span class="mt-3 block leading-relaxed text-white/65">Accessible, hands-on learning that helps participants build confidence using digital tools.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+        <button type="button" data-program="entrepreneurship" aria-pressed="false" class="program-card rounded-2xl border border-white/10 bg-white/[.04] p-6 text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[.07] focus:outline-none focus:ring-2 focus:ring-cyan-300"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-300">03 · For entrepreneurs</span><span class="mt-3 block text-xl font-extrabold">Entrepreneurship Programs</span><span class="mt-3 block leading-relaxed text-white/65">Business learning covering planning, financial literacy, digital marketing and pitching.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+        <button type="button" data-program="incubation" aria-pressed="true" class="program-card rounded-2xl border border-cyan-300 bg-cyan-300/10 p-6 text-left text-white ring-1 ring-cyan-300/40 transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-cyan-200"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-200">04 · Explore Zantchito</span><span class="mt-3 block text-xl font-extrabold">Incubation Program</span><span class="mt-3 block leading-relaxed text-white/70">Follow the Zantchito journey from applications and learning through mentorship and distribution.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+        <button type="button" data-program="kids" aria-pressed="false" class="program-card rounded-2xl border border-white/10 bg-white/[.04] p-6 text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[.07] focus:outline-none focus:ring-2 focus:ring-cyan-300"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-300">05 · For children</span><span class="mt-3 block text-xl font-extrabold">Kids Coding &amp; Drone Tech</span><span class="mt-3 block leading-relaxed text-white/65">An introduction to coding, creative problem-solving and drone technology through guided activities.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+        <button type="button" data-program="internship" aria-pressed="false" class="program-card rounded-2xl border border-white/10 bg-white/[.04] p-6 text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[.07] focus:outline-none focus:ring-2 focus:ring-cyan-300"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-300">06 · Early-career experience</span><span class="mt-3 block text-xl font-extrabold">Starck Internship Program</span><span class="mt-3 block leading-relaxed text-white/65">A pathway for interns to gain practical experience and grow their professional skills.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+        <button type="button" data-program="ict" aria-pressed="false" class="program-card rounded-2xl border border-white/10 bg-white/[.04] p-6 text-left transition hover:-translate-y-1 hover:border-cyan-300/40 hover:bg-white/[.07] focus:outline-none focus:ring-2 focus:ring-cyan-300 sm:col-span-2 lg:col-span-1"><span class="text-xs font-bold uppercase tracking-[.18em] text-cyan-300">07 · For communities</span><span class="mt-3 block text-xl font-extrabold">ICT Mass Literacy</span><span class="mt-3 block leading-relaxed text-white/65">Foundational computer, mobile and internet skills that make everyday digital participation easier.</span><span class="mt-5 block text-sm font-bold text-cyan-200">View program details ↓</span></button>
+      </div>
+      <section id="program-detail-panel" class="mt-8 scroll-mt-28 rounded-3xl border border-white/10 bg-gradient-to-br from-[#126262]/30 to-white/[.03] p-6 sm:p-9" aria-live="polite" aria-atomic="true">
+        <p id="program-detail-audience" class="text-sm font-bold uppercase tracking-[.2em] text-cyan-300">Incubation · Zantchito Program</p>
+        <h3 id="program-detail-title" class="mt-3 text-2xl font-black sm:text-3xl">Incubation Program</h3>
+        <p id="program-detail-description" class="mt-4 max-w-3xl leading-relaxed text-white/75">Through the Zantchito Entrepreneurship and Access to Finance programme, Rydberg Starck works as a partner incubator, strengthening its business model and providing targeted incubation support to idea-stage entrepreneurs. The programme aims to help entrepreneurs build ventures that can grow into commercially sustainable businesses. Rydberg Starck’s work centres on inclusive access to Malawi’s digital economy through entrepreneurship, skills development and technology.</p>
+        <ul id="program-detail-points" class="mt-5 grid gap-3 text-white/70 sm:grid-cols-2">
+          <li class="flex gap-3"><span class="text-cyan-300">✦</span><span>Recruitment and application stages</span></li>
+          <li class="flex gap-3"><span class="text-cyan-300">✦</span><span>Training and mentorship</span></li>
+          <li class="flex gap-3"><span class="text-cyan-300">✦</span><span>Distribution of items to incubates</span></li>
+        </ul>
+        <a id="program-detail-link" href="#zantchito-gallery" class="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-bold text-[#071518] transition hover:bg-cyan-100">View the Zantchito photo story <span aria-hidden="true">→</span></a>
+      </section>
+    </section>
+
+    <section id="zantchito" data-incubation-section class="border-y border-white/10 bg-gradient-to-b from-[#0b2325] to-[#071518]">
+      <div class="mx-auto max-w-7xl px-6 py-16 sm:py-20">
+        <div class="grid gap-10 md:grid-cols-[.9fr_1.1fr] md:items-center">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[.2em] text-cyan-300">Catalyst · Incubation</p>
+            <h2 class="mt-3 text-3xl font-black sm:text-4xl">Zantchito Program</h2>
+            <p class="mt-5 leading-relaxed text-white/75">Through the Zantchito Entrepreneurship and Access to Finance programme, Rydberg Starck works as a partner incubator, strengthening its business model and providing targeted incubation support to idea-stage entrepreneurs. The programme aims to help entrepreneurs build ventures that can grow into commercially sustainable businesses. Rydberg Starck’s work centres on inclusive access to Malawi’s digital economy through entrepreneurship, skills development and technology.</p>
+            <p class="mt-4 leading-relaxed text-white/65">Our photo story follows the programme from recruitment and applications through training, mentorship and distribution of items to incubates. The Post program gallery shares follow-up stories in this order: Bruce Francisco, Sezile Golozera, then Mark Isaac.</p>
+            <a class="mt-4 inline-block text-sm font-semibold text-cyan-200 underline decoration-cyan-300/50 underline-offset-4 hover:text-white" href="https://entrepreneurship.zantchitomalawi.org/business-incubation-strengthening/" target="_blank" rel="noopener noreferrer">About the Zantchito incubation approach ↗</a>
+            <a href="#zantchito-gallery" class="mt-7 inline-flex items-center gap-2 rounded-full bg-[#1ca0a2] px-6 py-3 font-bold transition hover:bg-cyan-500">View the Zantchito gallery <span aria-hidden="true">↓</span></a>
+          </div>
+          <figure class="overflow-hidden rounded-3xl border border-white/10">
+            <img src="../assets/Images/zantchito-gallery/distribution-001.jpg" alt="A Zantchito participant receiving items during distribution" loading="lazy" class="aspect-[16/10] w-full object-cover">
+            <figcaption class="bg-black/30 px-5 py-3 text-sm text-white/65">Incubates receiving items during the distribution phase.</figcaption>
+          </figure>
+        </div>
+
+        <div id="zantchito-gallery" class="mt-16 scroll-mt-28">
+          <div class="max-w-3xl">
+            <p class="text-sm font-bold uppercase tracking-[.2em] text-cyan-300">Photo story</p>
+            <h3 class="mt-3 text-2xl font-black sm:text-3xl">The Zantchito journey</h3>
+            <p class="mt-4 leading-relaxed text-white/65">Choose a stage, then move through the gallery photos. The images cover recruitment, training, mentorship, distribution and post-program participant updates.</p>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2" role="group" aria-label="Choose a Zantchito gallery phase">
+            <button type="button" data-gallery-phase="recruitment" aria-pressed="true" class="gallery-phase rounded-full border border-cyan-300 bg-cyan-300 px-4 py-2 text-sm font-bold text-[#071518] transition">Recruitment</button>
+            <button type="button" data-gallery-phase="training" aria-pressed="false" class="gallery-phase rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Training</button>
+            <button type="button" data-gallery-phase="mentorship" aria-pressed="false" class="gallery-phase rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Mentorship</button>
+            <button type="button" data-gallery-phase="distribution" aria-pressed="false" class="gallery-phase rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Distribution</button>
+            <button type="button" data-gallery-phase="post-program" aria-pressed="false" class="gallery-phase rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:border-cyan-300/50">Post program</button>
+          </div>
+          <div id="zantchito-carousel" class="mt-5 overflow-hidden rounded-3xl border border-white/10 bg-black/30" aria-label="Zantchito photo slideshow">
+            <figure>
+              <img id="zantchito-slide" src="../assets/Images/zantchito-gallery/recruitment-001.jpg" alt="Zantchito recruitment phase photo" class="aspect-[16/10] max-h-[620px] w-full object-contain sm:aspect-[16/9]" decoding="async">
+              <div class="h-1 w-full overflow-hidden bg-white/10" aria-hidden="true"><span id="gallery-progress-fill" class="block h-full w-full bg-gradient-to-r from-cyan-300 to-[#1ca0a2]"></span></div>
+              <figcaption id="zantchito-caption" class="border-t border-white/10 px-5 py-3 text-sm text-white/70" aria-live="polite"></figcaption>
+            </figure>
+            <div class="flex flex-wrap items-center justify-between gap-3 p-4 sm:px-6">
+              <div class="flex items-center gap-2">
+                <button id="gallery-prev" type="button" aria-label="Previous photo" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 font-bold transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300"><span aria-hidden="true">←</span><span class="hidden sm:inline">Previous</span></button>
+                <button id="gallery-next" type="button" aria-label="Next photo" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 font-bold transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300"><span class="hidden sm:inline">Next</span><span aria-hidden="true">→</span></button>
+              </div>
+              <p id="zantchito-count" class="text-sm text-white/60" aria-live="polite"></p>
+              <div class="flex items-center gap-2">
+                <button id="gallery-autoplay" type="button" aria-pressed="false" class="inline-flex items-center gap-2 rounded-full bg-cyan-300 px-4 py-2 font-bold text-[#071518] transition hover:bg-cyan-200 focus:outline-none focus:ring-2 focus:ring-white"><svg id="gallery-play-icon" class="size-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.5 3.8a.8.8 0 0 1 1.2-.7l9 6.2a.8.8 0 0 1 0 1.4l-9 6.2a.8.8 0 0 1-1.2-.7V3.8Z"></path></svg><span id="gallery-autoplay-label">Play slideshow</span></button>
+                <button id="gallery-fullscreen" type="button" aria-label="Enter full screen" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 font-bold transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-300"><svg class="size-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M3 3h5v2H5v3H3V3Zm9 0h5v5h-2V5h-3V3ZM3 12h2v3h3v2H3v-5Zm12 0h2v5h-5v-2h3v-3Z"></path></svg><span id="gallery-fullscreen-label" class="hidden sm:inline">Full screen</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-14 sm:py-16 md:flex-row md:items-center md:justify-between">
+      <div><p class="text-sm font-bold uppercase tracking-[.2em] text-cyan-300">Build capacity with Catalyst</p><h2 class="mt-2 text-2xl font-black sm:text-3xl">Let’s talk about the right program for you.</h2><p class="mt-3 max-w-2xl leading-relaxed text-white/65">Contact Rydberg Starck to discuss training, entrepreneurship, incubation or a community program.</p></div>
+      <a href="contact.html" class="inline-flex w-fit shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-[#071518] transition hover:bg-cyan-100">Contact our team <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-[#111c24] px-6 py-9 text-center text-sm text-white/70"><p>© 2026 Rydberg Starck Limited · Blantyre, Malawi</p><p class="mt-2"><a class="transition hover:text-cyan-300" href="mailto:ychimole@rydbergstarck.com">ychimole@rydbergstarck.com</a> · <a class="transition hover:text-cyan-300" href="contact.html">Contact us</a></p></footer>
+  <script>
+
+    const themeToggle=document.getElementById("theme-toggle"),themeLabel=document.querySelector("[data-theme-label]");
+    const setTheme=(theme)=>{const light=theme==="light";document.documentElement.dataset.theme=light?"light":"dark";themeToggle?.setAttribute("aria-pressed",String(light));themeToggle?.setAttribute("aria-label",light?"Switch to dark mode":"Switch to light mode");if(themeLabel)themeLabel.textContent=light?"Night mode":"Day mode";try{localStorage.setItem("rsl-theme",light?"light":"dark")}catch(_){}};
+    if(themeToggle){setTheme(document.documentElement.dataset.theme||"dark");themeToggle.addEventListener("click",()=>setTheme(document.documentElement.dataset.theme==="light"?"dark":"light"))}
+    const progressBar=document.getElementById("page-progress");let progressFrame=0;const updateProgress=()=>{if(!progressBar||progressFrame)return;progressFrame=requestAnimationFrame(()=>{const maxScroll=document.documentElement.scrollHeight-innerHeight;progressBar.style.transform="scaleX("+(maxScroll>0?scrollY/maxScroll:0)+")";progressFrame=0})};updateProgress();addEventListener("scroll",updateProgress,{passive:true});addEventListener("resize",updateProgress,{passive:true});
+    if(!matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){document.documentElement.classList.add("has-catalyst-reveal");const observer=new IntersectionObserver((entries,io)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("is-visible");io.unobserve(entry.target)}}),{threshold:.12,rootMargin:"0px 0px -30px 0px"});document.querySelectorAll("main > section, #programs > div:nth-child(2) .program-card, #zantchito-gallery").forEach(el=>{el.classList.add("catalyst-reveal");observer.observe(el)})}
+
+    const programDetails = {
+      corporates: { audience: "For organizations", title: "Digital Skills Training for Corporates", description: "A practical learning program can help teams work more confidently with digital tools and adopt technology in their day-to-day roles.", points: ["Digital productivity and collaboration", "Using online tools in everyday workflows", "Digital communication and safe practices"], link: "contact.html", linkText: "Discuss corporate training" },
+      youth: { audience: "For young people", title: "Digital Skills for Youth & Women", description: "Hands-on digital learning builds confidence and opens pathways to further learning, work and entrepreneurship.", points: ["Digital foundations and computer confidence", "Productivity tools and online communication", "Safe and responsible use of technology"], link: "contact.html", linkText: "Ask about youth and women’s programs" },
+      entrepreneurship: { audience: "For entrepreneurs", title: "Entrepreneurship Programs", description: "Entrepreneurs strengthen the practical skills needed to shape, manage and present a business idea.", points: ["Business planning and model development", "Financial literacy and management", "Digital marketing, pitching and mentorship"], link: "contact.html", linkText: "Discuss entrepreneurship training" },
+      incubation: { audience: "Incubation · Zantchito Program", title: "Incubation Program", description: "Through the Zantchito Entrepreneurship and Access to Finance programme, Rydberg Starck works as a partner incubator, strengthening its business model and providing targeted incubation support to idea-stage entrepreneurs. The programme aims to help entrepreneurs build ventures that can grow into commercially sustainable businesses. Rydberg Starck’s work centres on inclusive access to Malawi’s digital economy through entrepreneurship, skills development and technology.", points: ["Recruitment and application stages", "Training and mentorship", "Distribution of items to incubates", "Post-program participant updates"], link: "#zantchito-gallery", linkText: "View the Zantchito photo story" },
+      kids: { audience: "For children", title: "Kids Coding & Drone Tech", description: "A guided introduction to technology that lets children explore how code and drones can be used to solve problems and bring ideas to life.", points: ["Coding concepts and logical thinking", "Creative, hands-on technology activities", "Introduction to drone technology and safe use"], link: "contact.html", linkText: "Ask about kids’ programs" },
+      internship: { audience: "Early-career experience", title: "Starck Internship Program", description: "The internship program gives emerging professionals a chance to build experience, develop workplace skills and learn through practical assignments.", points: ["Practical exposure to real work", "Guidance and professional development", "Opportunities to apply skills in a team"], link: "contact.html", linkText: "Ask about internships" },
+      ict: { audience: "For communities", title: "ICT Mass Literacy", description: "Community learning helps people build essential digital skills for everyday life and use of online services.", points: ["Basic computer and mobile phone use", "Internet access and online safety", "Digital communication and inclusion"], link: "contact.html", linkText: "Discuss community ICT training" }
+    };
+
+    function selectProgram(programId, shouldScroll = true) {
+      const details = programDetails[programId];
+      if (!details) return;
+      document.getElementById("program-detail-audience").textContent = details.audience;
+      document.getElementById("program-detail-title").textContent = details.title;
+      document.getElementById("program-detail-description").textContent = details.description;
+      const points = document.getElementById("program-detail-points");
+      points.replaceChildren(...details.points.map((point) => {
+        const item = document.createElement("li");
+        item.className = "flex gap-3";
+        const star = document.createElement("span");
+        star.className = "text-cyan-300";
+        star.textContent = "✦";
+        const text = document.createElement("span");
+        text.textContent = point;
+        item.append(star, text);
+        return item;
+      }));
+      const link = document.getElementById("program-detail-link");
+      link.href = details.link;
+      link.innerHTML = `${details.linkText} <span aria-hidden="true">→</span>`;
+      document.querySelectorAll(".program-card").forEach((button) => {
+        const selected = button.dataset.program === programId;
+        button.setAttribute("aria-pressed", String(selected));
+        button.classList.toggle("border-cyan-300", selected);
+        button.classList.toggle("bg-cyan-300/10", selected);
+        button.classList.toggle("ring-1", selected);
+        button.classList.toggle("ring-cyan-300/40", selected);
+        button.classList.toggle("border-white/10", !selected);
+        button.classList.toggle("bg-white/[.04]", !selected);
+      });
+      const incubationSection = document.querySelector("[data-incubation-section]");
+      if (incubationSection) incubationSection.hidden = programId !== "incubation";
+      if (shouldScroll) {
+        document.getElementById("program-detail-panel").scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      }
+    }
+
+    document.querySelectorAll(".program-card").forEach((button) => {
+      button.addEventListener("click", () => selectProgram(button.dataset.program));
+    });
+    selectProgram("incubation", false);
+    const galleryData = {"recruitment":["recruitment-001.jpg","recruitment-002.jpg","recruitment-003.jpg","recruitment-004.jpg","recruitment-005.jpg","recruitment-006.jpg","recruitment-007.jpg"],"training":["training-001.jpg","training-002.jpg","training-003.jpg","training-004.jpg","training-005.jpg","training-006.jpg","training-007.jpg","training-008.jpg","training-009.jpg","training-010.jpg","training-011.jpg","training-012.jpg","training-013.jpg","training-014.jpg","training-015.jpg","training-016.jpg","training-017.jpg","training-018.jpg","training-019.jpg","training-020.jpg","training-021.jpg","training-022.jpg","training-023.jpg","training-024.jpg","training-025.jpg","training-026.jpg","training-027.jpg","training-028.jpg","training-029.jpg","training-030.jpg","training-031.jpg","training-032.jpg","training-033.jpg","training-034.jpg","training-035.jpg","training-036.jpg","training-037.jpg","training-038.jpg","training-039.jpg","training-040.jpg","training-041.jpg","training-042.jpg","training-043.jpg","training-044.jpg","training-045.jpg","training-046.jpg","training-047.jpg","training-048.jpg","training-049.jpg","training-050.jpg","training-051.jpg","training-052.jpg","training-053.jpg","training-054.jpg","training-055.jpg","training-056.jpg"],"mentorship":["mentorship-001.jpg","mentorship-002.jpg","mentorship-003.jpg","mentorship-004.jpg","mentorship-005.jpg","mentorship-006.jpg","mentorship-007.jpg","mentorship-008.jpg","mentorship-009.jpg","mentorship-010.jpg","mentorship-011.jpg","mentorship-012.jpg","mentorship-013.jpg","mentorship-014.jpg","mentorship-015.jpg","mentorship-016.jpg","mentorship-017.jpg","mentorship-018.jpg","mentorship-019.jpg","mentorship-020.jpg"],"distribution":["distribution-001.jpg","distribution-002.jpg","distribution-003.jpg","distribution-004.jpg","distribution-005.jpg","distribution-006.jpg","distribution-007.jpg","distribution-008.jpg","distribution-009.jpg","distribution-010.jpg","distribution-011.jpg","distribution-012.jpg","distribution-013.jpg","distribution-014.jpg","distribution-015.jpg","distribution-016.jpg","distribution-017.jpg","distribution-018.jpg","distribution-019.jpg","distribution-020.jpg","distribution-021.jpg","distribution-022.jpg","distribution-023.jpg","distribution-024.jpg","distribution-025.jpg","distribution-026.jpg","distribution-027.jpg","distribution-028.jpg","distribution-029.jpg","distribution-030.jpg"],"post-program":["post-program-001.jpg","post-program-002.jpg","post-program-003.jpg","post-program-004.jpg","post-program-005.jpg","post-program-006.jpg","post-program-007.jpg","post-program-008.jpg","post-program-009.jpg","post-program-010.jpg","post-program-011.jpg","post-program-012.jpg","post-program-013.jpg","post-program-014.jpg","post-program-015.jpg","post-program-016.jpg"]};
+    const stageNames = { recruitment: "Recruitment & applications", training: "Training sessions", mentorship: "Mentorship sessions", distribution: "Distribution to incubates", "post-program": "Post-program participant stories" };
+    const postProgramPeople = [
+      { name: "Bruce Francisco", count: 4 },
+      { name: "Sezile Golozera", count: 5 },
+      { name: "Mark Isaac", count: 7 }
+    ];
+    let activeStage = "recruitment";
+    let activeIndex = 0;
+    const slide = document.getElementById("zantchito-slide");
+    const caption = document.getElementById("zantchito-caption");
+    const count = document.getElementById("zantchito-count");
+    const carousel = document.getElementById("zantchito-carousel");
+    const autoplayButton = document.getElementById("gallery-autoplay");
+    const autoplayLabel = document.getElementById("gallery-autoplay-label");
+    const playIcon = document.getElementById("gallery-play-icon");
+    const fullscreenButton = document.getElementById("gallery-fullscreen");
+    const fullscreenLabel = document.getElementById("gallery-fullscreen-label");
+    const progressFill = document.getElementById("gallery-progress-fill");
+    const slideshowInterval = 6000;
+    let slideshowPlaying = false;
+    let slideshowTimer = null;
+
+    function restartProgress() {
+      progressFill.classList.remove("is-running");
+      progressFill.style.animation = "none";
+      void progressFill.offsetWidth;
+      progressFill.style.animation = "";
+      if (slideshowPlaying) progressFill.classList.add("is-running");
+    }
+
+    function scheduleSlideshowAdvance() {
+      window.clearTimeout(slideshowTimer);
+      if (!slideshowPlaying) return;
+      slideshowTimer = window.setTimeout(() => {
+        const photos = galleryData[activeStage];
+        activeIndex = (activeIndex + 1) % photos.length;
+        showPhoto();
+        scheduleSlideshowAdvance();
+      }, slideshowInterval);
+    }
+
+    function setSlideshowPlaying(playing) {
+      slideshowPlaying = playing;
+      autoplayButton.setAttribute("aria-pressed", String(playing));
+      autoplayLabel.textContent = playing ? "Pause slideshow" : "Play slideshow";
+      autoplayButton.setAttribute("aria-label", playing ? "Pause slideshow" : "Play slideshow");
+      playIcon.innerHTML = playing
+        ? '<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3h1A1.5 1.5 0 0 1 9 4.5v11A1.5 1.5 0 0 1 7.5 17h-1A1.5 1.5 0 0 1 5 15.5v-11Zm6 0A1.5 1.5 0 0 1 12.5 3h1A1.5 1.5 0 0 1 15 4.5v11a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-11Z"></path>'
+        : '<path d="M5.5 3.8a.8.8 0 0 1 1.2-.7l9 6.2a.8.8 0 0 1 0 1.4l-9 6.2a.8.8 0 0 1-1.2-.7V3.8Z"></path>';
+      restartProgress();
+      scheduleSlideshowAdvance();
+    }
+
+    function updateFullscreenButton() {
+      const isFullscreen = document.fullscreenElement === carousel;
+      fullscreenButton.setAttribute("aria-label", isFullscreen ? "Exit full screen" : "Enter full screen");
+      fullscreenLabel.textContent = isFullscreen ? "Exit full screen" : "Full screen";
+    }
+
+    function showPhoto() {
+      const photos = galleryData[activeStage];
+      const fileName = photos[activeIndex];
+      const stageLabel = stageNames[activeStage];
+      let participant = "";
+      if (activeStage === "post-program") {
+        let offset = 0;
+        const person = postProgramPeople.find((entry) => {
+          if (activeIndex < offset + entry.count) return true;
+          offset += entry.count;
+          return false;
+        });
+        if (person) participant = person.name;
+      }
+      slide.src = `../assets/Images/zantchito-gallery/${fileName}`;
+      slide.alt = `${stageLabel}${participant ? ` — ${participant}` : ""} — Zantchito Program photo ${activeIndex + 1}`;
+      slide.classList.remove("photo-enter");
+      void slide.offsetWidth;
+      slide.classList.add("photo-enter");
+      caption.textContent = participant ? `${stageLabel} · ${participant}` : stageLabel;
+      count.textContent = `Photo ${activeIndex + 1} of ${photos.length}`;
+      restartProgress();
+    }
+
+    document.querySelectorAll("[data-gallery-phase]").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeStage = button.dataset.galleryPhase;
+        activeIndex = 0;
+        document.querySelectorAll("[data-gallery-phase]").forEach((phaseButton) => {
+          const selected = phaseButton === button;
+          phaseButton.setAttribute("aria-pressed", String(selected));
+          phaseButton.classList.toggle("border-cyan-300", selected);
+          phaseButton.classList.toggle("bg-cyan-300", selected);
+          phaseButton.classList.toggle("text-[#071518]", selected);
+          phaseButton.classList.toggle("border-white/15", !selected);
+          phaseButton.classList.toggle("bg-white/5", !selected);
+          phaseButton.classList.toggle("text-white", !selected);
+        });
+        showPhoto();
+        scheduleSlideshowAdvance();
+      });
+    });
+
+    document.getElementById("gallery-prev").addEventListener("click", () => {
+      const photos = galleryData[activeStage];
+      activeIndex = (activeIndex - 1 + photos.length) % photos.length;
+      showPhoto();
+      scheduleSlideshowAdvance();
+    });
+    document.getElementById("gallery-next").addEventListener("click", () => {
+      const photos = galleryData[activeStage];
+      activeIndex = (activeIndex + 1) % photos.length;
+      showPhoto();
+      scheduleSlideshowAdvance();
+    });
+
+    autoplayButton.addEventListener("click", () => setSlideshowPlaying(!slideshowPlaying));
+    fullscreenButton.addEventListener("click", async () => {
+      try {
+        if (document.fullscreenElement === carousel) await document.exitFullscreen();
+        else await carousel.requestFullscreen();
+      } catch (error) {
+        fullscreenButton.title = "Full screen is unavailable in this browser window";
+      }
+    });
+    document.addEventListener("fullscreenchange", updateFullscreenButton);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && slideshowPlaying) setSlideshowPlaying(false);
+    });
+    showPhoto();
+  </script>
+  <script>
+    (()=>{
+      const root="../assets/Images/catalyst-gallery/";
+      const albums={
+        flight:{label:"Starck Flight Academy / Kalibu Academy Drone Club",photos:[
+          ["starck-flight-academy-kalibu-01.jpg","Kalibu Academy learners gather around a drone during a Starck Flight Academy session."],
+          ["starck-flight-academy-kalibu-02.jpg","Students get hands-on guidance with the drone and its controller."],
+          ["starck-flight-academy-kalibu-03.jpg","Learners take part in a practical drone activity on the school grounds."],
+          ["starck-flight-academy-kalibu-04.jpg","A drone takes flight above the Kalibu Academy grounds."],
+          ["starck-flight-academy-kalibu-05.jpg","The flight academy group comes together after a learning session."],
+          ["starck-flight-academy-kalibu-06.jpg","Young participants share a moment from their drone technology experience."]]},
+        kids:{label:"Catalyst / Kids Coding",photos:[
+          ["kids-coding-01.jpg","The coding club space is ready for a new round of hands-on learning."],
+          ["kids-coding-02.jpg","Young learners explore coding activities together."],
+          ["kids-coding-03.jpg","A student works through a coding challenge at the computer."],
+          ["kids-coding-04.jpg","Club members practice their digital skills at a workstation."],
+          ["kids-coding-05.jpg","Learners build confidence as they use computers together."],
+          ["kids-coding-06.jpg","A coding club participant works through an activity on screen."]]},
+        youth:{label:"Digital Malawi Project / Youth Digital Skills",photos:[
+          ["digital-malawi-youth-skills-01.jpg","Participants build practical computer skills during a Digital Malawi Project session."],
+          ["digital-malawi-youth-skills-02.jpg","A learner practices digital skills on a laptop."],
+          ["digital-malawi-youth-skills-03.jpg","A facilitator guides a classroom learning session."],
+          ["digital-malawi-youth-skills-04.jpg","Learners and facilitators gather after a Digital Malawi training."]]},
+        mass:{label:"Catalyst / ICT Mass Literacy",photos:[
+          ["ict-mass-literacy-01.jpg","Community members take part in an outdoor ICT Mass Literacy session."],
+          ["ict-mass-literacy-02.jpg","Participants follow a practical lesson together under the shade."],
+          ["ict-mass-literacy-03.jpg","A facilitator leads a community learning session."],
+          ["ict-mass-literacy-04.jpg","A participant receives one-to-one support during a digital skills activity."]]},
+        egenco:{label:"Catalyst / EGENCO Corporate ICT Training",photos:[
+          ["egenco-corporate-training-01.jpg","An EGENCO team member practices digital skills at a laptop."],
+          ["egenco-corporate-training-02.jpg","A participant works through a computer-based task."],
+          ["egenco-corporate-training-03.jpg","A trainer presents a practical ICT lesson to EGENCO staff."],
+          ["egenco-corporate-training-04.jpg","EGENCO participants mark a milestone during their training."],
+          ["egenco-corporate-training-05.jpg","The EGENCO training cohort gathers after a learning session."]]},
+        ictam:{label:"Catalyst / ICTAM Innovation Awards",photos:[
+          ["ictam-awards-01.jpg","Rydberg Starck representatives attend the ICTAM Innovation Awards."],
+          ["ictam-awards-02.jpg","The team celebrates a moment at the ICTAM awards ceremony."],
+          ["ictam-awards-03.jpg","Award recipients and guests gather on stage at the ICTAM event."]]},
+        girls:{label:"Catalyst / Girls in ICT",photos:[
+          ["girls-ict-community.jpg","Learners and facilitators gather for Girls in ICT."],
+          ["girls-ict-learning-session.jpg","Participants follow a learning session together."],
+          ["girls-ict-workshop-presentation.jpg","A facilitator shares practical ideas with learners."],
+          ["girls-ict-training-venue.jpg","A room prepared for a day of digital skills learning."],
+          ["girls-ict-panel.jpg","Learners and guests take part in a discussion."],
+          ["girls-ict-facilitator.jpg","A speaker shares her perspective with the group."],
+          ["girls-ict-participant-voice.jpg","A participant contributes during the session."],
+          ["girls-ict-recognition-01.jpg","Celebrating a learner’s progress."],
+          ["girls-ict-recognition-02.jpg","A moment of recognition at the Girls in ICT event."],
+          ["girls-ict-recognition-03.jpg","A learner receives recognition for her achievement."],
+          ["girls-ict-cohort.jpg","Participants and facilitators celebrate the program."]]}
+      };
+      const carousel=document.getElementById("catalyst-story-carousel"),image=document.getElementById("catalyst-story-slide"),caption=document.getElementById("catalyst-story-caption"),count=document.getElementById("catalyst-story-count"),progress=document.getElementById("catalyst-story-progress"),play=document.getElementById("catalyst-story-play"),full=document.getElementById("catalyst-story-fullscreen"),albumLabel=document.getElementById("catalyst-story-album-label");
+      if(!carousel)return;let active="flight",index=0,playing=false,timer;
+      const photos=()=>albums[active].photos;
+      const resetProgress=()=>{progress.classList.remove("is-running");progress.style.animation="none";void progress.offsetWidth;progress.style.animation="";if(playing)progress.classList.add("is-running")};
+      const draw=()=>{const [file,label]=photos()[index];image.src=root+file;image.alt=label;caption.textContent=label;albumLabel.textContent=albums[active].label;count.textContent=`${String(index+1).padStart(2,"0")} / ${String(photos().length).padStart(2,"0")}`;resetProgress()};
+      const schedule=()=>{clearTimeout(timer);if(playing)timer=setTimeout(()=>{index=(index+1)%photos().length;draw();schedule()},7000)};
+      const setPlaying=value=>{playing=value;play.textContent=value?"Pause slideshow":"Play slideshow";play.setAttribute("aria-pressed",String(value));schedule();resetProgress()};
+      document.querySelectorAll("[data-catalyst-album]").forEach(button=>button.addEventListener("click",()=>{active=button.dataset.catalystAlbum;index=0;document.querySelectorAll("[data-catalyst-album]").forEach(b=>{const selected=b===button;b.setAttribute("aria-pressed",String(selected));b.classList.toggle("border-cyan-300",selected);b.classList.toggle("bg-cyan-300",selected);b.classList.toggle("text-[#071518]",selected);b.classList.toggle("border-white/15",!selected);b.classList.toggle("bg-white/5",!selected);b.classList.toggle("text-white",!selected)});draw();schedule()}));
+      document.getElementById("catalyst-story-prev").addEventListener("click",()=>{index=(index-1+photos().length)%photos().length;draw();schedule()});
+      document.getElementById("catalyst-story-next").addEventListener("click",()=>{index=(index+1)%photos().length;draw();schedule()});
+      play.addEventListener("click",()=>setPlaying(!playing));
+      full.addEventListener("click",async()=>{try{if(document.fullscreenElement===carousel)await document.exitFullscreen();else await carousel.requestFullscreen()}catch(_){full.title="Full screen is unavailable here"}});
+      document.addEventListener("visibilitychange",()=>{if(document.hidden&&playing)setPlaying(false)});
+      draw();
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
 

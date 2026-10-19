@@ -1,41 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="dark">
 
 <head>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>try { if (localStorage.getItem("rsl-theme") === "light") document.documentElement.dataset.theme = "light"; } catch (_) { }</script>
   <link href="./output.css" rel="stylesheet" />
   <style>
-    @keyframes verticalSlide {
+    .hero-expertise-window {
+      position: relative;
+      height: 64px;
+    }
 
-      0%,
-      20% {
-        transform: translateY(0px);
+    .hero-expertise-track {
+      font-size: clamp(1.15rem, 2.4vw, 2rem);
+      transition: transform 700ms cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .hero-expertise-item {
+      height: 64px;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      background: linear-gradient(180deg, rgba(7, 21, 24, .78), rgba(7, 21, 24, .22) 72%, transparent);
+      transition: background 350ms ease, backdrop-filter 350ms ease;
+    }
+
+    .site-nav.is-scrolled {
+      background: rgba(7, 21, 24, .94);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-tech-grid {
+      background-image: linear-gradient(rgba(113, 219, 226, .055) 1px, transparent 1px), linear-gradient(90deg, rgba(113, 219, 226, .055) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, black, transparent 96%);
+    }
+
+    .page-progress {
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    .page-reveal {
+      transition: opacity 650ms ease, transform 650ms cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .has-scroll-reveal .page-reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .has-scroll-reveal .page-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .landing-service-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .018));
+    }
+
+    .landing-service-card:hover .service-arrow {
+      transform: translate(4px, -4px);
+    }
+
+    #site-footer {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    #site-footer>div {
+      width: auto;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, .035);
+      transition: transform 250ms ease, border-color 250ms ease, background 250ms ease;
+    }
+
+    #site-footer>div:hover {
+      transform: translateY(-4px);
+      border-color: rgba(103, 232, 249, .25);
+      background: rgba(255, 255, 255, .055);
+    }
+
+    #site-footer>div h2 {
+      padding: .75rem 1rem;
+      color: #a5f3fc;
+    }
+
+    #site-footer>div ul {
+      padding: .5rem 1rem;
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .service-arrow {
+      transition: transform 220ms ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
       }
 
-      25%,
-      45% {
-        transform: translateY(-50px);
-      }
-
-      50%,
-      70% {
-        transform: translateY(-100px);
-      }
-
-      75%,
-      95% {
-        transform: translateY(-150px);
-      }
-
-      100% {
-        transform: translateY(0px);
+      .hero-background-video {
+        display: none;
       }
     }
 
-    .animate-vertical-slide {
-      animation: verticalSlide 12s ease-in-out infinite;
+    @media (max-width: 900px) {
+      #site-footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      #site-footer {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-expertise-window::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 76px;
+      height: 3px;
+      margin-top: 5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #06b6d4, rgba(6, 182, 212, 0));
+      box-shadow: 0 0 18px rgba(6, 182, 212, .65);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-expertise-track {
+        transition: none;
+      }
     }
 
     html {
@@ -82,8 +187,8 @@
 
     /* IMAGE */
     .logo-card img {
-      max-width: 140px;
-      max-height: 70px;
+      max-width: 180px;
+      max-height: 80px;
 
       object-fit: contain;
 
@@ -125,441 +230,1080 @@
     .marquee:hover .marquee-track {
       animation-play-state: paused;
     }
+
+    /* Keep the desktop composition while making the landing page fit phones. */
+    @media (max-width: 767px) {
+
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      nav {
+        padding: 0.65rem 1rem;
+      }
+
+      nav>div {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      nav>div>a img {
+        height: 2rem;
+        max-width: min(72vw, 230px);
+        object-fit: contain;
+      }
+
+      nav ul {
+        justify-content: center;
+        gap: 0.35rem 0.9rem;
+        padding: 0.25rem 0;
+        font-size: 0.75rem;
+      }
+
+      body>section:first-of-type {
+        min-height: 100svh;
+        height: auto;
+        padding: 7.5rem 0 3rem;
+      }
+
+      body>section:first-of-type>div.relative {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.75rem;
+        padding-inline: 1.25rem;
+      }
+
+      body>section:first-of-type>div.relative>div:first-child>img {
+        width: 100%;
+        max-width: min(76vw, 22rem);
+      }
+
+      body>section:first-of-type h1 {
+        white-space: normal;
+        font-size: 1.35rem;
+      }
+
+      body>section:first-of-type .hero-expertise-item {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+      }
+
+      body>section:first-of-type .mt-8.flex {
+        flex-wrap: wrap;
+        gap: .75rem;
+      }
+
+      body>section:nth-of-type(3) {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+        padding: 2.5rem 1.25rem;
+      }
+
+      body>section:nth-of-type(3)>img {
+        width: 100%;
+        height: auto;
+        padding-inline: 0;
+      }
+
+      body>section:nth-of-type(3) .w-3\/4 {
+        width: 100%;
+      }
+
+      #services {
+        padding-block: 4rem;
+      }
+
+      #site-footer {
+        padding: 3rem 1.25rem;
+      }
+
+      .hero-expertise-window,
+      .hero-expertise-item {
+        height: 72px;
+      }
+
+      .hero-expertise-item {
+        white-space: normal;
+      }
+
+      footer {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+
+    /* Readability pass: keep text bright wherever the page uses a dark surface. */
+    #hero,
+    #about,
+    #purpose,
+    #services,
+    #team,
+    #highlights,
+    #site-footer,
+    #landing-insights {
+      color: #f8fafc;
+    }
+
+    #hero div.mt-9 {
+      color: #d1dbe2;
+    }
+
+    #about h2 span {
+      color: #dbeafe;
+    }
+
+    #about p,
+    #services p,
+    #team p,
+    #highlights p,
+    #landing-insights p {
+      color: #d1dbe2;
+    }
+
+    #about p.text-cyan-300,
+    #services p.text-cyan-300,
+    #landing-insights p.text-cyan-300 {
+      color: #67e8f9;
+    }
+
+    #about .font-mono,
+    #purpose .font-mono,
+    #services .font-mono {
+      color: #a5f3fc;
+    }
+
+    #purpose>div>div:last-child>p,
+    #purpose article p {
+      color: #e2e8f0;
+    }
+
+    #purpose article span {
+      color: #a5f3fc;
+    }
+
+    #team p.text-cyan-200\/75 {
+      color: #a5f3fc;
+    }
+
+    #site-footer>div ul {
+      color: #e2e8f0;
+    }
+
+    #site-footer svg {
+      color: #67e8f9;
+    }
+
+    #site-footer a:hover {
+      color: #67e8f9;
+    }
+
+    #landing-insights a {
+      color: #f8fafc;
+    }
+
+    #landing-insights a span {
+      color: #67e8f9;
+    }
+
+    .theme-toggle {
+      flex: none;
+    }
+
+    .theme-switch-track {
+      position: relative;
+      display: inline-flex;
+      width: 2rem;
+      height: 1.15rem;
+      align-items: center;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .28);
+      padding: 2px;
+      transition: background 250ms ease;
+    }
+
+    .theme-switch-track>span {
+      display: block;
+      width: .85rem;
+      height: .85rem;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform 250ms cubic-bezier(.2, .7, .2, 1);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    html[data-theme="light"] .theme-switch-track {
+      background: #0e8285;
+    }
+
+    html[data-theme="light"] .theme-switch-track>span {
+      transform: translateX(.85rem);
+    }
+
+    html[data-theme="light"] .theme-sun {
+      display: none;
+    }
+
+    html[data-theme="light"] .theme-moon {
+      display: block;
+    }
+
+    html[data-theme="light"] .theme-toggle {
+      color: #123638;
+      border-color: rgba(14, 130, 133, .28);
+      background: rgba(255, 255, 255, .86);
+    }
+
+    html[data-theme="light"] .theme-toggle:hover {
+      background: #fff;
+    }
+
+    html[data-theme="light"] body {
+      background: #eef5f6;
+    }
+
+    html[data-theme="light"] #site-nav {
+      color: #10282a;
+      background: linear-gradient(180deg, rgba(245, 251, 252, .96), rgba(245, 251, 252, .82));
+      border-bottom: 1px solid rgba(14, 82, 85, .1);
+    }
+
+    html[data-theme="light"] #site-nav.is-scrolled {
+      background: rgba(245, 251, 252, .97);
+    }
+
+    html[data-theme="light"] #site-nav a {
+      color: #123638;
+    }
+
+    html[data-theme="light"] #site-nav a:hover {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #site-nav img {
+      filter: brightness(0);
+    }
+
+    #hero .hero-brand-light {
+      display: none;
+    }
+
+    html[data-theme="light"] #hero .hero-brand-white {
+      display: none;
+    }
+
+    html[data-theme="light"] #hero .hero-brand-light {
+      display: block;
+    }
+
+    html[data-theme="light"] #hero {
+      color: #10282a;
+      background: #edf6f7;
+    }
+
+    html[data-theme="light"] #hero .hero-overlay {
+      background: linear-gradient(90deg, rgba(242, 250, 251, .78), rgba(242, 250, 251, .58) 58%, rgba(242, 250, 251, .4));
+    }
+
+    html[data-theme="light"] #hero .hero-tech-grid {
+      opacity: .42;
+    }
+
+    html[data-theme="light"] #hero h1 {
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #hero p {
+      color: #334b4e;
+    }
+
+    html[data-theme="light"] #hero div.mt-9 {
+      color: #395558;
+    }
+
+    html[data-theme="light"] #hero a[href="#team"] {
+      color: #10282a;
+      border-color: rgba(16, 40, 42, .24);
+      background: rgba(255, 255, 255, .62);
+    }
+
+    html[data-theme="light"] #hero a[href="#team"]:hover {
+      background: #fff;
+    }
+
+    html[data-theme="light"] #about,
+    html[data-theme="light"] #services,
+    html[data-theme="light"] #highlights {
+      background: #f4f8f8;
+      border-color: #d6e3e4;
+    }
+
+    html[data-theme="light"] #purpose,
+    html[data-theme="light"] #team {
+      background: #eaf2f3;
+      border-color: #d4e1e2;
+    }
+
+    html[data-theme="light"] #about h2,
+    html[data-theme="light"] #about h3,
+    html[data-theme="light"] #purpose h2,
+    html[data-theme="light"] #services h2,
+    html[data-theme="light"] #services h3,
+    html[data-theme="light"] #team h2,
+    html[data-theme="light"] #team h3,
+    html[data-theme="light"] #highlights h2,
+    html[data-theme="light"] #landing-insights h2,
+    html[data-theme="light"] #landing-insights h3 {
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #about h2 span {
+      color: #31575b;
+    }
+
+    html[data-theme="light"] #about p,
+    html[data-theme="light"] #services p,
+    html[data-theme="light"] #team p,
+    html[data-theme="light"] #highlights p,
+    html[data-theme="light"] #landing-insights p {
+      color: #40585b;
+    }
+
+    html[data-theme="light"] #about p.text-cyan-300,
+    html[data-theme="light"] #purpose p.text-cyan-300,
+    html[data-theme="light"] #services p.text-cyan-300,
+    html[data-theme="light"] #landing-insights p.text-cyan-300 {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #about article {
+      border-color: #d4e3e4;
+      background: #fff;
+      box-shadow: 0 14px 40px rgba(13, 55, 58, .07);
+    }
+
+    html[data-theme="light"] #about article p {
+      color: #40585b;
+    }
+
+    html[data-theme="light"] #about article p.text-cyan-200\/70,
+    html[data-theme="light"] #about article .text-cyan-100 {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #about article p.text-cyan-200\/70+p,
+    html[data-theme="light"] #about article .text-white {
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #about .rounded-full {
+      border-color: #cbdcdd;
+      background: #fff;
+      color: #21484b;
+    }
+
+    html[data-theme="light"] #purpose>div>div:last-child>p,
+    html[data-theme="light"] #purpose article p {
+      color: #334b4e;
+    }
+
+    html[data-theme="light"] #purpose article {
+      border-color: #cbdfe0;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(13, 55, 58, .06);
+    }
+
+    html[data-theme="light"] #purpose article span,
+    html[data-theme="light"] #purpose article svg {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #services .font-mono {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #services .landing-service-card {
+      border-color: #d5e2e3;
+      background: linear-gradient(145deg, #fff, #f6fbfb);
+      box-shadow: 0 14px 36px rgba(13, 55, 58, .055);
+    }
+
+    html[data-theme="light"] #services .landing-service-card:hover {
+      border-color: rgba(14, 130, 133, .5);
+      background: #fff;
+    }
+
+    html[data-theme="light"] #services .landing-service-card>span {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #services .landing-service-card>span.text-cyan-100 {
+      border-color: #cbe3e4;
+      background: #eaf6f6;
+    }
+
+    html[data-theme="light"] #team article {
+      border-color: #d1e0e1;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(13, 55, 58, .055);
+    }
+
+    html[data-theme="light"] #team p.text-cyan-200\/75 {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #team article>div>span {
+      color: #0e8285;
+      border-color: #c8dddd;
+      background: #edf7f7;
+    }
+
+    html[data-theme="light"] #highlights iframe {
+      border-color: #cfddde;
+      box-shadow: 0 16px 40px rgba(13, 55, 58, .1);
+    }
+
+    html[data-theme="light"] #site-footer {
+      background: #eaf2f3;
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #site-footer>div {
+      border-color: #d1e0e1;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(13, 55, 58, .05);
+    }
+
+    html[data-theme="light"] #site-footer>div h2 {
+      color: #126262;
+    }
+
+    html[data-theme="light"] #site-footer>div ul {
+      color: #40585b;
+    }
+
+    html[data-theme="light"] #site-footer svg {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #site-footer a {
+      color: #31575b;
+    }
+
+    html[data-theme="light"] #site-footer a:hover {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #site-footer img {
+      filter: brightness(0);
+    }
+
+    html[data-theme="light"] #site-footer img {
+      filter: brightness(0);
+    }
+
+    html[data-theme="light"] #landing-insights {
+      background: #f4f8f8;
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #landing-insights a {
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #landing-insights a span {
+      color: #0e8285;
+    }
+
+    html[data-theme="light"] #landing-insights .group {
+      border-color: #d4e1e2;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(13, 55, 58, .05);
+    }
+
+    html[data-theme="light"] #landing-insights .group:hover {
+      border-color: rgba(14, 130, 133, .45);
+      background: #fff;
+    }
+
+    html[data-theme="light"] #landing-insights>section:nth-child(2) {
+      background: #edf4f4;
+    }
+
+    html[data-theme="light"] #landing-insights>section:nth-child(2)>div {
+      border-color: #d1e0e1;
+      background: #fff;
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #landing-insights>section:nth-child(2) a {
+      background: #0e8285;
+      color: #fff;
+    }
+
+    html[data-theme="light"] #partners {
+      background: #eaf2f3;
+    }
+
+    html[data-theme="light"] #partners h2 {
+      color: #10282a;
+    }
+
+    html[data-theme="light"] #partners .logo-card {
+      border-color: #d2e1e2;
+      background: rgba(255, 255, 255, .88);
+      box-shadow: 0 10px 28px rgba(13, 55, 58, .06);
+    }
+
+    html[data-theme="light"] #partners .logo-card:hover {
+      background: #fff;
+      border-color: #9ec8ca;
+    }
+
+    html[data-theme="light"] footer {
+      background: #10282a;
+      color: #fff;
+    }
+
+    html[data-theme="light"] footer a {
+      color: #fff;
+    }
+
+    html[data-theme="light"] footer a:hover {
+      color: #67e8f9;
+    }
+
+    #site-footer>div:first-child ul {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+    }
+
+    #site-footer>div:first-child ul>li {
+      min-width: 0;
+    }
+
+    #site-footer .contact-detail {
+      display: grid;
+      grid-template-columns: 1.25rem minmax(0, 1fr);
+      align-items: start;
+      gap: .75rem;
+      width: 100%;
+      padding: .65rem 1.5rem;
+    }
+
+    #site-footer .contact-detail svg {
+      margin-top: .1rem;
+    }
+
+    #site-footer .contact-detail span {
+      min-width: 0;
+    }
+
+    #site-footer .contact-phone {
+      white-space: nowrap;
+    }
+
+    #site-footer .contact-email {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .robot-stage {
+      isolation: isolate;
+      padding: 1rem;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      text-align: inherit;
+    }
+
+    .robot-stage::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 14% 8% 10%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(28, 160, 162, .25), rgba(28, 160, 162, .08) 48%, transparent 72%);
+      filter: blur(28px);
+    }
+
+    .robot-cutout {
+      filter: drop-shadow(0 30px 36px rgba(0, 0, 0, .34));
+    }
+
+    .robot-wave {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 20;
+      width: calc(100% - 2rem);
+      height: auto;
+      opacity: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 30px 36px rgba(0, 0, 0, .34));
+    }
+
+    .robot-stage.is-waving .robot-cutout {
+      animation: robot-wave-base 1.9s steps(1, end) both;
+    }
+
+    .robot-stage.is-waving .robot-wave {
+      animation: robot-wave-pose 1.9s steps(1, end) both;
+    }
+
+    @keyframes robot-wave-base {
+
+      0%,
+      27%,
+      68%,
+      100% {
+        opacity: 1;
+      }
+
+      36%,
+      59% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes robot-wave-pose {
+
+      0%,
+      27%,
+      68%,
+      100% {
+        opacity: 0;
+      }
+
+      36%,
+      59% {
+        opacity: 1;
+      }
+    }
+
+    .robot-caption {
+      position: relative;
+      z-index: 10;
+      margin-top: -.25rem;
+      padding: .5rem 0;
+      text-align: center;
+      font-family: monospace;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #a5f3fc;
+    }
+
+    html[data-theme="light"] .robot-stage::before {
+      background: radial-gradient(ellipse, rgba(28, 160, 162, .2), rgba(28, 160, 162, .06) 48%, transparent 72%);
+    }
+
+    html[data-theme="light"] .robot-cutout,
+    html[data-theme="light"] .robot-wave {
+      filter: drop-shadow(0 25px 32px rgba(13, 55, 58, .2));
+    }
+
+    html[data-theme="light"] .robot-caption {
+      color: #126262;
+    }
   </style>
   <title>Rydberg Starck</title>
 </head>
 
 <body>
+  <div id="page-progress"
+    class="page-progress fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-cyan-300 via-[#1ca0a2] to-[#F58220]"
+    aria-hidden="true"></div>
   <!-- Navigation Bar -->
-  <nav class="fixed top-0 z-50 w-full bg-black px-6 py-3 text-white backdrop-blur-md transition-all duration-300">
+  <nav id="site-nav" class="site-nav fixed top-0 z-50 w-full px-6 py-3 text-white">
     <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 font-[sans-serif] font-bold">
-    <a href="index.html" aria-label="Rydberg Starck home"><img src="assets/Images/rydberg-starck-nav.png" alt="Rydberg Starck — Infinite Possibilities" class="h-12 w-auto"></a>
-    <ul class="flex flex-wrap gap-x-5 gap-y-2 py-2 text-sm sm:gap-8 sm:text-base">
-      <li><a class="hover:text-[#1ca0a2]" href="pages/projects.html">Projects</a></li>
-      <li><a class="hover:text-[#1ca0a2]" href="pages/about.html">About</a></li>
-      <li><a class="hover:text-[#1ca0a2]" href="#services">Services</a></li>
-      <li><a class="hover:text-[#1ca0a2]" href="pages/gallery.html">Gallery</a></li>
-      <li><a class="hover:text-[#1ca0a2]" href="pages/blog.html">Blog</a></li>
-      <li><a class="hover:text-[#1ca0a2]" href="pages/contact.html">Contact</a></li>
-    </ul>
+      <a href="index.html" aria-label="Rydberg Starck home"><img src="assets/Images/rydberg-starck-nav.png"
+          alt="Rydberg Starck — Infinite Possibilities" class="h-12 w-auto"></a>
+      <ul class="flex flex-wrap gap-x-5 gap-y-2 py-2 text-sm sm:gap-8 sm:text-base">
+        <li><a class="hover:text-[#1ca0a2]" href="pages/projects.html">Projects</a></li>
+        <li><a class="hover:text-[#1ca0a2]" href="pages/about.html">About</a></li>
+        <li><a class="hover:text-[#1ca0a2]" href="#services">Services</a></li>
+        <li><a class="hover:text-[#1ca0a2]" href="pages/gallery.html">Gallery</a></li>
+        <li><a class="hover:text-[#1ca0a2]" href="pages/blog.html">Digital Malawi Project</a></li>
+        <li><a class="hover:text-[#1ca0a2]" href="pages/contact.html">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode"
+        class="theme-toggle inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-2 text-xs font-bold text-white backdrop-blur transition hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">
+        <svg class="theme-sun size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42">
+          </path>
+        </svg>
+        <svg class="theme-moon hidden size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path>
+        </svg>
+        <span data-theme-label>Day mode</span><span class="theme-switch-track" aria-hidden="true"><span></span></span>
+      </button>
     </div>
-    <!-- <div class="items-center pt-5">
-       <a href="index.html"><button id="theme-toggle" class="px-1 cursor-pointer py-1 pl-10 bg-gray-400 rounded-full">
-      <img src="/src/Images/sun.png" alt="" class="size-6 bg-white rounded-full p-1">
-    </button></a>
-      </div> -->
   </nav>
   <!-- Hero -->
-  <section class="relative h-screen flex items-center overflow-hidden">
-
-    <!-- Stock background until your original video is added -->
-    <img class="absolute inset-0 h-full w-full object-cover" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=85" alt="A team working together around digital technology">
-
-    <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b to-[#126262]/60 from-[#111c24]/60"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-7xl mx-auto px-10 grid md:grid-cols-2 items-center gap-12 w-full">
-
-      <!-- LEFT: BIG LOGO -->
-      <div class="flex justify-center md:justify-start">
-        <div class="text-5xl font-black leading-tight tracking-wide text-white drop-shadow-2xl md:text-7xl">RYDBERG<br><span class="text-cyan-300">STARCK</span><p class="mt-3 text-lg font-medium tracking-normal text-white/80 md:text-2xl">Infinite Possibilities</p></div>
+  <section id="hero" class="relative flex min-h-screen items-center overflow-hidden bg-[#071518]">
+    <img class="absolute inset-0 h-full w-full object-cover" src="assets/Images/hero-tech-background.png" alt=""
+      aria-hidden="true">
+    <video class="hero-background-video absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline
+      preload="metadata" poster="assets/Images/hero-tech-background.png" aria-hidden="true">
+      <source src="assets/Images/network-hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-tech-grid pointer-events-none absolute inset-0"></div>
+    <div class="hero-overlay absolute inset-0 bg-gradient-to-r from-[#071518]/90 via-[#071518]/55 to-[#071518]/65">
+    </div>
+    <div
+      class="pointer-events-none absolute -bottom-48 left-1/3 h-96 w-[42rem] rounded-full bg-cyan-400/[.10] blur-[120px]">
+    </div>
+    <div class="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-10 md:grid-cols-2">
+      <div class="page-reveal flex justify-center md:justify-start">
+        <img class="hero-brand hero-brand-white h-auto w-full max-w-lg drop-shadow-2xl"
+          src="assets/Images/rydberg-starck-white-logo.png" alt="Rydberg Starck — Infinite Possibilities">
+        <img class="hero-brand hero-brand-light h-auto w-full max-w-lg drop-shadow-2xl"
+          src="assets/Images/rydberg-starck-partners-logo.png" alt="Rydberg Starck — Infinite Possibilities">
       </div>
-
-      <!-- RIGHT: TEXT -->
-      <div class="text-white">
-
-        <!-- Static Line -->
-        <h1 class="text-2xl md:text-3xl font-semibold mb-3 whitespace-nowrap">
-          We are experts in
-        </h1>
-
-        <div class="h-[50px] overflow-hidden">
-
-          <div class="animate-vertical-slide text-3xl md:text-4xl font-bold leading-[50px]">
-
-            <div class="h-[50px] flex items-center text-[#06B6D4]">
-              Digitizing Operations
-            </div>
-
-            <div class="h-[50px] flex items-center text-[#06B6D4]">
-              Systems Development
-            </div>
-
-            <div class="h-[50px] flex items-center text-[#06B6D4]">
-              Drone Technology
-            </div>
-
-            <div class="h-[50px] flex items-center text-[#06B6D4]">
-              Fintech Solutions
-            </div>
-
-
+      <div class="page-reveal text-white">
+        <h1 class="mb-3 text-2xl font-semibold md:text-3xl">We are experts in</h1>
+        <div class="hero-expertise-window overflow-hidden" aria-label="Our areas of expertise">
+          <div class="hero-expertise-track font-bold leading-tight text-[#06B6D4]" data-expertise-track>
+            <div class="hero-expertise-item flex items-center">Digital transformation</div>
+            <div class="hero-expertise-item flex items-center">Custom software, apps &amp; websites</div>
+            <div class="hero-expertise-item flex items-center">Enterprise systems &amp; fintech</div>
+            <div class="hero-expertise-item flex items-center">Engineering solutions</div>
+            <div class="hero-expertise-item flex items-center">AI, robotics &amp; drone technology</div>
+            <div class="hero-expertise-item flex items-center">Corporate digital skills</div>
+            <div class="hero-expertise-item flex items-center">Youth &amp; women entrepreneurship</div>
+            <div class="hero-expertise-item flex items-center">Business incubation &amp; mentorship</div>
+            <div class="hero-expertise-item flex items-center">Kids coding &amp; drone education</div>
+            <div class="hero-expertise-item flex items-center">Internships &amp; ICT literacy</div>
+            <div class="hero-expertise-item flex items-center" aria-hidden="true">Digital transformation</div>
           </div>
-
         </div>
-
-        <!-- Description -->
-        <p class="mt-6 text-white/70 max-w-lg">
-          Driving digital transformation through cutting-edge solutions,
-          engineering excellence, and innovative technologies.
-        </p>
-
-        <!-- Buttons -->
-        <div class="mt-8 flex gap-4">
-          <a href="#team"
-            class="px-6 py-3 bg-[#F58220]/80 backdrop-blur border border-white/20 rounded-lg font-bold hover:scale-105 transition">
-            Meet the Team
-          </a>
+        <p class="mt-6 max-w-lg text-lg leading-relaxed text-white/75">We bring technology, engineering, and people
+          together to solve real challenges and make opportunity easier to reach.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
           <a href="#services"
-            class="px-6 py-3 border border-white/30 rounded-lg hover:scale-105 transition duration-300 hover:bg-[#0e8285] bg-white/10 backdrop-blur border border-white/20 text-white rounded-lg hover:bg-white/20 hover:shadow-2xl ">
-            Our Services
-          </a>
+            class="inline-flex items-center gap-3 rounded-full bg-cyan-300 px-6 py-3 font-extrabold text-[#071518] transition hover:bg-white">Explore
+            our ecosystem <span aria-hidden="true">↓</span></a>
+          <a href="#team"
+            class="inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/[.06] px-6 py-3 font-bold text-white backdrop-blur transition hover:border-white/60 hover:bg-white/10">Meet
+            the team <svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="10" cy="7" r="4"></circle>
+              <path d="M20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg></a>
         </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- Who We Are / About Section -->
-  <section class="py-20  bg-gradient-to-r from-[#cddde0] to-[#ffffff]">
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-
-      <!-- LEFT CONTENT -->
-      <div>
-        <p class="px-1 text-2xl font-[sans-serif] font-bold text-[#06B6D4] py-4">WHO WE ARE</p>
-
-        <h2 class="text-4xl md:text-5xl font-bold text-[#126262] mb-6 leading-tight">
-          Bridging the <br /> Digital Divide
-        </h2>
-
-        <p class="text-gray-600 mb-6 leading-relaxed font-[sans-serif]">
-          Rydberg Starck Limited is a dynamic innovation-driven tech company established in May 2022, with operations
-          beginning in January 2023. We tackle the societal challenge of the digital divide in Malawi by providing
-          comprehensive digital solutions.
-        </p>
-
-        <p class="text-gray-600 mb-6 leading-relaxed font-[sans-serif]">
-          Our ecosystem combines cutting-edge digital technology, engineering prowess, and modern artistic expression to
-          create transformative solutions. We believe in the power of inclusive digital platforms that empower youth,
-          communities, and institutions.
-        </p>
-
-        <!-- Bullet Points -->
-        <div class="space-y-3 font-[sans-serif]">
-          <p class="px-1 text-xl font-[sans-serif] font-bold text-[#06B6D4] py-4">CORE VALUES</p>
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 flex items-center justify-center bg-[#06B6D4] text-white rounded-full">✓</div>
-            <p class="text-gray-700">Innovation: Creating value through unprecedented solutions</p>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 flex items-center justify-center bg-[#06B6D4] text-white rounded-full">✓</div>
-            <p class="text-gray-700">Excellence: Setting a new standard in the tech industry</p>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 flex items-center justify-center bg-[#06B6D4] text-white rounded-full">✓</div>
-            <p class="text-gray-700">Collaboration: Achieving success through shared goals and cooperation</p>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <div class="w-6 h-6 flex items-center justify-center bg-[#06B6D4] text-white rounded-full">✓</div>
-            <p class="text-gray-700">Community: Dedicated to fostering positive change within its community</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT CARDS -->
-      <div class="space-y-6">
-
-        <!-- Founded Card -->
         <div
-          class="bg-gradient-to-r from-[#126262] to-[#0e8285] text-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-          <h3 class="text-xl font-bold text-[#06B6D4] mb-2">Founded</h3>
-          <p class="text-2xl font-bold">May 2022</p>
-          <p class="text-white/80">Established with a vision</p>
+          class="mt-9 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/15 pt-5 text-xs font-semibold uppercase tracking-[.15em] text-white/50">
+          <span>Technology</span><span class="text-cyan-300">/</span><span>Engineering</span><span
+            class="text-cyan-300">/</span><span>Opportunity</span>
         </div>
-
-        <!-- Operating Card -->
-        <div
-          class="bg-gradient-to-r from-[#0e8285] to-[#126262] text-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
-          <h3 class="text-xl font-bold text-[#06B6D4] mb-2">Operating</h3>
-          <p class="text-2xl font-bold">January 2023</p>
-          <p class="text-white/80">Expanding our impact</p>
-        </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- Vision & MIssion Section -->
-  <section
-    class="bg-white grid md:grid-cols-2 p-32 gap-12 justify-normal bg-gradient-to-r to-[#cddde0] from-[#ffffff] ">
-    <img src="/HTML/SRC/Images/Staff/RSL Robot.png" alt="" width="1800" height="1800" class="px-24">
-    <form>
-
-      <div>
-        <h1 class="px-1 text-2xl font-[sans-serif] font-bold text-[#06B6D4] py-4">VISION AND MISSION</h1>
-        <p class="px-1 font-[] text-[#126262] mb-4 pb-1">Our Vision & Mission are in line with creating an inclusive
-          digital ecosystem where </br> youth, communities, and institutions can use (skills & tools) to thrive through
-          our </br> cutting-edge digital and tech solutions</p>
+  <!-- Who We Are -->
+  <section id="about" class="relative overflow-hidden border-b border-white/10 bg-[#081719]">
+    <div class="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-cyan-400/[.08] blur-[110px]">
+    </div>
+    <div
+      class="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:px-8">
+      <div class="page-reveal">
+        <p class="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-300"><span
+            class="h-px w-8 bg-cyan-300"></span> Who we are</p>
+        <h2 class="max-w-3xl text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">Bridging the
+          digital divide. <span class="text-white/45">Building what comes next.</span></h2>
+        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-white/65">Rydberg Starck is a Malawi-based,
+          innovation-driven technology company. Since beginning operations in 2023, we have combined digital solutions,
+          engineering, and creative thinking to help people and institutions move forward.</p>
+        <p class="mt-4 max-w-2xl leading-relaxed text-white/50">We believe useful technology should make opportunity
+          more accessible—and should be shaped around the people who use it.</p>
+        <div class="mt-8 flex flex-wrap gap-2"><span
+            class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">Innovation</span><span
+            class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">Excellence</span><span
+            class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">Collaboration</span><span
+            class="rounded-full border border-white/10 px-4 py-2 text-sm text-white/70">Community</span></div>
       </div>
-
-
-      <!-- Vision -->
-      <div class="pb-5">
-        <div
-          class="bg-[#0e8285] cursor-pointer text w-3/4 p-3 rounded-xl items-center hover:scale-105 transition ease-in-out duration-200 shadow shadow-[#06B6D4]">
-          <div><img src="/HTML/SRC/Images/Icons/Vision.png" class="px-6 py-1" width="100" height="1"></div>
-          <div class="px-4 ">
-            <h1 class="text-white font-extrabold font-[sans-serif] text-4xl pb-3 ">Vision</h1>
-            <p class="text-white font-[sans-serif] items-center pb-2">To be a catalyst for technological transformation
-              and innovation, fostering an empowered, tech-savvy community, and driving sustainable development in
-              Malawi and beyond</p>
-          </div>
-        </div>
+      <div class="page-reveal grid gap-4 sm:grid-cols-2">
+        <article
+          class="rounded-3xl border border-cyan-100/15 bg-gradient-to-br from-[#103538] to-[#0b2023] p-7 sm:col-span-2">
+          <p class="text-xs font-bold uppercase tracking-[.2em] text-cyan-200/70">Our foundation</p>
+          <p class="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Technology with purpose.</p>
+          <p class="mt-3 max-w-xl leading-relaxed text-white/55">A multidisciplinary ecosystem for digital
+            transformation, applied engineering, learning, and ideas that can grow.</p>
+        </article>
+        <article class="rounded-3xl border border-white/10 bg-white/[.035] p-6">
+          <p class="font-mono text-xs uppercase tracking-[.2em] text-white/40">Founded</p>
+          <p class="mt-4 text-3xl font-black text-cyan-100">May <span class="text-white">2022</span></p>
+          <p class="mt-2 text-sm text-white/45">A vision takes shape</p>
+        </article>
+        <article class="rounded-3xl border border-white/10 bg-white/[.035] p-6">
+          <p class="font-mono text-xs uppercase tracking-[.2em] text-white/40">Operations began</p>
+          <p class="mt-4 text-3xl font-black text-orange-200">Jan <span class="text-white">2023</span></p>
+          <p class="mt-2 text-sm text-white/45">Building for lasting impact</p>
+        </article>
       </div>
-      <!-- Mission -->
-      <div
-        class="bg-[#126262] cursor-pointer text w-3/4 p-3 rounded-xl items-center hover:scale-105 transition ease-in-out duration-200 hover:bg-[#126262] shadow shadow-[#06B6D4]">
-        <div><img src="/HTML/SRC/Images/Icons/target.png" class="px-6 py-1" width="100" height="1""></div>
-    <div class=" px-4">
-          <h1 class="text-white font-extrabold font-[sans-serif] text-4xl pb-3">Mission</h1>
-          <p class="text-white items-center font-[sans-serif] pb-2">To harness digital technology, engineering prowess,
-            and artistic expression to develop solutions that inspire change, improve everyday living, and create a
-            lasting impact on societal development</p>
-        </div>
-      </div>
-      </div>
+    </div>
   </section>
 
+  <!-- Vision & Mission -->
+  <section id="purpose" class="relative overflow-hidden border-b border-white/10 bg-[#0b2023]">
+    <div
+      class="mx-auto grid max-w-7xl items-center gap-10 px-6 py-16 sm:py-20 lg:grid-cols-[.8fr_1.2fr] lg:gap-16 lg:px-8">
+      <button type="button" id="robot-wave-trigger" aria-label="Make the Rydberg Starck robot wave"
+        class="page-reveal robot-stage relative mx-auto block w-full max-w-sm cursor-pointer rounded-3xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300 sm:max-w-md">
+        <img src="assets/Images/rsl-robot-transparent.png" alt="Rydberg Starck robot mascot" width="500" height="707"
+          class="robot-cutout relative z-10 mx-auto h-auto w-full object-contain">
+        <img src="assets/Images/rsl-robot-wave.png" alt="" aria-hidden="true" width="500" height="707"
+          class="robot-wave">
+        <p class="robot-caption">
+          Curiosity builds the future</p>
+      </button>
+      <div class="page-reveal">
+        <p class="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-300"><span
+            class="h-px w-8 bg-cyan-300"></span> Our north star</p>
+        <h2 class="max-w-2xl text-4xl font-black leading-tight tracking-tight sm:text-5xl">A future where technology
+          opens doors.</h2>
+        <p class="mt-5 max-w-2xl leading-relaxed text-white/60">We work toward an inclusive digital ecosystem where
+          young people, communities, and institutions can use the skills and tools they need to thrive.</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <article
+            class="rounded-2xl border border-cyan-100/15 bg-cyan-100/[.045] p-6 transition hover:border-cyan-100/30">
+            <div class="flex items-center justify-between"><span
+                class="font-mono text-xs font-bold uppercase tracking-[.2em] text-cyan-200/65">01 / Vision</span><svg
+                class="size-6 text-cyan-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                aria-hidden="true">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg></div>
+            <p class="mt-4 text-sm leading-relaxed text-white/75">To be a catalyst for technological transformation and
+              innovation, fostering an empowered, tech-savvy community and sustainable development in Malawi and beyond.
+            </p>
+          </article>
+          <article
+            class="rounded-2xl border border-orange-100/15 bg-orange-100/[.035] p-6 transition hover:border-orange-100/30">
+            <div class="flex items-center justify-between"><span
+                class="font-mono text-xs font-bold uppercase tracking-[.2em] text-orange-100/65">02 / Mission</span><svg
+                class="size-6 text-orange-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="m15.5 8.5 5-5M17 3.5h3.5V7"></path>
+              </svg></div>
+            <p class="mt-4 text-sm leading-relaxed text-white/75">To harness digital technology, engineering, and
+              creative expression to develop solutions that improve everyday living and contribute to lasting societal
+              development.</p>
+          </article>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Our Services -->
-  <section id="services" class="relative p-32 font-[] overflow-hidden">
-
-    <!-- Background Pattern -->
-    <div class="absolute inset-0">
-      <img src="/HTML/SRC/Images/Pattern images/Digital wave.jpg" class="w-full h-full object-cover opacity-80" alt="">
+  <section id="services" class="relative isolate overflow-hidden border-b border-white/10 bg-[#071518]">
+    <div class="hero-tech-grid pointer-events-none absolute inset-0 opacity-60"></div>
+    <div
+      class="pointer-events-none absolute -right-44 top-1/3 h-96 w-[44rem] rounded-full bg-cyan-400/[.08] blur-[130px]">
     </div>
-
-    <!-- Dark Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0e8285]/90 to-[#111c24]/95"></div>
-
-    <!-- CONTENT (IMPORTANT: relative + z-10) -->
-    <div class="relative z-10">
-
-      <h3 class="text-[#06B6D4] font-[sans-serif] text-2xl font-bold p-1 px-54">
-        RYDBERG STARCK DIGITAL ECOSYSTEM
-      </h3>
-
-      <h2 class="text-white p-2 font-[sans-serif] font-black px-54 text-5xl">
-        Our Services
-      </h2>
-
-      <p class="font-[sans-serif] text-white p-1 pb-6 px-54">
-        We tackle the societal challenge of the digital divide in Malawi by bridging digital gaps through a one-stop
-        platform for inclusive technology solutions.
-      </p>
-
-      <!-- Cards Row 1 -->
-      <div class="pb-6 gap-8 px-6 flex justify-center">
-
-        <!-- Digital Technology Solutions -->
-        <div
-          class="font-[sans-serif] bg-[#126262] rounded-xl w-100 hover:scale-105 transition duration-300 hover:bg-[#0e8285] bg-white/10 backdrop-blur border border-white/20 text-white rounded-lg hover:bg-white/20 hover:shadow-2xl">
-          <a href="pages/digital-solutions.html">
-            <img src="/HTML/SRC/Images/Icons/3d.png" class="px-6 py-5" width="100">
-            <h3 class="font-bold px-7 py-1 text-white text-2xl">Digital Technology Solutions</h3>
-            <p class="text-white p-4 px-7">Development of applications, software, and digital platforms tailored to
-              client needs</p>
-          </a>
+    <div class="relative mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8">
+      <div class="page-reveal grid gap-6 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+        <div>
+          <p class="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-300">
+            <span class="h-px w-8 bg-cyan-300"></span> Rydberg Starck ecosystem
+          </p>
+          <h2 class="max-w-2xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">Different
+            disciplines. One direction: <span class="text-cyan-200">progress.</span></h2>
         </div>
-
-        <!-- Training -->
-        <div
-          class="bg-[#126262] rounded-xl w-1/2 hover:scale-105 transition duration-300 hover:bg-[#0e8285] bg-white/10 backdrop-blur border border-white/20 text-white rounded-lg hover:bg-white/20 hover:shadow-2xl">
-          <a href="pages/training.html">
-            <img src="/HTML/SRC/Images/Icons/online-student.png" class="px-6 py-5" width="100">
-            <h2 class="font-bold px-7 py-1 text-white text-2xl">Training and Skills Development</h2>
-            <p class="p-4 px-7 text-white">Providing extensive digital skills training and entrepreneurship programs
-              tailored for various target groups</p>
-          </a>
-        </div>
-
+        <p class="max-w-2xl leading-relaxed text-white/60 lg:justify-self-end">We connect digital technology,
+          engineering, learning, and advisory support to help turn complex challenges into practical next steps.</p>
       </div>
-
-      <!-- Cards Row 2 -->
-      <div class="flex justify-center gap-8 px-6">
-
-        <!-- R&D -->
-        <div
-          class="bg-[#126262] rounded-xl w-1/2 hover:scale-105 transition duration-300 hover:bg-[#0e8285] bg-white/10 backdrop-blur border border-white/20 text-white rounded-lg hover:bg-white/20 hover:shadow-2xl">
-          <a href="pages/research-development.html">
-            <img src="/HTML/SRC/Images/Icons/research-and-development.png" class="px-6 py-5" width="100">
-            <h3 class="font-bold px-7 text-white text-2xl">Research and Development</h3>
-            <p class="text-white p-4 px-7">Pioneering studies and projects in technology, with a focus on sustainable
-              and practical applications</p>
-          </a>
-        </div>
-
-        <!-- Consultancy -->
-        <div
-          class="bg-[#125252] rounded-xl w-100 max-w-sm hover:scale-105 transition duration-300 hover:bg-[#0e8285] bg-white/10 backdrop-blur border border-white/20 text-white rounded-lg hover:bg-white/20 hover:shadow-2xl">
-          <a href="pages/consultancy.html">
-            <img src="/HTML/SRC/Images/Icons/chat.png" class="px-6 p-5" width="100">
-            <h3 class="font-bold px-7 text-white text-2xl pb-2">Consultancy</h3>
-            <p class="text-white pb-4 px-7">Offering expert advice on tech solutions, digital transformation strategies,
-              and modern art integrations</p>
-          </a>
-        </div>
-
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a class="landing-service-card page-reveal group rounded-3xl border border-cyan-100/20 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-100/45 hover:bg-cyan-100/[.05]"
+          href="pages/digital-solutions.html">
+          <div class="flex items-center justify-between"><span class="font-mono text-xs text-cyan-200/60">01 /
+              DIGITAL</span><span class="service-arrow text-xl text-cyan-200">↗</span></div>
+          <span class="mt-8 inline-flex rounded-2xl border border-cyan-100/15 bg-cyan-100/[.06] p-3 text-cyan-100"
+            aria-hidden="true"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="13" rx="2"></rect>
+              <path d="M8 21h8M12 17v4M8 9l-2 2 2 2m8-4 2 2-2 2m-3-5-2 6"></path>
+            </svg></span>
+          <h3 class="mt-5 text-xl font-extrabold">Digital Solutions</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/55">Custom systems, apps, platforms, and in-house products
+            built around meaningful needs.</p><span
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-200">Explore solutions <span
+              aria-hidden="true">→</span></span>
+        </a>
+        <a class="landing-service-card page-reveal group rounded-3xl border border-white/10 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-100/35 hover:bg-white/[.03]"
+          href="pages/training.html">
+          <div class="flex items-center justify-between"><span class="font-mono text-xs text-white/40">02 /
+              CATALYST</span><span class="service-arrow text-xl text-cyan-200">↗</span></div>
+          <span class="mt-8 inline-flex rounded-2xl border border-cyan-100/15 bg-cyan-100/[.06] p-3 text-cyan-100"
+            aria-hidden="true"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H20v15H5.5A2.5 2.5 0 0 0 3 20.5z"></path>
+              <path d="M3 5.5v15M7 7h9m-9 4h7"></path>
+              <path d="m16 14 2 2 4-4"></path>
+            </svg></span>
+          <h3 class="mt-5 text-xl font-extrabold">Catalyst</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/55">Digital skills, entrepreneurship, incubation, and
+            practical pathways to opportunity.</p><span
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-200">Discover Catalyst <span
+              aria-hidden="true">→</span></span>
+        </a>
+        <a class="landing-service-card page-reveal group rounded-3xl border border-white/10 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-100/35 hover:bg-white/[.03]"
+          href="pages/research-development.html">
+          <div class="flex items-center justify-between"><span class="font-mono text-xs text-white/40">03 /
+              DISCOVERY</span><span class="service-arrow text-xl text-cyan-200">↗</span></div>
+          <span class="mt-8 inline-flex rounded-2xl border border-orange-100/15 bg-orange-100/[.05] p-3 text-orange-100"
+            aria-hidden="true"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6m-5 0v6l-5.5 9.5A2.3 2.3 0 0 0 6.5 22h11a2.3 2.3 0 0 0 2-3.5L14 9V3"></path>
+              <path d="M7.5 16h9M10 12h4"></path>
+            </svg></span>
+          <h3 class="mt-5 text-xl font-extrabold">R &amp; D</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/55">Explore useful ideas, experiment with technology, and
+            develop practical prototypes.</p><span
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-200">See how we explore <span
+              aria-hidden="true">→</span></span>
+        </a>
+        <a class="landing-service-card page-reveal group rounded-3xl border border-white/10 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-100/35 hover:bg-white/[.03]"
+          href="pages/consultancy.html">
+          <div class="flex items-center justify-between"><span class="font-mono text-xs text-white/40">04 /
+              ADVISORY</span><span class="service-arrow text-xl text-cyan-200">↗</span></div>
+          <span class="mt-8 inline-flex rounded-2xl border border-orange-100/15 bg-orange-100/[.05] p-3 text-orange-100"
+            aria-hidden="true"><svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 4a8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z">
+              </path>
+              <path d="M8 12h.01M12 12h.01M16 12h.01"></path>
+            </svg></span>
+          <h3 class="mt-5 text-xl font-extrabold">Consultancy</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/55">Clear guidance to assess technology needs and move from
+            strategy to implementation.</p><span
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold text-cyan-200">Work with us <span
+              aria-hidden="true">→</span></span>
+        </a>
       </div>
-
     </div>
-
   </section>
 
-  <!-- Meet the Team -->
-  <section id="team" class="py-24 bg-gradient-to-r to-[#cddde0] from-[#ffffff]">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-      <!-- Heading -->
-      <h2 class="text-4xl md:text-5xl font-bold text-[#126262] mb-4">
-        Meet the Team
-      </h2>
-
-      <p class="text-gray-600 max-w-2xl mb-12">
-        We are a dedicated team of experts committed to building innovative solutions that drive impact and excellence.
-      </p>
-
-      <!-- Grid -->
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-
-        <!-- CARD TEMPLATE -->
-
-        <!-- Yusuf -->
-        <div
-          class="group drop-shadow-[#0e8285] drop-shadow-xl  relative bg-[#126262] rounded-2xl p-6 text-center shadow-xl hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-
-          <!-- Glow -->
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-
-          <div class="relative z-10">
-            <img src="/HTML/SRC/Images/Staff/yusuf.png"
-              class="w-36 h-36 object-cover mx-auto rounded-xl mb-4 border-2 border-[#06B6D4]/40">
-            <h3 class="text-xl font-bold text-white">Yusuf Chimole</h3>
-            <p class="text-[#06B6D4] text-sm">Founder & CEO</p>
-          </div>
+  <!-- The people behind the work -->
+  <section id="team" class="border-b border-white/10 bg-[#081719] py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="page-reveal flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p class="mb-5 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-300">
+            <span class="h-px w-8 bg-cyan-300"></span> The people behind the work
+          </p>
+          <h2 class="text-4xl font-black tracking-tight sm:text-5xl">Different strengths. Shared purpose.</h2>
         </div>
-
-        <!-- Francis -->
-        <div
-          class="group relative bg-[#126262] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/html/src/Images/staff/Francis Ganya (Digital Expert).jpg"
-              class="w-36 h-36 object-cover mx-auto rounded-xl mb-4 border-2 border-[#06B6D4]/40">
-            <h3 class="text-xl font-bold text-white">Francis Ganya</h3>
-            <p class="text-[#06B6D4] text-sm">Systems Lead</p>
-          </div>
-        </div>
-
-        <!-- Cuthbert -->
-        <div
-          class="group relative bg-[#126262] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/html/src/Images/staff/Cuthbert Magawa (Communications Officer).png"
-              class="w-36 h-36 object-cover mx-auto rounded-xl mb-4 border-2 border-[#06B6D4]/40">
-            <h3 class="text-xl font-bold text-white">Cuthbert Magawa</h3>
-            <p class="text-[#06B6D4] text-sm">Programs Manager</p>
-          </div>
-        </div>
-
-        <!-- Bahat -->
-        <div
-          class="group relative bg-[#126262] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/HTML/SRC/Images/Staff/Bahat Phiri (Operations Officer).png"
-              class="w-36 h-36 object-cover mx-auto rounded-xl mb-4 border-2 border-[#06B6D4]/40">
-            <h3 class="text-xl font-bold text-white">Bahat Phiri</h3>
-            <p class="text-[#06B6D4] text-sm">Programs Associate</p>
-          </div>
-        </div>
-
-        <!-- Elapo -->
-        <div
-          class="group relative bg-[#126262] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/HTML/SRC/Images/Staff/Elapo.png"
-              class="w-36 h-36 object-cover mx-auto rounded-xl mb-4 border-2 border-[#06B6D4]/40">
-            <h3 class="text-xl font-bold text-white">Elapo Trigu</h3>
-            <p class="text-[#06B6D4] text-sm">Programs Associate</p>
-          </div>
-        </div>
-
-        <!-- Vera -->
-        <div
-          class="group relative bg-[#126262] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/HTML/SRC/Images/Staff/Profile photo.jpg"
-              class="w-36 h-36 object-cover mx-auto rounded-xl mb-4 border-2 border-[#06B6D4]/40">
-            <h3 class="text-xl font-bold text-white">Vera Newa</h3>
-            <p class="text-[#06B6D4] text-sm">Finance & Administration</p>
-          </div>
-        </div>
-
-        <!-- Skills Team -->
-        <div
-          class="group relative bg-[#0f2f30] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/HTML/SRC/Images/Icons/online-student.png" class="w-24 h-24 mx-auto mb-4">
-            <h3 class="text-xl font-bold text-white">Skills Development</h3>
-            <p class="text-[#06B6D4] text-sm">Consultants & Trainers</p>
-          </div>
-        </div>
-
-        <!-- Engineering -->
-        <div
-          class="group relative bg-[#0f2f30] rounded-2xl p-6 text-center drop-shadow-[#0e8285] drop-shadow-xl  hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-          <div
-            class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#126262] to-[#0e8285] opacity-30 blur-xl group-hover:opacity-60 transition duration-500">
-          </div>
-          <div class="relative z-10">
-            <img src="/HTML/SRC/Images/Icons/3d.png" class="w-24 h-24 mx-auto mb-4">
-            <h3 class="text-xl font-bold text-white">Engineering Team</h3>
-            <p class="text-[#06B6D4] text-sm">Developers & Partners</p>
-          </div>
-        </div>
-
+        <p class="max-w-xl leading-relaxed text-white/55">A team connecting software, programs, engineering, and
+          operations to turn good ideas into useful work.</p>
       </div>
-
+      <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-cyan-100/20 bg-gradient-to-br from-cyan-100/15 to-transparent font-mono text-lg font-bold text-cyan-100">YC</span>
+            <div>
+              <h3 class="font-bold">Yusuf Chimole</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Founder &amp; CEO</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-cyan-100/20 bg-gradient-to-br from-cyan-100/15 to-transparent font-mono text-lg font-bold text-cyan-100">FG</span>
+            <div>
+              <h3 class="font-bold">Francis Ganya</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Systems Lead</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-orange-100/20 bg-gradient-to-br from-orange-100/15 to-transparent font-mono text-lg font-bold text-orange-100">CM</span>
+            <div>
+              <h3 class="font-bold">Cuthbert Magawa</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Programs Manager</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-orange-100/20 bg-gradient-to-br from-orange-100/15 to-transparent font-mono text-lg font-bold text-orange-100">BP</span>
+            <div>
+              <h3 class="font-bold">Bahat Phiri</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Programs Associate</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-orange-100/20 bg-gradient-to-br from-orange-100/15 to-transparent font-mono text-lg font-bold text-orange-100">ET</span>
+            <div>
+              <h3 class="font-bold">Elapo Trigu</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Programs Associate</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-orange-100/20 bg-gradient-to-br from-orange-100/15 to-transparent font-mono text-lg font-bold text-orange-100">VN</span>
+            <div>
+              <h3 class="font-bold">Vera Newa</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Finance &amp; Administration</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-cyan-100/20 bg-gradient-to-br from-cyan-100/15 to-transparent font-mono text-lg font-bold text-cyan-100">SD</span>
+            <div>
+              <h3 class="font-bold">Skills Development</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Consultants &amp; Trainers</p>
+            </div>
+          </div>
+        </article>
+        <article
+          class="page-reveal group rounded-2xl border border-white/10 bg-white/[.035] p-5 transition hover:-translate-y-1 hover:border-cyan-200/30">
+          <div class="flex items-center gap-4"><span
+              class="grid size-14 shrink-0 place-items-center rounded-2xl border border-cyan-100/20 bg-gradient-to-br from-cyan-100/15 to-transparent font-mono text-lg font-bold text-cyan-100">EN</span>
+            <div>
+              <h3 class="font-bold">Engineering Team</h3>
+              <p class="mt-1 text-sm text-cyan-200/75">Developers &amp; Partners</p>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
-
   </section>
   <!-- Outsourced
         <div class="font-[] pb-6 gap-8 px-29 flex justify-center pt-9 ">
@@ -575,32 +1319,36 @@
       </div>
     </section> -->
 
-  <section class="py-20 bg-gradient-to-r from-[#cddde0] to-[#ffffff] P-32">
+  <section id="highlights" class="relative overflow-hidden border-b border-white/10 bg-[#081719] py-20 sm:py-24">
 
     <div class="max-w-7xl mx-auto px-6">
 
       <!-- Heading -->
-      <h2 class="text-[#126262] text-4xl md:text-5xl font-black mb-4">
+      <h2 class="mb-4 text-4xl font-black text-white sm:text-5xl">
         RSL Highlights
       </h2>
 
-      <p class="text-gray-600 mb-10 max-w-2xl font-[sans-serif]">
-        Here are some videos of our recent activities, including our 2024 biggest highlights and achievements.
+      <p class="page-reveal mb-10 max-w-2xl font-[sans-serif] leading-relaxed text-white/55">
+        A look at our work in action: the people, programs, and ideas behind Rydberg Starck.
       </p>
 
       <!-- Videos -->
-      <div class="grid sm:grid-cols-2 gap-8">
+      <div class="grid gap-5 sm:grid-cols-2 lg:gap-7">
 
-        <iframe class="w-full h-72 md:h-80 rounded-2xl shadow-lg hover:scale-105 transition duration-300"
+        <iframe title="Rydberg Starck highlight video 1" loading="lazy"
+          class="page-reveal aspect-video w-full rounded-2xl border border-white/10 bg-black shadow-2xl"
           src="https://www.youtube.com/embed/XZIKX7ddnHs" allowfullscreen></iframe>
 
-        <iframe class="w-full h-72 md:h-80 rounded-2xl shadow-lg hover:scale-105 transition duration-300"
+        <iframe title="Rydberg Starck highlight video 2" loading="lazy"
+          class="page-reveal aspect-video w-full rounded-2xl border border-white/10 bg-black shadow-2xl"
           src="https://www.youtube.com/embed/ufwvngKBg1w" allowfullscreen></iframe>
 
-        <iframe class="w-full h-72 md:h-80 rounded-2xl shadow-lg hover:scale-105 transition duration-300"
+        <iframe title="Rydberg Starck highlight video 3" loading="lazy"
+          class="page-reveal aspect-video w-full rounded-2xl border border-white/10 bg-black shadow-2xl"
           src="https://www.youtube.com/embed/N0YD1Il5Qhk" allowfullscreen></iframe>
 
-        <iframe class="w-full h-72 md:h-80 rounded-2xl shadow-lg hover:scale-105 transition duration-300"
+        <iframe title="Rydberg Starck highlight video 4" loading="lazy"
+          class="page-reveal aspect-video w-full rounded-2xl border border-white/10 bg-black shadow-2xl"
           src="https://www.youtube.com/embed/28z6cqWEyzk" allowfullscreen></iframe>
 
       </div>
@@ -610,22 +1358,36 @@
   </section>
 
   <!-- About Company -->
-  <section class="flex justify-center gap-10 p-32  bg-gradient-to-r from-[#cddde0] to-[#cddde0]">
+  <section id="site-footer" class="mx-auto grid max-w-7xl grid-cols-1 gap-4 bg-[#071518] px-6 py-16 text-white lg:px-8">
     <!-- first colum -->
-    <div class="text-[#9ca3af] w-xs font-[] pb-4 rounded-md">
-      <ul class="text-[#111c24]">
-        <li><img src="/HTML/SRC/Images/Icons/Rydberg Starck Logo files-01 no bg.png" class="" alt="" width="900"
-            height="900"></li>
-        <li class="px-6 p-3">
-          <p></p>Alongside Mahatma Gandhi Road, P.O. Box 31332, Chichiri, Blantyre, Malawi
+    <div class="w-full font-[sans-serif] pb-4 rounded-md">
+      <ul class="text-white/70">
+        <li><img src="assets/Images/rydberg-starck-nav.png" class="mb-4 h-auto w-full max-w-xs rounded-lg"
+            alt="Rydberg Starck — Infinite Possibilities"></li>
+        <li class="p-0">
+          <div class="contact-detail"><svg class="size-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="2.5"></circle>
+            </svg><span>Alongside Mahatma Gandhi Road, P.O. Box 31332, Chichiri, Blantyre, Malawi</span></div>
         </li>
-        <li><a href="#" class="p-3 px-6 hover:text-[#1ca0a2] duration-400 flex gap-3"><img
-              src="/HTML/SRC/Images/Icons/call.png" class="size-5" alt="">(+265) 998 842 444</a></li>
-        <li><a href="#" class="p-3 px-6 hover:text-[#1ca0a2] duration-400 flex gap-3"><img
-              src="/HTML/SRC/Images/Icons/email.png" class="size-5" alt="">ychimole@rydbergstarck.com</a></li>
-        <li class="px-6 p-3"><button
-            class="text-[#1ca0a2] px-6 py-2 border-3 border-[#126262] duration-400 hover:bg-[#126262] rounded-full">Contact
-            Us</button></li>
+        <li><a href="tel:+265998842444" class="contact-detail hover:text-[#1ca0a2] duration-300"><svg
+              class="size-5 shrink-0 text-[#0e8285]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path
+                d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z">
+              </path>
+            </svg><span class="contact-phone">(+265) 998 842 444</span></a></li>
+        <li><a href="mailto:ychimole@rydbergstarck.com"
+            class="p-3 px-6 hover:text-[#1ca0a2] duration-300 flex items-center gap-3"><svg
+              class="size-5 shrink-0 text-[#0e8285]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="m3 7 9 6 9-6"></path>
+            </svg><span class="contact-email">ychimole@rydbergstarck.com</span></a></li>
+        <li class="px-6 p-3"><a href="pages/contact.html"
+            class="inline-flex rounded-full border border-cyan-300/50 px-6 py-2 font-bold text-cyan-200 transition hover:bg-cyan-300 hover:text-[#071518]">Contact
+            Us</a></li>
       </ul>
     </div>
     <!-- Company column -->
@@ -645,7 +1407,8 @@
       class="bg-white/30 backdrop-blur-md shadow-lg border border-white/20 w-xs pb-2 font-[] rounded-xl hover:scale-105 transition ease-in-out duration-200">
       <h2 class="font-extrabold px-12 p-8 text-[#126262] text-2xl">Services</h2>
       <ul class="text-[#126262] space-y-3 px-12">
-        <li><a class="hover:text-[#1ca0a2] duration-400" href="pages/digital-solutions.html">Digital Transformation</a></li>
+        <li><a class="hover:text-[#1ca0a2] duration-400" href="pages/digital-solutions.html">Digital Transformation</a>
+        </li>
         <li><a class="hover:text-[#1ca0a2] duration-400" href="pages/training.html">Training & Development</a></li>
         <li><a class="hover:text-[#1ca0a2] duration-400" href="#">Business Support</a></li>
         <li><a class="hover:text-[#1ca0a2] duration-400" href="pages/research-development.html">Engineering</a></li>
@@ -672,99 +1435,243 @@ from-[#126262] via-[#0E8285] via-[#1CA0A2]
 via-[#FBAB32] via-[#F58220] to-[#F15A24]">
   </div>
 
-  <section class="relative overflow-hidden py-16 bg-[#071518]">
+  <section class="relative overflow-hidden bg-[#071518]">
 
     <!-- Insights and sitemap highlights -->
-  <section class="bg-gradient-to-r from-white to-[#cddde0] px-6 py-20">
-    <div class="mx-auto max-w-7xl">
-      <p class="font-bold uppercase tracking-[.2em] text-[#0e8285]">From our work</p>
-      <h2 class="mt-2 text-4xl font-black text-[#126262]">Latest Insights</h2>
-      <p class="mt-3 max-w-2xl text-slate-600">Stories about digital skills, practical software, and engineering.</p>
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        <a href="pages/blog/digital-skills.html" class="rounded-2xl bg-white p-6 shadow-lg transition hover:-translate-y-1"><h3 class="text-xl font-bold text-[#126262]">Digital skills that open doors</h3><p class="mt-3 text-slate-600">How practical learning helps people use technology with confidence.</p><span class="mt-4 inline-block font-bold text-[#0e8285]">Read article →</span></a>
-        <a href="pages/blog/building-useful-systems.html" class="rounded-2xl bg-white p-6 shadow-lg transition hover:-translate-y-1"><h3 class="text-xl font-bold text-[#126262]">Building systems around real workflows</h3><p class="mt-3 text-slate-600">A look at the people and processes behind useful software.</p><span class="mt-4 inline-block font-bold text-[#0e8285]">Read article →</span></a>
-        <a href="pages/blog/engineering-learning.html" class="rounded-2xl bg-white p-6 shadow-lg transition hover:-translate-y-1"><h3 class="text-xl font-bold text-[#126262]">Learning through engineering</h3><p class="mt-3 text-slate-600">Connecting ideas to hands-on technology practice.</p><span class="mt-4 inline-block font-bold text-[#0e8285]">Read article →</span></a>
+    <section class="bg-[#071518] px-6 py-20">
+      <div class="mx-auto max-w-7xl">
+        <p class="font-bold uppercase tracking-[.2em] text-cyan-300">From our work</p>
+        <h2 class="mt-2 text-4xl font-black text-white">Latest Insights</h2>
+        <p class="mt-3 max-w-2xl text-white/60">Ideas and field notes from our work in digital skills, practical
+          software, and engineering.</p>
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <a href="pages/blog/digital-skills.html"
+            class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-200/30 hover:bg-white/[.06]">
+            <h3 class="text-xl font-bold text-white">Digital skills that open doors</h3>
+            <p class="mt-3 text-white/60">How practical learning helps people use technology with confidence.</p><span
+              class="mt-4 inline-block font-bold text-cyan-300">Read article →</span>
+          </a>
+          <a href="pages/blog/building-useful-systems.html"
+            class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-200/30 hover:bg-white/[.06]">
+            <h3 class="text-xl font-bold text-white">Building systems around real workflows</h3>
+            <p class="mt-3 text-white/60">A look at the people and processes behind useful software.</p><span
+              class="mt-4 inline-block font-bold text-cyan-300">Read article →</span>
+          </a>
+          <a href="pages/blog/engineering-learning.html"
+            class="group rounded-2xl border border-white/10 bg-white/[.035] p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-200/30 hover:bg-white/[.06]">
+            <h3 class="text-xl font-bold text-white">Learning through engineering</h3>
+            <p class="mt-3 text-white/60">Connecting ideas to hands-on technology practice.</p><span
+              class="mt-4 inline-block font-bold text-cyan-300">Read article →</span>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="bg-[#071518] px-6 py-16 text-white">
-    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/5 p-8">
-      <div><p class="font-bold uppercase tracking-[.18em] text-cyan-300">Client stories</p><h2 class="mt-2 text-3xl font-black">We value the people we work with</h2><p class="mt-2 max-w-2xl text-white/70">Testimonials will be added here when approved client feedback is available.</p></div>
-      <a href="pages/contact.html" class="rounded-full bg-[#1ca0a2] px-6 py-3 font-bold">Work with us</a>
-    </div>
-  </section>
-  <!-- Partners: replace the image files with your logos; this marquee scrolls right to left -->
-  <section id="partners" class="relative overflow-hidden py-16 bg-[#071518]">
-    <div class="absolute inset-0 bg-gradient-to-t from-[#126262]/10 to-[#1CA0A2]/80"></div>
-    <div class="relative z-10">
-      <h2 class="mb-10 text-center text-2xl font-bold text-white md:text-5xl">Trusted By Partners & Institutions</h2>
-      <div class="marquee"><div class="marquee-track py-10">
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/LOGOS.png" alt="Partner logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/pppc-logo.9f23f97.gif" alt="PPPC logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/World_Bank_Group_logo.png" alt="World Bank Group logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/DIGMAPPP.png" alt="DIGMAP logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/ICAM.png" alt="ICAM logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/ICTAM.png" alt="ICTAM logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/Kalibu Logo.png" alt="Kalibu Academy logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/saips.png" alt="SAIPS logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/st pats.png" alt="St Patrick's logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/MACRA Logo.png" alt="MACRA logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/UNDP.png" alt="UNDP logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/zuwa.png" alt="Zuwa logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/Lync.png" alt="Lync logo"></div>
-        <!-- Repeat the same set for a seamless continuous loop. -->
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/LOGOS.png" alt="Partner logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/pppc-logo.9f23f97.gif" alt="PPPC logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/World_Bank_Group_logo.png" alt="World Bank Group logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/DIGMAP/partners/DIGMAPPP.png" alt="DIGMAP logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/ICAM.png" alt="ICAM logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/ICTAM.png" alt="ICTAM logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/Kalibu Logo.png" alt="Kalibu Academy logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/saips.png" alt="SAIPS logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/st pats.png" alt="St Patrick's logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/MACRA Logo.png" alt="MACRA logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/UNDP.png" alt="UNDP logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/zuwa.png" alt="Zuwa logo"></div>
-        <div class="logo-card"><img src="/HTML/SRC/Images/Partners/Lync.png" alt="Lync logo"></div>
-      </div></div>
-    </div>
-  </section>  <!-- footer -->
-  <footer class="bg-[#111c24] flex justify-center gap-90 p-6 font-medium text-white">
-    <div><a href="https://rydbergstarck.com"><img src="/HTML/SRC/Images/Icons/Rydberg Starck Logo files-13.png" alt=""
-          class="items-center text-center" width="150" height="1"></a></div>
-    <div class="pt-2"><a href="https://rydbergstarck.com" class="hover:text-[#1ca0a2] duration-400 items-center">&copy;
-        2025 Rydberg Starck Limited</a></div>
-    <div class="flex gap-2 pt-3">
-      <!-- facebook -->
-      <a href="https://web.facebook.com/rydbergstarck">
-        <img src="/html/src/Images/Socials/facebook (2).png" class="hover:bg-[#F58220] duration-400 rounded-full size-6"
-          alt=""></a>
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/company/rydberg-starck/?viewAsMember=true">
-        <img src="/html/src/Images/Socials/linkedin.png" class="hover:bg-[#F58220] duration-400 rounded-full size-6"
-          alt=""></a>
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/rydbergstarck">
-        <img src="/html/src/Images/Socials/instagram.png" class="hover:bg-[#F58220] duration-400 rounded-full size-6"
-          alt=""></a>
-      <!-- youtube -->
-      <a href="https://www.youtube.com/@RydbergStarck">
-        <img src="/html/src/Images/Socials/youtube.png" class="hover:bg-[#F58220] duration-400 rounded-full size-6"
-          alt=""></a>
-      <!-- Twitter (X) -->
-      <a href="https://www.twitter.com/rydbergstarck">
-        <img src="/html/src/Images/Socials/twitter.png" class="hover:bg-[#F58220] duration-400 rounded-full size-6"
-          alt=""></a>
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/rydbergstarck">
-        <img src="/html/src/Images/Socials/tiktok.png" alt=""
-          class="hover:bg-[#F58220] duration-400 size-6 rounded-full"></a>
+    </section>
 
+    <section class="bg-[#071518] px-6 py-16 text-white">
+      <div
+        class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 rounded-3xl border border-white/10 bg-[#111c24] p-8">
+        <div>
+          <p class="font-bold uppercase tracking-[.18em] text-cyan-300">Client stories</p>
+          <h2 class="mt-2 text-3xl font-black">Have a challenge worth solving?</h2>
+          <p class="mt-2 max-w-2xl text-white/70">Bring us the problem. We will work with your team to shape a practical
+            path from idea to impact.</p>
+        </div>
+        <a href="pages/contact.html"
+          class="rounded-full bg-cyan-300 px-6 py-3 font-bold text-[#071518] transition hover:bg-white">Work with us</a>
+      </div>
+    </section>
+    <div class="w-full h-[3px] bg-gradient-to-r
+from-[#126262] via-[#0E8285] via-[#1CA0A2]
+via-[#FBAB32] via-[#F58220] to-[#F15A24]">
     </div>
-  </footer>
+    <!-- Partners: replace the image files with your logos; this marquee scrolls right to left -->
+    <section id="partners" class="relative overflow-hidden py-16 bg-[#071518]">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(28,160,162,.12),transparent_58%)]"></div>
+      <div class="relative z-10">
+        <h2 class="mb-10 text-center text-2xl font-bold text-white md:text-5xl">Trusted By Partners & Institutions</h2>
+        <div class="marquee">
+          <div class="marquee-track py-10">
+            <div class="logo-card"><img src="src/Partners/ZANTCHITO.png" alt="Partner logo"></div>
+            <div class="logo-card"><img src="src/Partners/PPPC.png" alt="PPPC logo">
+            </div>
+            <div class="logo-card"><img src="assets/Images/partners/world-bank.png" alt="World Bank Group logo"></div>
+            <div class="logo-card"><img src="src/Partners/DIGMAP.png" alt="DIGMAP logo"></div>
+            <div class="logo-card"><img src="src/Partners/ICAM.png" alt="ICAM logo"></div>
+            <div class="logo-card"><img src="src/Partners/ICTAM.png" alt="ICTAM logo"></div>
+            <div class="logo-card"><img src="src/Partners/KALIBU.png" alt="Kalibu Academy logo"></div>
+            <div class="logo-card"><img src="src/Partners/SAIPss.png" alt="SAIPS logo"></div>
+            <div class="logo-card"><img src="src/Partners/ST PATRICKS.png" alt="St Patrick's logo"></div>
+            <div class="logo-card"><img src="assets/Images/partners/macra.png" alt="MACRA logo"></div>
+            <div class="logo-card"><img src="src/Partners/UNDP.png" alt="UNDP logo"></div>
+            <div class="logo-card"><img src="src/Partners/ZUWA.png" alt="Zuwa logo"></div>
+            <div class="logo-card"><img src="src/Partners/LYNC.png" alt="Lync logo"></div>
+            <div class="logo-card"><img src="src/Partners/ESCOM.png" alt="ESCOM logo"></div>
+            <!-- Repeat the same set for a seamless continuous loop. -->
+            <div class="logo-card"><img src="src/Partners/ZANTCHITO.png" alt="Partner logo"></div>
+            <div class="logo-card"><img src="src/Partners/PPPC.png" alt="PPPC logo">
+            </div>
+            <div class="logo-card"><img src="assets/Images/partners/world-bank.png" alt="World Bank Group logo"></div>
+            <div class="logo-card"><img src="src/Partners/DIGMAP.png" alt="DIGMAP logo"></div>
+            <div class="logo-card"><img src="src/Partners/ICAM.png" alt="ICAM logo"></div>
+            <div class="logo-card"><img src="src/Partners/ICTAM.png" alt="ICTAM logo"></div>
+            <div class="logo-card"><img src="src/Partners/KALIBU.png" alt="Kalibu Academy logo"></div>
+            <div class="logo-card"><img src="src/Partners/SAIPss.png" alt="SAIPS logo"></div>
+            <div class="logo-card"><img src="src/Partners/ST PATRICKS.png" alt="St Patrick's logo"></div>
+            <div class="logo-card"><img src="assets/Images/partners/macra.png" alt="MACRA logo"></div>
+            <div class="logo-card"><img src="src/Partners/UNDP.png" alt="UNDP logo"></div>
+            <div class="logo-card"><img src="src/Partners/ZUWA.png" alt="Zuwa logo"></div>
+            <div class="logo-card"><img src="src/Partners/LYNC.png" alt="Lync logo"></div>
+            <div class="logo-card"><img src="src/Partners/ESCOM.png" alt="ESCOM logo"></div>
+          </div>
+        </div>
+      </div>
+    </section> <!-- footer -->
+    <footer class="bg-[#111c24] flex flex-wrap items-center justify-center gap-8 p-6 font-medium text-white md:gap-12">
+      <div><a href="index.html" aria-label="Rydberg Starck home"><img src="assets/Images/rydberg-starck-nav.png"
+            alt="Rydberg Starck — Infinite Possibilities" class="h-12 w-auto"></a></div>
+      <div class="pt-2"><a href="https://rydbergstarck.com"
+          class="hover:text-[#1ca0a2] duration-400 items-center">&copy;
+          2025 Rydberg Starck Limited</a></div>
+      <div class="flex items-center gap-3">
+        <a href="https://web.facebook.com/rydbergstarck" aria-label="Rydberg Starck on Facebook"
+          class="rounded-full bg-white/10 p-2 transition hover:bg-[#F58220]"><svg class="size-5 fill-current"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V10H6.8v3h2.8v8h3.9Z">
+            </path>
+          </svg></a>
+        <a href="https://www.linkedin.com/company/rydberg-starck/?viewAsMember=true"
+          aria-label="Rydberg Starck on LinkedIn"
+          class="rounded-full bg-white/10 p-2 transition hover:bg-[#F58220]"><svg class="size-5 fill-current"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M5.2 3.5a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4ZM3.4 9.5H7V21H3.4zM9.2 9.5h3.4v1.6h.1a3.7 3.7 0 0 1 3.3-1.8c3.5 0 4.2 2.3 4.2 5.2V21h-3.6v-5.8c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21H9.2z">
+            </path>
+          </svg></a>
+        <a href="https://www.instagram.com/rydbergstarck" aria-label="Rydberg Starck on Instagram"
+          class="rounded-full bg-white/10 p-2 transition hover:bg-[#F58220]"><svg class="size-5" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M17.5 6.5h.01"></path>
+          </svg></a>
+        <a href="https://www.youtube.com/@RydbergStarck" aria-label="Rydberg Starck on YouTube"
+          class="rounded-full bg-white/10 p-2 transition hover:bg-[#F58220]"><svg class="size-5" viewBox="0 0 24 24"
+            fill="currentColor" aria-hidden="true">
+            <path
+              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12s0 3.8.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-2 .5-5.8.5-5.8s0-3.8-.5-5.8ZM9.6 15.6V8.4l6.3 3.6z">
+            </path>
+          </svg></a>
+        <a href="https://www.twitter.com/rydbergstarck" aria-label="Rydberg Starck on X"
+          class="rounded-full bg-white/10 p-2 transition hover:bg-[#F58220]"><svg class="size-5 fill-current"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.3l7.3-8.4L1.8 2h6.5l4.5 6.8L18.9 2Zm-1.1 18h1.7L7.2 3.9H5.4z">
+            </path>
+          </svg></a>
+        <a href="https://www.tiktok.com/rydbergstarck" aria-label="Rydberg Starck on TikTok"
+          class="rounded-full bg-white/10 p-2 transition hover:bg-[#F58220]"><svg class="size-5 fill-current"
+            viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M19.6 6.2a5.8 5.8 0 0 1-3.5-1.2v8.2a6.2 6.2 0 1 1-5.3-6.1v3.4a2.8 2.8 0 1 0 1.9 2.7V2h3.4a5.8 5.8 0 0 0 3.5 3.2v1Z">
+            </path>
+          </svg></a>
+
+      </div>
+    </footer>
+    <script>
+
+      const themeToggle = document.querySelector("#theme-toggle");
+      const themeLabel = document.querySelector("[data-theme-label]");
+      const setTheme = (theme) => {
+        const isLight = theme === "light";
+        document.documentElement.dataset.theme = isLight ? "light" : "dark";
+        if (themeToggle) {
+          themeToggle.setAttribute("aria-pressed", String(isLight));
+          themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+        }
+        if (themeLabel) themeLabel.textContent = isLight ? "Night mode" : "Day mode";
+        try { localStorage.setItem("rsl-theme", isLight ? "light" : "dark"); } catch (_) { }
+      };
+      if (themeToggle) {
+        setTheme(document.documentElement.dataset.theme || "dark");
+        themeToggle.addEventListener("click", () => setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light"));
+      }
+
+      const siteNav = document.querySelector("#site-nav");
+      const heroSection = siteNav?.nextElementSibling;
+      if (siteNav && heroSection) {
+        const updateNavStyle = () => {
+          siteNav.classList.toggle("is-scrolled", window.scrollY > heroSection.offsetHeight - siteNav.offsetHeight);
+        };
+        updateNavStyle();
+        window.addEventListener("scroll", updateNavStyle, { passive: true });
+      }
+
+      const progressBar = document.querySelector("#page-progress");
+      let progressFrame = 0;
+      const updatePageProgress = () => {
+        if (!progressBar || progressFrame) return;
+        progressFrame = window.requestAnimationFrame(() => {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.transform = "scaleX(" + (scrollable > 0 ? window.scrollY / scrollable : 0) + ")";
+          progressFrame = 0;
+        });
+      };
+      updatePageProgress();
+      window.addEventListener("scroll", updatePageProgress, { passive: true });
+      window.addEventListener("resize", updatePageProgress, { passive: true });
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const robotStage = document.querySelector(".robot-stage");
+      if (robotStage) {
+        robotStage.addEventListener("click", () => {
+          if (reduceMotion) return;
+          robotStage.classList.remove("is-waving");
+          void robotStage.offsetWidth;
+          robotStage.classList.add("is-waving");
+        });
+      }
+      if (!reduceMotion && "IntersectionObserver" in window) {
+        document.documentElement.classList.add("has-scroll-reveal");
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+        document.querySelectorAll(".page-reveal").forEach((element) => revealObserver.observe(element));
+        if (robotStage) {
+          const robotWaveObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => robotStage.classList.toggle("is-waving", entry.isIntersecting));
+          }, { threshold: 0.45 });
+          robotWaveObserver.observe(robotStage);
+        }
+      } else {
+        document.querySelectorAll(".page-reveal").forEach((element) => element.classList.add("is-visible"));
+      }
+
+      const expertiseTrack = document.querySelector("[data-expertise-track]");
+      const expertiseMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (expertiseTrack && !expertiseMotion.matches) {
+        const expertiseItemHeight = 64;
+        const expertiseCount = expertiseTrack.children.length - 1;
+        let expertiseIndex = 0;
+        window.setInterval(() => {
+          expertiseIndex += 1;
+          expertiseTrack.style.transition = "";
+          expertiseTrack.style.transform = `translateY(-${expertiseIndex * expertiseItemHeight}px)`;
+          if (expertiseIndex === expertiseCount) {
+            window.setTimeout(() => {
+              expertiseTrack.style.transition = "none";
+              expertiseTrack.style.transform = "translateY(0)";
+              expertiseIndex = 0;
+            }, 740);
+          }
+        }, 3200);
+      }
+    </script>
 </body>
 
 </html>
-
-
-
