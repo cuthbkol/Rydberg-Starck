@@ -209,6 +209,21 @@
       transition: all 0.4s ease;
     }
 
+    .logo-card .lync-logo-day {
+      display: none;
+    }
+
+    html[data-theme="light"] #partners .logo-card .lync-logo-night {
+      display: none;
+    }
+
+    html[data-theme="light"] #partners .logo-card .lync-logo-day {
+      display: block;
+      width: 180px;
+      height: 80px;
+      object-fit: cover;
+    }
+
     /* HOVER EFFECT */
     .logo-card:hover {
       transform: translateY(-8px) scale(1.04);
@@ -1516,7 +1531,7 @@ via-[#FBAB32] via-[#F58220] to-[#F15A24]">
             <div class="logo-card"><img src="assets/Images/partners/macra.png" alt="MACRA logo"></div>
             <div class="logo-card"><img src="src/Partners/UNDP.png" alt="UNDP logo"></div>
             <div class="logo-card"><img src="src/Partners/ZUWA.png" alt="Zuwa logo"></div>
-            <div class="logo-card"><img src="src/Partners/LYNC.png" alt="Lync logo"></div>
+            <div class="logo-card"><img class="lync-logo-night" src="src/Partners/LYNC.png" alt="Lync logo"><img class="lync-logo-day" src="assets/Images/partners/lync-blue.png" alt="Lync logo"></div>
             <div class="logo-card"><img src="src/Partners/ESCOM.png" alt="ESCOM logo"></div>
             <div class="logo-card"><img src="src/Partners/EGENCO.png" alt="EGENCO logo"></div>
             <!-- Repeat the same set for a seamless continuous loop. -->
@@ -1536,7 +1551,7 @@ via-[#FBAB32] via-[#F58220] to-[#F15A24]">
             <div class="logo-card"><img src="assets/Images/partners/macra.png" alt="MACRA logo"></div>
             <div class="logo-card"><img src="src/Partners/UNDP.png" alt="UNDP logo"></div>
             <div class="logo-card"><img src="src/Partners/ZUWA.png" alt="Zuwa logo"></div>
-            <div class="logo-card"><img src="src/Partners/LYNC.png" alt="Lync logo"></div>
+            <div class="logo-card"><img class="lync-logo-night" src="src/Partners/LYNC.png" alt="Lync logo"><img class="lync-logo-day" src="assets/Images/partners/lync-blue.png" alt="Lync logo"></div>
             <div class="logo-card"><img src="src/Partners/ESCOM.png" alt="ESCOM logo"></div>
             <div class="logo-card"><img src="src/Partners/EGENCO.png" alt="EGENCO logo"></div>
           </div>
