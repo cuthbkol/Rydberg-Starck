@@ -39,6 +39,15 @@
       mask-image: linear-gradient(to bottom, black, transparent 96%);
     }
 
+    .hero-background-video {
+      opacity: 0;
+      animation: hero-video-arrive 1.8s ease-in-out 1.4s both;
+    }
+
+    @keyframes hero-video-arrive {
+      to { opacity: 1; }
+    }
+
     .page-progress {
       transform-origin: left;
       transform: scaleX(0);
