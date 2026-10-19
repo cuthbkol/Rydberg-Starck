@@ -35,6 +35,54 @@
     .capability-card { background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.018)); }
     .capability-card:hover .capability-arrow { transform: translate(4px,-4px); }
     .capability-arrow { transition: transform 220ms ease; }
+    .range-chip {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      padding: .58rem .9rem;
+      line-height: 1.35;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.025);
+      color: rgba(255,255,255,.68);
+      transition: color 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+    }
+    .range-chip:hover {
+      border-color: rgba(28,160,162,.9);
+      background: rgba(28,160,162,.1);
+      color: #b9f3ef;
+      box-shadow: 0 0 0 3px rgba(28,160,162,.18), 0 0 26px rgba(14,130,133,.22);
+      transform: translateY(-1px);
+    }
+    .range-group { min-width: 0; }
+    .range-view-button { cursor: pointer; border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.025); color: rgba(255,255,255,.58); transition: background 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease; }
+    .range-view-button[aria-pressed="true"] { border-color: rgba(28,160,162,.7); background: rgba(14,130,133,.2); color: #b9f3ef; box-shadow: inset 0 0 0 1px rgba(28,160,162,.12); }
+    .range-view-button:focus-visible { outline: 2px solid #1ca0a2; outline-offset: 3px; }
+    .range-view-panel[hidden] { display: none !important; }
+    .capability-globe-scene { position: relative; display: grid; min-height: 500px; place-items: center; overflow: hidden; perspective: 900px; }
+    .capability-globe { position: relative; width: clamp(280px, 36vw, 440px); aspect-ratio: 1; overflow: hidden; border: 1px solid rgba(28,160,162,.42); border-radius: 50%; background: radial-gradient(circle at 34% 28%,rgba(28,160,162,.2),rgba(7,21,24,.94) 66%); box-shadow: inset -24px -12px 55px rgba(0,0,0,.55), 0 0 65px rgba(14,130,133,.12); }
+    .capability-globe::before, .capability-globe::after { position: absolute; z-index: 2; inset: 0; border-radius: inherit; content: ""; pointer-events: none; }
+    .capability-globe::before { background: linear-gradient(90deg,transparent 24%,rgba(113,219,226,.16) 24.3%,transparent 24.8%,transparent 49.5%,rgba(113,219,226,.2) 50%,transparent 50.5%,transparent 74.5%,rgba(113,219,226,.13) 75%,transparent 75.5%), linear-gradient(0deg,transparent 24%,rgba(113,219,226,.14) 24.5%,transparent 25%,transparent 49.5%,rgba(113,219,226,.17) 50%,transparent 50.5%,transparent 74.5%,rgba(113,219,226,.13) 75%,transparent 75.5%); }
+    .capability-globe::after { background: radial-gradient(ellipse at center,transparent 37%,rgba(7,21,24,.05) 58%,rgba(7,21,24,.8) 100%); box-shadow: inset 0 0 35px rgba(113,219,226,.16); }
+    .globe-network { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; opacity: .58; animation: globe-spin 46s linear infinite; }
+    .globe-orbit { position: absolute; z-index: 3; width: clamp(320px, 45vw, 520px); height: 154px; border: 1px solid rgba(28,160,162,.32); border-radius: 50%; transform: rotate(-24deg); box-shadow: 0 0 22px rgba(14,130,133,.08); }
+    .globe-orbit::before, .globe-orbit::after { position: absolute; width: 8px; height: 8px; border: 1px solid #75d8d2; border-radius: 50%; background: #0e8285; box-shadow: 0 0 14px rgba(28,160,162,.7); content: ""; }
+    .globe-orbit::before { top: 13px; left: 18%; }
+    .globe-orbit::after { right: 15%; bottom: 13px; }
+    .globe-ribbon { position: absolute; z-index: 4; right: 0; left: 0; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); }
+    .globe-ribbon--one { top: 25%; }
+    .globe-ribbon--two { top: 47%; }
+    .globe-ribbon--three { top: 69%; }
+    .globe-ribbon-track { display: flex; width: max-content; gap: .45rem; animation: globe-ribbon-left 32s linear infinite; }
+    .globe-ribbon--two .globe-ribbon-track { animation-name: globe-ribbon-right; animation-duration: 38s; }
+    .globe-ribbon--three .globe-ribbon-track { animation-duration: 43s; }
+    .globe-chip { flex: none; border: 1px solid rgba(113,219,226,.28); border-radius: 999px; background: rgba(5,22,24,.78); padding: .38rem .7rem; color: #c7eeeb; font: 500 .68rem/1.2 ui-monospace,SFMono-Regular,monospace; white-space: nowrap; transition: border-color 220ms ease, color 220ms ease, box-shadow 220ms ease, background 220ms ease; }
+    .globe-chip:hover { border-color: #1ca0a2; background: rgba(14,130,133,.3); color: #fff; box-shadow: 0 0 0 3px rgba(28,160,162,.18),0 0 22px rgba(14,130,133,.25); }
+    @media (max-width: 640px) { .capability-globe-scene { min-height: 390px; } .globe-orbit { height: 112px; } }
+    @keyframes globe-spin { to { transform: rotate(360deg); } }
+    @keyframes globe-ribbon-left { to { transform: translateX(-50%); } }
+    @keyframes globe-ribbon-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
     @keyframes console-scan { 0%, 8% { transform: translateY(-120%); opacity: 0; } 18% { opacity: .9; } 55% { opacity: .45; } 88%, 100% { transform: translateY(580%); opacity: 0; } }
     @keyframes signal-flow { to { stroke-dashoffset: -200; } }
     @media (prefers-reduced-motion: reduce) {
@@ -179,6 +227,91 @@
       </div>
     </section>
 
+    <section id="solution-range" class="relative isolate overflow-hidden border-b border-white/10 bg-[#071518]">
+      <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_78%_48%,rgba(28,160,162,.08),transparent_48%)]"></div>
+      <div class="pointer-events-none absolute inset-0 blueprint-grid opacity-40"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-8">
+        <div class="reveal">
+          <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-100"><span class="h-px w-8 bg-[#1ca0a2]"></span> 03 / The range</p>
+          <h2 class="mt-5 max-w-xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl">Digital solutions shaped around your ambitions.</h2>
+          <p class="mt-6 max-w-lg text-lg leading-relaxed text-white/60">See the kinds of things we can build. Start with one useful tool, or connect the experience, operations, and services your organization needs.</p>
+          <p class="mt-8 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[.16em] text-white/35"><span class="size-1.5 rounded-full bg-[#0e8285]"></span> A snapshot of our build range</p>
+        </div>
+        <div class="reveal reveal-delay-1 min-w-0">
+          <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <p class="font-mono text-[.65rem] font-bold uppercase tracking-[.18em] text-cyan-100/45">Explore our build range</p>
+            <div class="inline-flex rounded-full border border-white/10 bg-white/[.025] p-1" role="group" aria-label="Choose capability view">
+              <button type="button" class="range-view-button rounded-full px-4 py-2 text-xs font-semibold" data-range-view="globe" aria-controls="capability-globe-view" aria-pressed="true">Globe</button>
+              <button type="button" class="range-view-button rounded-full px-4 py-2 text-xs font-semibold" data-range-view="list" aria-controls="capability-list-view" aria-pressed="false">3-column list</button>
+            </div>
+          </div>
+          <div id="capability-globe-view" class="range-view-panel" data-range-panel="globe">
+            <div class="capability-globe-scene" role="img" aria-label="A slowly rotating connected globe surrounded by examples of our digital capabilities">
+              <div class="globe-orbit" aria-hidden="true"></div>
+              <div class="capability-globe" aria-hidden="true">
+                <svg class="globe-network" viewBox="0 0 320 320" fill="none" aria-hidden="true">
+                  <g stroke="#54c6c2" stroke-opacity=".48" stroke-width=".8">
+                    <path d="M8 96 Q160 8 312 96 M0 160 Q160 72 320 160 M8 224 Q160 312 312 224" />
+                    <path d="M72 12 Q152 160 72 308 M160 0 Q215 160 160 320 M248 12 Q168 160 248 308" />
+                    <path d="M35 78 91 122 146 91 205 137 273 96 M44 210 103 175 148 226 207 190 278 226 M91 122 103 175 M146 91 148 226 M205 137 207 190" />
+                  </g>
+                  <g fill="#8de4de">
+                    <circle cx="35" cy="78" r="3"/><circle cx="91" cy="122" r="2.5"/><circle cx="146" cy="91" r="3"/><circle cx="205" cy="137" r="2.5"/><circle cx="273" cy="96" r="3"/>
+                    <circle cx="44" cy="210" r="2.5"/><circle cx="103" cy="175" r="3"/><circle cx="148" cy="226" r="2.5"/><circle cx="207" cy="190" r="3"/><circle cx="278" cy="226" r="2.5"/>
+                  </g>
+                </svg>
+                <div class="globe-ribbon globe-ribbon--one"><div class="globe-ribbon-track"><span class="globe-chip">Websites</span><span class="globe-chip">Mobile apps</span><span class="globe-chip">Service portals</span><span class="globe-chip">E-commerce</span><span class="globe-chip">Websites</span><span class="globe-chip">Mobile apps</span><span class="globe-chip">Service portals</span><span class="globe-chip">E-commerce</span></div></div>
+                <div class="globe-ribbon globe-ribbon--two"><div class="globe-ribbon-track"><span class="globe-chip">Comprehensive systems</span><span class="globe-chip">ERP &amp; MIS</span><span class="globe-chip">Automation</span><span class="globe-chip">Dashboards</span><span class="globe-chip">Comprehensive systems</span><span class="globe-chip">ERP &amp; MIS</span><span class="globe-chip">Automation</span><span class="globe-chip">Dashboards</span></div></div>
+                <div class="globe-ribbon globe-ribbon--three"><div class="globe-ribbon-track"><span class="globe-chip">Fintech</span><span class="globe-chip">Payments</span><span class="globe-chip">AI solutions</span><span class="globe-chip">Connected technology</span><span class="globe-chip">Fintech</span><span class="globe-chip">Payments</span><span class="globe-chip">AI solutions</span><span class="globe-chip">Connected technology</span></div></div>
+              </div>
+            </div>
+          </div>
+          <div id="capability-list-view" class="range-view-panel" data-range-panel="list" hidden>
+            <div class="grid min-w-0 gap-x-7 gap-y-10 sm:grid-cols-2 md:grid-cols-3">
+          <div class="range-group">
+            <h3 class="mb-3 font-mono text-[.65rem] font-bold uppercase tracking-[.18em] text-cyan-100/50">Web &amp; digital experiences</h3>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Marketing websites</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Service portals</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">E-commerce</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Android apps</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">iOS apps</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Progressive web apps</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Design systems</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">CMS builds</span>
+            </div>
+          </div>
+          <div class="range-group">
+            <h3 class="mb-3 font-mono text-[.65rem] font-bold uppercase tracking-[.18em] text-cyan-100/50">Business systems</h3>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Comprehensive systems</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">ERP &amp; MIS platforms</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Workflow automation</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Member portals</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Booking systems</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Admin consoles</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Dashboards &amp; reports</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Records &amp; case workflows</span>
+            </div>
+          </div>
+          <div class="range-group">
+            <h3 class="mb-3 font-mono text-[.65rem] font-bold uppercase tracking-[.18em] text-cyan-100/50">Finance &amp; connected tech</h3>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Fintech solutions</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Payment experiences</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Subscription billing</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">API integrations</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">SMS &amp; notifications</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Offline-ready tools</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">AI-enabled solutions</span>
+              <span class="range-chip rounded-full px-3.5 py-2 text-center font-mono text-xs">Drone data tools</span>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="relative overflow-hidden border-b border-white/10">
       <div class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-gradient-to-b from-transparent via-cyan-200/20 to-transparent lg:block"></div>
       <div class="mx-auto grid max-w-7xl gap-8 px-6 py-20 sm:py-24 lg:grid-cols-2 lg:gap-14 lg:px-8">
@@ -267,6 +400,16 @@
       document.querySelector("#console-tag-2").textContent = mode.tags[1];
       document.querySelector("#console-tag-3").textContent = mode.tags[2];
       document.querySelector("#console-footnote").textContent = mode.footnote;
+    }));
+
+    const rangeViewButtons = document.querySelectorAll("[data-range-view]");
+    const rangeViewPanels = document.querySelectorAll("[data-range-panel]");
+    rangeViewButtons.forEach((button) => button.addEventListener("click", () => {
+      const selectedView = button.dataset.rangeView;
+      rangeViewButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      rangeViewPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.rangePanel !== selectedView;
+      });
     }));
 
     if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
