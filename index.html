@@ -982,7 +982,40 @@
     html[data-theme="light"] .robot-caption {
       color: #126262;
     }
-  </style>
+      /* Vision and Mission use the light palette in both site themes. */
+    #purpose {
+      color: #10282a;
+      background: #f4f8f8;
+      border-color: #d6e3e4;
+    }
+    #purpose h2,
+    #purpose h3 {
+      color: #10282a;
+    }
+    #purpose .page-reveal > p:first-child {
+      color: #0e8285;
+    }
+    #purpose .page-reveal > p.mt-5,
+    #purpose article p {
+      color: #334b4e;
+    }
+    #purpose article {
+      border-color: #cbdfe0;
+      background: #fff;
+      box-shadow: 0 12px 32px rgba(13, 55, 58, .06);
+      transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+    }
+    #purpose article:hover {
+      border-color: #F58220;
+      box-shadow: 0 16px 36px rgba(180, 90, 20, .14);
+      transform: translateY(-2px);
+    }
+    #purpose article > div > span:first-child,
+    #purpose article > div > svg {
+      color: #0e8285;
+    }
+
+</style>
   <title>Rydberg Starck</title>
 </head>
 
