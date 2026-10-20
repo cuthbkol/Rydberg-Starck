@@ -1,10 +1,9 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
+<!doctype html><html lang="en" data-theme="mixed">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071518">
-  <script>try { const savedTheme = localStorage.getItem("rsl-theme"); if (savedTheme === "light" || savedTheme === "mixed") document.documentElement.dataset.theme = savedTheme; } catch (_) {}</script>
+  <script>try { const savedTheme = localStorage.getItem("rsl-digital-solutions-theme"); if (["dark", "light", "mixed"].includes(savedTheme)) document.documentElement.dataset.theme = savedTheme; } catch (_) {}</script>
   <meta name="description" content="Rydberg Starck designs and builds custom digital systems for organizations and develops original products for Malawi's needs—from ERP and fintech to web and mobile apps.">
   <title>Digital Solutions | Rydberg Starck</title>
   <link href="../output.css" rel="stylesheet">
@@ -584,7 +583,7 @@
       document.documentElement.dataset.theme = selectedTheme;
       themeToggle?.setAttribute("aria-label", `Current appearance: ${themeNames[selectedTheme]}. Activate to change appearance.`);
       if (themeLabel) themeLabel.textContent = themeNames[selectedTheme];
-      try { localStorage.setItem("rsl-theme", selectedTheme); } catch (_) {}
+      try { localStorage.setItem("rsl-digital-solutions-theme", selectedTheme); } catch (_) {}
     };
     if (themeToggle) {
       setTheme(document.documentElement.dataset.theme || "dark");
