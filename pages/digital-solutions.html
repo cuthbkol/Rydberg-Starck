@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071518">
+  <script>try { const savedTheme = localStorage.getItem("rsl-theme"); if (savedTheme === "light" || savedTheme === "mixed") document.documentElement.dataset.theme = savedTheme; } catch (_) {}</script>
   <meta name="description" content="Rydberg Starck designs and builds custom digital systems for organizations and develops original products for Malawi's needs—from ERP and fintech to web and mobile apps.">
   <title>Digital Solutions | Rydberg Starck</title>
   <link href="../output.css" rel="stylesheet">
@@ -23,6 +24,46 @@
     .icam-address { min-width:0; display:flex; align-items:center; gap:.5rem; overflow:hidden; border:1px solid #dce5e7; border-radius:.55rem; background:#fff; padding:.45rem .7rem; color:#456064; font:500 .7rem/1.2 ui-monospace,SFMono-Regular,monospace; text-overflow:ellipsis; white-space:nowrap; }
     .icam-live-view { display:block; width:100%; height:clamp(390px,55vw,570px); border:0; background:#fff; }
     .icam-laptop-base { height:14px; margin:0 -2.3rem; border-radius:0 0 55% 55%; background:linear-gradient(180deg,#657579,#273538 55%,#121a1b); clip-path:polygon(3% 0,97% 0,100% 70%,91% 100%,9% 100%,0 70%); box-shadow:0 17px 25px rgba(0,0,0,.4); }
+    .erp-device { padding:.7rem .7rem .85rem; border:1px solid rgba(160,220,225,.2); border-radius:1.5rem 1.5rem .6rem .6rem; background:linear-gradient(145deg,#24383b,#0b1719 55%,#1b292b); box-shadow:0 35px 90px rgba(0,0,0,.42),0 0 0 1px rgba(103,232,249,.08); }
+    .erp-screen { overflow:hidden; border:1px solid rgba(255,255,255,.14); border-radius:.9rem; background:#edf3f3; color:#183638; }
+    .erp-browser-bar { min-height:2.75rem; display:flex; align-items:center; gap:.65rem; border-bottom:1px solid #d5e0e0; background:#f7f9f9; padding:.5rem .8rem; }
+    .erp-address { min-width:0; flex:1; overflow:hidden; border:1px solid #dbe4e4; border-radius:.5rem; background:white; padding:.4rem .65rem; color:#547071; font:500 .65rem/1.2 ui-monospace,SFMono-Regular,monospace; text-overflow:ellipsis; white-space:nowrap; }
+    .erp-workspace { display:grid; grid-template-columns:138px minmax(0,1fr); min-height:375px; }
+    .erp-sidebar { display:flex; flex-direction:column; gap:.8rem; background:#102b2e; padding:.9rem .65rem; color:#e6f3f2; }
+    .erp-brand { display:flex; align-items:center; gap:.45rem; padding:.35rem .35rem .8rem; border-bottom:1px solid rgba(255,255,255,.1); font-size:.58rem; font-weight:900; letter-spacing:.09em; }
+    .erp-brand-mark { display:grid; width:23px; height:23px; flex:none; place-items:center; border:1px solid rgba(109,232,221,.45); border-radius:7px; background:rgba(28,160,162,.16); color:#86e9df; font-size:.58rem; }
+    .erp-side-label { padding:.25rem .35rem 0; color:#8da8a8; font:700 .52rem/1 ui-monospace,SFMono-Regular,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    .erp-tab { display:flex; width:100%; align-items:center; gap:.45rem; border:0; border-radius:7px; background:transparent; padding:.48rem .42rem; color:#a9c1c0; text-align:left; font:600 .6rem/1.2 ui-sans-serif,system-ui,sans-serif; cursor:pointer; transition:background .18s,color .18s; }
+    .erp-tab:hover,.erp-tab[aria-pressed="true"] { background:rgba(80,207,198,.16); color:#eafffd; }
+    .erp-tab-icon { display:grid; width:15px; height:15px; flex:none; place-items:center; border:1px solid currentColor; border-radius:4px; font-size:.52rem; }
+    .erp-main { min-width:0; background:#f1f6f6; padding:1rem; }
+    .erp-main-head { display:flex; align-items:flex-start; justify-content:space-between; gap:.6rem; margin-bottom:.85rem; }
+    .erp-main-head h3 { margin:0; color:#16383a; font-size:.93rem; font-weight:850; letter-spacing:-.03em; }
+    .erp-main-head p { margin:.22rem 0 0; color:#718788; font-size:.57rem; }
+    .erp-date { flex:none; border:1px solid #d7e3e3; border-radius:6px; background:#fff; padding:.38rem .5rem; color:#597274; font:600 .52rem/1.2 ui-monospace,SFMono-Regular,monospace; }
+    .erp-kpis { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.5rem; }
+    .erp-kpi { min-width:0; border:1px solid #dce7e7; border-radius:9px; background:white; padding:.58rem; }
+    .erp-kpi-label { overflow:hidden; color:#728889; font-size:.53rem; text-overflow:ellipsis; white-space:nowrap; }
+    .erp-kpi-value { margin-top:.28rem; color:#173b3d; font-size:1.05rem; font-weight:900; letter-spacing:-.05em; }
+    .erp-kpi-change { margin-top:.12rem; color:#16847e; font-size:.52rem; font-weight:750; }
+    .erp-content-grid { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(110px,.8fr); gap:.55rem; margin-top:.55rem; }
+    .erp-widget { min-width:0; border:1px solid #dce7e7; border-radius:9px; background:white; padding:.65rem; }
+    .erp-widget-title { display:flex; align-items:center; justify-content:space-between; gap:.4rem; color:#244749; font-size:.58rem; font-weight:850; }
+    .erp-widget-sub { margin-top:.18rem; color:#899b9c; font-size:.5rem; }
+    .erp-project-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.4rem; align-items:center; margin-top:.62rem; color:#496667; font-size:.53rem; }
+    .erp-project-name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .erp-project-pct { color:#648081; font:600 .48rem/1 ui-monospace,SFMono-Regular,monospace; }
+    .erp-meter { grid-column:1/-1; height:4px; overflow:hidden; border-radius:99px; background:#e7eeee; }
+    .erp-meter span { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#0e8285,#52c9bb); }
+    .erp-task { display:flex; align-items:center; gap:.4rem; margin-top:.58rem; color:#526d6e; font-size:.52rem; }
+    .erp-task-dot { width:6px; height:6px; flex:none; border-radius:50%; background:#1ca0a2; }
+    .erp-task:nth-child(3) .erp-task-dot { background:#f0a44b; }
+    .erp-task:nth-child(4) .erp-task-dot { background:#7386c6; }
+    .erp-task-text { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .erp-view[hidden] { display:none!important; }
+    .erp-concept-note { display:flex; align-items:center; justify-content:center; gap:.5rem; margin-top:.7rem; color:rgba(255,255,255,.42); font-size:.65rem; text-align:center; }
+    .erp-concept-note:before { width:6px; height:6px; border-radius:50%; background:#f5a24e; box-shadow:0 0 10px rgba(245,162,78,.55); content:""; }
+    @media (max-width:640px) { .erp-device { padding:.45rem .45rem .6rem; border-radius:1rem 1rem .45rem .45rem; } .erp-workspace { grid-template-columns:1fr; } .erp-sidebar { gap:.4rem; padding:.5rem; } .erp-brand,.erp-side-label { display:none; } .erp-sidebar nav { display:flex; gap:.3rem; overflow-x:auto; } .erp-tab { width:auto; flex:none; padding:.45rem .55rem; } .erp-tab-icon { display:none; } .erp-main { padding:.65rem; } .erp-content-grid { grid-template-columns:1fr; } .erp-kpi { padding:.45rem; } }
     .console-scan { animation: console-scan 7s ease-in-out infinite; }
     .signal-flow { stroke-dasharray: 8 12; animation: signal-flow 18s linear infinite; }
     .reveal { transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.7,.2,1); }
@@ -70,7 +111,7 @@
     .globe-orbit::before, .globe-orbit::after { position: absolute; width: 8px; height: 8px; border: 1px solid #75d8d2; border-radius: 50%; background: #0e8285; box-shadow: 0 0 14px rgba(28,160,162,.7); content: ""; }
     .globe-orbit::before { top: 13px; left: 18%; }
     .globe-orbit::after { right: 15%; bottom: 13px; }
-    .globe-ribbon { position: absolute; z-index: 4; right: 0; left: 0; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); }
+    .globe-ribbon { position: absolute; z-index: 4; right: 9%; left: 9%; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent); }
     .globe-ribbon--one { top: 25%; }
     .globe-ribbon--two { top: 47%; }
     .globe-ribbon--three { top: 69%; }
@@ -91,10 +132,112 @@
       .reveal { opacity: 1; transform: none; }
     }
     @media (max-width: 640px) { .icam-device { padding:.45rem .45rem .6rem; border-radius:1rem 1rem .45rem .45rem; } .icam-live-view { height:62vh; min-height:390px; } .icam-laptop-base { margin:0 -1rem; } }
+    .theme-toggle{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.05);padding:.45rem .7rem;color:#e8f6f5;font-size:.72rem;font-weight:750;transition:background .2s,border-color .2s,color .2s}
+    .theme-switch-track{display:inline-flex;width:2rem;height:1.15rem;align-items:center;border-radius:999px;background:#365154;padding:2px;transition:background .25s}
+    .theme-switch-track span{width:.85rem;height:.85rem;border-radius:50%;background:#fff;transition:transform .25s}
+    .theme-toggle:focus-visible{outline:2px solid #1ca0a2;outline-offset:3px}
+    html[data-theme="light"]{color-scheme:light}
+    html[data-theme="light"] body{background:#f2f7f7;color:#10282a}
+    html[data-theme="light"] header{border-color:#d4e1e2;background:rgba(246,250,250,.92)}
+    html[data-theme="light"] header img{filter:brightness(0)}
+    html[data-theme="light"] header nav>div{color:#29484b}
+    html[data-theme="light"] header nav a{color:#29484b}
+    html[data-theme="light"] header nav a:hover{color:#0e8285}
+    html[data-theme="light"] .theme-toggle{border-color:#cbdcdd;background:#fff;color:#21484b}
+    html[data-theme="light"] .theme-switch-track{background:#0e8285}
+    html[data-theme="light"] .theme-switch-track span{transform:translateX(.85rem)}
+    html[data-theme="light"] main>section:first-child{border-color:#d4e1e2;background:radial-gradient(ellipse at 82% 24%,rgba(28,160,162,.12),transparent 42%),linear-gradient(135deg,#f8fbfb,#eaf2f3)}
+    html[data-theme="light"] main>section:first-child h1 span{background-image:linear-gradient(90deg,#0e8285,#075d60,#0e8285);background-clip:text;color:transparent}
+    html[data-theme="light"] .blueprint-grid{opacity:.45;background-image:linear-gradient(rgba(14,130,133,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(14,130,133,.07) 1px,transparent 1px)}
+    html[data-theme="light"] #icam-showcase{border-color:#d4e1e2;background:#eaf2f3}
+    html[data-theme="light"] #starck-erp-showcase{border-color:#d4e1e2;background:#f4f8f8}
+    html[data-theme="light"] #solution-range{border-color:#d4e1e2;background:#eef5f6}
+    html[data-theme="light"] main>section:nth-of-type(5){border-color:#d4e1e2;background:#f4f8f8}
+    html[data-theme="light"] main>section:nth-of-type(6){border-color:#d4e1e2;background:#eaf2f3}
+    html[data-theme="light"] main>section:nth-of-type(7){border-color:#d4e1e2;background:#f7fafa}
+    html[data-theme="light"] main>section:nth-of-type(8){background:#eaf2f3}
+    html[data-theme="light"] footer{border-color:#d4e1e2;background:#e5eeee;color:#40585b}
+    html[data-theme="light"] main h1,html[data-theme="light"] main h2,html[data-theme="light"] main h3{color:#10282a}
+    html[data-theme="light"] main p{color:#40585b}
+    html[data-theme="light"] main a:not([class*="rounded-full"]){color:#0e686b}
+    html[data-theme="light"] main a[class*="rounded-full"]{color:#10282a}
+    html[data-theme="light"] main .text-white,html[data-theme="light"] main [class*="text-white/"]{color:#40585b}
+    html[data-theme="light"] main .text-cyan-100,html[data-theme="light"] main .text-cyan-200,html[data-theme="light"] main .text-cyan-300{color:#0e8285}
+    html[data-theme="light"] main .text-orange-100,html[data-theme="light"] main .text-orange-200{color:#b95816}
+    html[data-theme="light"] #hero-console,html[data-theme="light"] .hero-console{border-color:#cbdcdd;background:#fff;box-shadow:0 28px 70px rgba(20,71,75,.12)}
+    html[data-theme="light"] .hero-console>div:first-child,html[data-theme="light"] .hero-console aside{border-color:#d8e4e5}
+    html[data-theme="light"] .hero-console .relative.mt-7{border-color:#d7e4e5;background:#f1f7f7}
+    html[data-theme="light"] .hero-console .relative.mt-7>div>div{border-color:#d7e4e5;background:#fff}
+    html[data-theme="light"] .hero-console .mode-button{border-color:#d5e1e2;color:#40585b}
+    html[data-theme="light"] .hero-console .mode-button[aria-pressed="true"]{border-color:#0e8285;background:#0e8285;color:#fff}
+    html[data-theme="light"] .hero-console [class*="text-white/"],html[data-theme="light"] .hero-console [class*="text-cyan-"],html[data-theme="light"] .hero-console [class*="text-emerald-"]{color:#40585b!important}
+    html[data-theme="light"] .hero-console [class*="text-cyan-"],html[data-theme="light"] .hero-console [class*="text-emerald-"]{color:#0e686b!important}
+    html[data-theme="light"] .hero-console .mode-button[aria-pressed="true"]{color:#fff!important}
+    html[data-theme="light"] .hero-console .signal-flow{stroke:#0e8285;stroke-opacity:.72;stroke-width:2;stroke-dasharray:7 8}
+    html[data-theme="light"] .range-chip{border-color:#cadadb;background:#fff;color:#29484b}
+    html[data-theme="light"] .range-chip:hover{border-color:#0e8285;background:#e5f4f3;color:#075d60;box-shadow:0 0 0 3px rgba(28,160,162,.15)}
+    html[data-theme="light"] .range-view-button{border-color:#cbdcdd;background:#fff;color:#40585b}
+    html[data-theme="light"] .range-view-button[aria-pressed="true"]{border-color:#0e8285;background:#e1f1f0;color:#075d60}
+    html[data-theme="light"] .globe-chip{border-color:rgba(113,219,226,.35);background:rgba(5,22,24,.82);color:#e5f7f5}
+    html[data-theme="light"] #custom-solutions,html[data-theme="light"] #starck-innovations{border-color:#d1dfe0;background:linear-gradient(145deg,#fff,#f1f7f7);box-shadow:0 20px 55px rgba(13,55,58,.08)}
+    html[data-theme="light"] #starck-innovations{background:linear-gradient(145deg,#fff8f1,#f8eee4)}
+    html[data-theme="light"] #custom-solutions p,html[data-theme="light"] #starck-innovations p,html[data-theme="light"] #custom-solutions li,html[data-theme="light"] #starck-innovations li{color:#40585b}
+    html[data-theme="light"] #custom-solutions a,html[data-theme="light"] #starck-innovations a{background:#fff}
+    html[data-theme="light"] main article:not(#custom-solutions):not(#starck-innovations){border-color:#d4e1e2}
+    html[data-theme="light"] main article h3,html[data-theme="light"] main article p{color:#29484b}
+    html[data-theme="light"] main article.bg-\[\#071518\],html[data-theme="light"] main article.bg-\[\#0a1c20\]{background:#fff}
+    html[data-theme="light"] main article.bg-\[\#071518\] p,html[data-theme="light"] main article.bg-\[\#0a1c20\] p{color:#40585b}
+    html[data-theme="light"] .erp-concept-note{color:#52696b}
+    html[data-theme="light"] footer img{filter:brightness(0)}
+    html[data-theme="light"] footer a{color:#0e686b}
+    html[data-theme="light"] footer a:hover{color:#0e8285}
+    html[data-theme="light"] .reveal{color:#10282a}
+    .theme-toggle[aria-pressed="true"]{border-color:rgba(28,160,162,.55)}
+    /* Mixed palette: light showcases and CTA sit between the dark hero, range, and footer. */
+    html[data-theme="mixed"]{color-scheme:dark}
+    html[data-theme="mixed"] body{background:#071518;color:#f4f8f8}
+    html[data-theme="mixed"] .theme-panel--light{border-color:#d4e1e2;background-color:#f1f6f6;color:#10282a}
+    html[data-theme="mixed"] .theme-panel--light h1,html[data-theme="mixed"] .theme-panel--light h2,html[data-theme="mixed"] .theme-panel--light h3{color:#10282a!important}
+    html[data-theme="mixed"] .theme-panel--light p,html[data-theme="mixed"] .theme-panel--light li{color:#40585b!important}
+    html[data-theme="mixed"] .theme-panel--light [class*="text-white/"],html[data-theme="mixed"] .theme-panel--light [class*="text-cyan-"]{color:#40585b!important}
+    html[data-theme="mixed"] .theme-panel--light p.text-cyan-200,html[data-theme="mixed"] .theme-panel--light p.text-cyan-100,html[data-theme="mixed"] .theme-panel--light p.text-cyan-300{color:#0e8285!important}
+    html[data-theme="mixed"] .theme-panel--light a{color:#0e686b}
+    html[data-theme="mixed"] .theme-panel--light a.bg-cyan-300{background:#1ca0a2;color:#fff}
+    html[data-theme="mixed"] .theme-panel--light a.bg-cyan-300:hover{background:#0e8285}
+    html[data-theme="mixed"] #icam-showcase.theme-panel--light{background-color:#eaf2f3}
+    html[data-theme="mixed"] #starck-erp-showcase.theme-panel--light{background-color:#f1f6f6}
+    html[data-theme="mixed"] #challenge-cta.theme-panel--light{background-color:#eaf2f3}
+    html[data-theme="mixed"] #starck-erp-showcase .erp-concept-note{color:#52696b}
+    html[data-theme="mixed"] header.theme-panel--dark{border-color:rgba(255,255,255,.1);background-color:rgba(7,21,24,.94)}
+    html[data-theme="mixed"] header.theme-panel--dark img,html[data-theme="mixed"] footer.theme-panel--dark img{filter:none}
+    html[data-theme="mixed"] header.theme-panel--dark nav>div{color:rgba(255,255,255,.75)}
+    html[data-theme="mixed"] header.theme-panel--dark nav a{color:rgba(255,255,255,.75)}
+    html[data-theme="mixed"] header.theme-panel--dark nav a:hover{color:#67e8f9}
+    html[data-theme="mixed"] header.theme-panel--dark .theme-toggle{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#e8f6f5}
+    html[data-theme="mixed"] header.theme-panel--dark .theme-switch-track{background:#365154}
+    html[data-theme="mixed"] header.theme-panel--dark .theme-switch-track span{transform:none}
+    html[data-theme="mixed"] main>.theme-panel--dark{color:#f4f8f8;border-color:rgba(255,255,255,.1)}
+    html[data-theme="mixed"] main>.theme-panel--dark h1,html[data-theme="mixed"] main>.theme-panel--dark h2,html[data-theme="mixed"] main>.theme-panel--dark h3{color:#f4f8f8!important}
+    html[data-theme="mixed"] main>.theme-panel--dark p,html[data-theme="mixed"] main>.theme-panel--dark li{color:#d1ddde!important}
+    html[data-theme="mixed"] main>.theme-panel--dark [class*="text-white/"]{color:#d1ddde!important}
+    html[data-theme="mixed"] main>.theme-panel--dark [class*="text-cyan-"]{color:#67e8f9!important}
+    html[data-theme="mixed"] main>.theme-panel--dark [class*="text-orange-"]{color:#fdba74!important}
+    html[data-theme="mixed"] main>#solution-range{background-color:#071518}
+    html[data-theme="mixed"] main>#solutions-paths{background-color:#071518}
+    html[data-theme="mixed"] main>#build-process{background-color:#091a1d}
+    html[data-theme="mixed"] main>#ecosystem-preview{background-color:#071518}
+    html[data-theme="mixed"] main>.theme-panel--dark #custom-solutions{border-color:rgba(103,232,249,.15);background:linear-gradient(145deg,#10393c,#0b2528,#0a181b)}
+    html[data-theme="mixed"] main>.theme-panel--dark #starck-innovations{border-color:rgba(245,130,32,.2);background:linear-gradient(145deg,#35251d,#1b1d1a,#101819)}
+    html[data-theme="mixed"] main>#build-process article,html[data-theme="mixed"] main>#ecosystem-preview article{border-color:rgba(255,255,255,.1);background:#071518}
+    html[data-theme="mixed"] main>#build-process article h3,html[data-theme="mixed"] main>#ecosystem-preview article h3{color:#f4f8f8}
+    html[data-theme="mixed"] main>#build-process article p,html[data-theme="mixed"] main>#ecosystem-preview article p{color:#d1ddde}
+    html[data-theme="mixed"] footer.theme-panel--dark{border-color:rgba(255,255,255,.1);background:#050f11;color:rgba(255,255,255,.5)}
+    html[data-theme="mixed"] footer.theme-panel--dark a{color:#a5f3fc}
+    html[data-theme="mixed"] footer.theme-panel--dark a:hover{color:#fff}
   </style>
 </head>
-<body class="overflow-x-hidden font-sans text-white antialiased">
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#071518]/90 backdrop-blur-xl">
+  <body class="overflow-x-hidden font-sans text-white antialiased">
+  <header class="theme-panel--dark sticky top-0 z-50 border-b border-white/10 bg-[#071518]/90 backdrop-blur-xl">
     <nav aria-label="Main navigation" class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-3.5">
       <a href="../index.html" aria-label="Rydberg Starck home" class="shrink-0"><img src="../assets/Images/rydberg-starck-nav.png" alt="Rydberg Starck — Infinite Possibilities" class="h-10 w-auto sm:h-12"></a>
       <div class="flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm font-semibold text-white/75">
@@ -103,13 +246,14 @@
         <a class="transition hover:text-cyan-300" href="projects.html">Projects</a>
         <a class="transition hover:text-cyan-300" href="training.html">Catalyst</a>
         <a class="rounded-full border border-cyan-200/40 px-4 py-2 text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-200 hover:text-[#071518]" href="contact.html">Start a conversation <span aria-hidden="true">↗</span></a>
+        <button id="theme-toggle" type="button" aria-label="Change page appearance" class="theme-toggle" title="Cycle between night, day, and mixed modes"><span data-theme-label>Night mode</span><span class="theme-switch-track" aria-hidden="true"><span></span></span></button>
       </div>
     </nav>
   </header>
 
   <main>
     <!-- A systems-led hero: the interface is built in HTML/CSS, with no stock-photo dependency. -->
-    <section class="relative isolate overflow-hidden border-b border-white/10 bg-[#071518]">
+    <section class="theme-panel--dark relative isolate overflow-hidden border-b border-white/10 bg-[#071518]">
       <div class="blueprint-grid pointer-events-none absolute inset-0 -z-10"></div>
       <div class="pointer-events-none absolute -right-40 top-0 -z-10 h-[580px] w-[780px] rounded-full bg-cyan-400/10 blur-[130px]"></div>
       <div class="pointer-events-none absolute -left-60 bottom-0 -z-10 h-80 w-[680px] rounded-full bg-[#F58220]/[.08] blur-[120px]"></div>
@@ -173,7 +317,7 @@
       </div>
     </section>
 
-    <section id="icam-showcase" class="relative overflow-hidden border-b border-white/10 bg-[#081619]">
+    <section id="icam-showcase" class="theme-panel--light relative overflow-hidden border-b border-white/10 bg-[#081619]">
       <div class="pointer-events-none absolute -right-48 top-12 size-[34rem] rounded-full bg-cyan-400/[.07] blur-[120px]"></div>
       <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[.72fr_1.28fr] lg:gap-14 lg:px-8">
         <div class="reveal">
@@ -204,7 +348,89 @@
       </div>
     </section>
 
-    <section id="solution-range" class="relative isolate overflow-hidden border-b border-white/10 bg-[#071518]">
+    <section id="starck-erp-showcase" class="theme-panel--light relative overflow-hidden border-b border-white/10 bg-[#0a1b1e]">
+      <div class="pointer-events-none absolute -left-40 top-10 size-[30rem] rounded-full bg-teal-400/[.06] blur-[110px]"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[.72fr_1.28fr] lg:gap-14 lg:px-8">
+        <div class="reveal">
+          <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-200"><span class="h-px w-8 bg-cyan-300"></span> In-house concept / Starck ERP</p>
+          <h2 class="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl">One clear view of how work moves.</h2>
+          <p class="mt-5 leading-relaxed text-white/65">Explore a concept for an internal ERP and project-management workspace—bringing projects, budgets, team tasks, and operations into one useful view.</p>
+          <div class="mt-7 flex flex-wrap gap-2 text-xs font-semibold text-cyan-100/80">
+            <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Project delivery</span>
+            <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Operations</span>
+            <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Decision support</span>
+          </div>
+          <p class="erp-concept-note justify-start">Concept interface · Illustrative data · Not a live system</p>
+        </div>
+        <figure class="reveal reveal-delay-1 mx-auto w-full max-w-4xl">
+          <div class="erp-device">
+            <div class="erp-screen">
+              <div class="erp-browser-bar">
+                <div class="flex shrink-0 items-center gap-1.5" aria-hidden="true"><span class="size-2.5 rounded-full bg-[#ff6b63]"></span><span class="size-2.5 rounded-full bg-[#f5bd4f]"></span><span class="size-2.5 rounded-full bg-[#42c96a]"></span></div>
+                <div class="erp-address">starck-erp.local / workspace / overview</div>
+                <span class="shrink-0 rounded-full border border-teal-700/15 bg-teal-700/[.06] px-2 py-1 text-[.55rem] font-bold text-teal-800">DEMO</span>
+              </div>
+              <div class="erp-workspace">
+                <aside class="erp-sidebar">
+                  <div class="erp-brand"><span class="erp-brand-mark">S</span><span>STARCK<br><span class="font-normal tracking-normal text-white/50">OPERATIONS</span></span></div>
+                  <span class="erp-side-label">Workspace</span>
+                  <nav aria-label="Starck ERP concept views">
+                    <button type="button" class="erp-tab" data-erp-view="overview" aria-pressed="true"><span class="erp-tab-icon">⌂</span>Overview</button>
+                    <button type="button" class="erp-tab" data-erp-view="projects" aria-pressed="false"><span class="erp-tab-icon">◫</span>Projects</button>
+                    <button type="button" class="erp-tab" data-erp-view="finance" aria-pressed="false"><span class="erp-tab-icon">◈</span>Finance</button>
+                    <button type="button" class="erp-tab" data-erp-view="inventory" aria-pressed="false"><span class="erp-tab-icon">▦</span>Resources</button>
+                  </nav>
+                  <span class="mt-auto hidden text-[.48rem] text-white/35 sm:block">ILLUSTRATIVE CONCEPT</span>
+                </aside>
+                <div class="erp-main">
+                  <section class="erp-view" data-erp-panel="overview" aria-label="Overview dashboard">
+                    <div class="erp-main-head"><div><h3>Good morning, team</h3><p>Your operations at a glance</p></div><span class="erp-date">MON · 20 OCT</span></div>
+                    <div class="erp-kpis">
+                      <div class="erp-kpi"><div class="erp-kpi-label">Active projects</div><div class="erp-kpi-value">08</div><div class="erp-kpi-change">Across 3 teams</div></div>
+                      <div class="erp-kpi"><div class="erp-kpi-label">Tasks on track</div><div class="erp-kpi-value">86%</div><div class="erp-kpi-change">+4% this month</div></div>
+                      <div class="erp-kpi"><div class="erp-kpi-label">Budget used</div><div class="erp-kpi-value">62%</div><div class="erp-kpi-change">Within forecast</div></div>
+                    </div>
+                    <div class="erp-content-grid">
+                      <div class="erp-widget"><div class="erp-widget-title">Project pulse <span class="text-teal-700">•••</span></div><div class="erp-widget-sub">Illustrative delivery progress</div>
+                        <div class="erp-project-row"><span class="erp-project-name">Community Connect</span><span class="erp-project-pct">74%</span><div class="erp-meter"><span style="width:74%"></span></div></div>
+                        <div class="erp-project-row"><span class="erp-project-name">Digital Records Upgrade</span><span class="erp-project-pct">58%</span><div class="erp-meter"><span style="width:58%"></span></div></div>
+                        <div class="erp-project-row"><span class="erp-project-name">Field Operations Portal</span><span class="erp-project-pct">91%</span><div class="erp-meter"><span style="width:91%"></span></div></div>
+                      </div>
+                      <div class="erp-widget"><div class="erp-widget-title">Team focus</div><div class="erp-widget-sub">Next actions</div>
+                        <div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Review project brief</span></div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Approve field request</span></div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Prepare monthly report</span></div>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="erp-view" data-erp-panel="projects" aria-label="Project portfolio" hidden>
+                    <div class="erp-main-head"><div><h3>Project portfolio</h3><p>Track delivery and ownership across teams</p></div><span class="erp-date">3 SAMPLE PROJECTS</span></div>
+                    <div class="erp-widget"><div class="erp-widget-title">Delivery overview <span class="text-teal-700">This quarter</span></div>
+                      <div class="erp-project-row"><span class="erp-project-name">Community Connect · Delivery team</span><span class="erp-project-pct">74%</span><div class="erp-meter"><span style="width:74%"></span></div></div>
+                      <div class="erp-project-row"><span class="erp-project-name">Digital Records Upgrade · Systems team</span><span class="erp-project-pct">58%</span><div class="erp-meter"><span style="width:58%"></span></div></div>
+                      <div class="erp-project-row"><span class="erp-project-name">Field Operations Portal · Product team</span><span class="erp-project-pct">91%</span><div class="erp-meter"><span style="width:91%"></span></div></div>
+                    </div>
+                    <div class="erp-content-grid"><div class="erp-widget"><div class="erp-widget-title">Upcoming milestones</div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">User review · Community Connect</span></div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Pilot handover · Field Portal</span></div></div><div class="erp-widget"><div class="erp-widget-title">Portfolio health</div><div class="erp-kpi-value">On track</div><div class="erp-widget-sub">Sample status across active work</div></div></div>
+                  </section>
+                  <section class="erp-view" data-erp-panel="finance" aria-label="Finance overview" hidden>
+                    <div class="erp-main-head"><div><h3>Finance overview</h3><p>Budgets and requests in one place</p></div><span class="erp-date">SAMPLE FIGURES</span></div>
+                    <div class="erp-kpis"><div class="erp-kpi"><div class="erp-kpi-label">Planned budget</div><div class="erp-kpi-value">MK 48m</div><div class="erp-kpi-change">Illustrative</div></div><div class="erp-kpi"><div class="erp-kpi-label">Committed</div><div class="erp-kpi-value">MK 29m</div><div class="erp-kpi-change">60% allocated</div></div><div class="erp-kpi"><div class="erp-kpi-label">Awaiting review</div><div class="erp-kpi-value">04</div><div class="erp-kpi-change">Requests</div></div></div>
+                    <div class="erp-content-grid"><div class="erp-widget"><div class="erp-widget-title">Budget allocation</div><div class="erp-project-row"><span class="erp-project-name">Digital delivery</span><span class="erp-project-pct">68%</span><div class="erp-meter"><span style="width:68%"></span></div></div><div class="erp-project-row"><span class="erp-project-name">Training &amp; support</span><span class="erp-project-pct">42%</span><div class="erp-meter"><span style="width:42%"></span></div></div><div class="erp-project-row"><span class="erp-project-name">Operations</span><span class="erp-project-pct">55%</span><div class="erp-meter"><span style="width:55%"></span></div></div></div><div class="erp-widget"><div class="erp-widget-title">Approval queue</div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Project purchase request</span></div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Travel reimbursement</span></div></div></div>
+                  </section>
+                  <section class="erp-view" data-erp-panel="inventory" aria-label="Resources and procurement" hidden>
+                    <div class="erp-main-head"><div><h3>Resources &amp; procurement</h3><p>Keep requests, stock, and suppliers visible</p></div><span class="erp-date">SAMPLE RECORDS</span></div>
+                    <div class="erp-kpis"><div class="erp-kpi"><div class="erp-kpi-label">Tracked items</div><div class="erp-kpi-value">124</div><div class="erp-kpi-change">Across locations</div></div><div class="erp-kpi"><div class="erp-kpi-label">Low stock alerts</div><div class="erp-kpi-value">03</div><div class="erp-kpi-change">Needs attention</div></div><div class="erp-kpi"><div class="erp-kpi-label">Open requests</div><div class="erp-kpi-value">07</div><div class="erp-kpi-change">In review</div></div></div>
+                    <div class="erp-content-grid"><div class="erp-widget"><div class="erp-widget-title">Resource activity</div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Laptops · 8 assigned to project teams</span></div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Connectivity kits · restock requested</span></div><div class="erp-task"><span class="erp-task-dot"></span><span class="erp-task-text">Training equipment · available</span></div></div><div class="erp-widget"><div class="erp-widget-title">Procurement flow</div><div class="erp-kpi-value">4 stages</div><div class="erp-widget-sub">Request → review → approval → fulfilment</div></div></div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="icam-laptop-base" aria-hidden="true"></div>
+          <figcaption class="mt-4 text-center text-xs text-white/40">Interactive concept preview. Screens, names, and figures are illustrative—not a live product.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="solution-range" class="theme-panel--dark relative isolate overflow-hidden border-b border-white/10 bg-[#071518]">
       <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_78%_48%,rgba(28,160,162,.08),transparent_48%)]"></div>
       <div class="pointer-events-none absolute inset-0 blueprint-grid opacity-40"></div>
       <div class="relative mx-auto grid max-w-7xl gap-12 px-6 py-20 sm:py-24 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-8">
@@ -289,7 +515,7 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden border-b border-white/10">
+    <section id="solutions-paths" class="theme-panel--dark relative overflow-hidden border-b border-white/10 bg-[#071518]">
       <div class="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-gradient-to-b from-transparent via-cyan-200/20 to-transparent lg:block"></div>
       <div class="mx-auto grid max-w-7xl gap-8 px-6 py-20 sm:py-24 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <article id="custom-solutions" class="reveal group relative overflow-hidden rounded-[1.75rem] border border-cyan-100/15 bg-gradient-to-br from-[#10393c] via-[#0b2528] to-[#0a181b] p-7 sm:p-10">
@@ -307,7 +533,7 @@
       </div>
     </section>
 
-    <section class="border-b border-white/10 bg-[#091a1d]">
+    <section id="build-process" class="theme-panel--dark border-b border-white/10 bg-[#091a1d]">
       <div class="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8">
         <div class="reveal flex flex-wrap items-end justify-between gap-6"><div><p class="text-xs font-bold uppercase tracking-[.23em] text-cyan-300">A practical way to build</p><h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">Clear steps. No black box.</h2></div><p class="max-w-xl leading-relaxed text-white/60">You stay close to the decisions. We make the work visible, keep the solution grounded in its users, and plan for what happens after launch.</p></div>
         <div class="relative mt-12 grid gap-4 md:grid-cols-4">
@@ -320,7 +546,7 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden border-b border-white/10">
+    <section id="ecosystem-preview" class="theme-panel--dark relative overflow-hidden border-b border-white/10 bg-[#071518]">
       <div class="mx-auto max-w-7xl px-6 py-20 sm:py-24 lg:px-8">
         <div class="reveal max-w-3xl"><p class="text-xs font-bold uppercase tracking-[.23em] text-cyan-300">Already in our ecosystem</p><h2 class="mt-4 text-4xl font-black tracking-tight sm:text-5xl">Built around real needs. Designed to connect.</h2><p class="mt-5 leading-relaxed text-white/60">A glimpse of the product ideas and systems in our portfolio. Each one starts with a different problem to solve.</p></div>
         <div class="mt-10 grid gap-4 lg:grid-cols-3">
@@ -332,7 +558,7 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden bg-[#0b2528]">
+    <section id="challenge-cta" class="theme-panel--light relative overflow-hidden bg-[#0b2528]">
       <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent,rgba(6,182,212,.07),transparent)]"></div>
       <div class="relative mx-auto flex max-w-7xl flex-col gap-8 px-6 py-16 sm:py-20 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div class="reveal"><p class="text-xs font-bold uppercase tracking-[.23em] text-cyan-200">Have a challenge in mind?</p><h2 class="mt-4 max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl">Let’s make the complex feel simple.</h2><p class="mt-4 max-w-2xl leading-relaxed text-white/65">Tell us what needs to work better. We’ll help you explore what a practical digital solution could look like.</p></div>
@@ -341,7 +567,7 @@
     </section>
   </main>
 
-  <footer class="border-t border-white/10 bg-[#050f11]">
+  <footer class="theme-panel--dark border-t border-white/10 bg-[#050f11]">
     <div class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-8 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between lg:px-8">
       <a href="../index.html" aria-label="Rydberg Starck home"><img src="../assets/Images/rydberg-starck-nav.png" alt="Rydberg Starck" class="h-9 w-auto"></a>
       <p>© 2026 Rydberg Starck Limited · Blantyre, Malawi</p>
@@ -350,6 +576,25 @@
   </footer>
 
   <script>
+    const themeToggle = document.querySelector("#theme-toggle");
+    const themeLabel = document.querySelector("[data-theme-label]");
+    const setTheme = (theme) => {
+      const selectedTheme = ["dark", "light", "mixed"].includes(theme) ? theme : "dark";
+      const themeNames = { dark: "Night mode", light: "Day mode", mixed: "Mixed mode" };
+      document.documentElement.dataset.theme = selectedTheme;
+      themeToggle?.setAttribute("aria-label", `Current appearance: ${themeNames[selectedTheme]}. Activate to change appearance.`);
+      if (themeLabel) themeLabel.textContent = themeNames[selectedTheme];
+      try { localStorage.setItem("rsl-theme", selectedTheme); } catch (_) {}
+    };
+    if (themeToggle) {
+      setTheme(document.documentElement.dataset.theme || "dark");
+      themeToggle.addEventListener("click", () => {
+        const themes = ["dark", "light", "mixed"];
+        const currentIndex = themes.indexOf(document.documentElement.dataset.theme);
+        setTheme(themes[(currentIndex + 1) % themes.length]);
+      });
+    }
+
     const modeContent = {
       client: {
         kicker: "A solution shaped around you",
@@ -386,6 +631,16 @@
       rangeViewButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
       rangeViewPanels.forEach((panel) => {
         panel.hidden = panel.dataset.rangePanel !== selectedView;
+      });
+    }));
+
+    const erpViewButtons = document.querySelectorAll("[data-erp-view]");
+    const erpViewPanels = document.querySelectorAll("[data-erp-panel]");
+    erpViewButtons.forEach((button) => button.addEventListener("click", () => {
+      const selectedView = button.dataset.erpView;
+      erpViewButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      erpViewPanels.forEach((panel) => {
+        panel.hidden = panel.dataset.erpPanel !== selectedView;
       });
     }));
 
