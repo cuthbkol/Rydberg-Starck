@@ -1,4 +1,5 @@
-<!doctype html><html lang="en" data-theme="mixed">
+<!doctype html>
+<html lang="en" data-theme="mixed">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -194,8 +195,10 @@
     .theme-toggle[aria-pressed="true"]{border-color:rgba(28,160,162,.55)}
     /* Mixed palette: light showcases and CTA sit between the dark hero, range, and footer. */
     html[data-theme="mixed"]{color-scheme:dark}
-    html[data-theme="mixed"] body{background:#071518;color:#f4f8f8}
+    html[data-theme="mixed"] body{background:#071518;color:#f4f8f8} html[data-theme="mixed"] .hero-console .mode-button[aria-pressed="true"]{background:#67e8f9;border-color:#67e8f9;color:#071518!important}
+ html[data-theme="mixed"] .hero-console .mode-button:not([aria-pressed="true"]){background:rgba(7,21,24,.72);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.72)}
     html[data-theme="mixed"] .theme-panel--light{border-color:#d4e1e2;background-color:#f1f6f6;color:#10282a}
+ html[data-theme="mixed"] .showcase-tags span{border-color:rgba(14,130,133,.36);background:rgba(255,255,255,.72);color:#31575b!important}
     html[data-theme="mixed"] .theme-panel--light h1,html[data-theme="mixed"] .theme-panel--light h2,html[data-theme="mixed"] .theme-panel--light h3{color:#10282a!important}
     html[data-theme="mixed"] .theme-panel--light p,html[data-theme="mixed"] .theme-panel--light li{color:#40585b!important}
     html[data-theme="mixed"] .theme-panel--light [class*="text-white/"],html[data-theme="mixed"] .theme-panel--light [class*="text-cyan-"]{color:#40585b!important}
@@ -283,7 +286,7 @@
               <aside class="border-b border-white/10 p-5 md:border-b-0 md:border-r sm:p-6">
                 <p class="mb-4 text-[.65rem] font-bold uppercase tracking-[.2em] text-white/35">Choose a path</p>
                 <div class="grid grid-cols-2 gap-2 md:grid-cols-1" role="group" aria-label="Explore our two ways of building">
-                  <button type="button" class="mode-button rounded-xl border border-white/10 px-3 py-3 text-left text-sm font-bold text-[#111c24] transition hover:border-cyan-200/40" data-mode="client" aria-pressed="true">Client systems</button>
+                  <button type="button" class="mode-button rounded-xl border border-white/10 px-3 py-3 text-left text-sm font-bold text-white/65 transition hover:border-cyan-200/40" data-mode="client" aria-pressed="true">Client systems</button>
                   <button type="button" class="mode-button rounded-xl border border-white/10 px-3 py-3 text-left text-sm font-bold text-white/65 transition hover:border-cyan-200/40" data-mode="innovation" aria-pressed="false">Starck products</button>
                 </div>
                 <p class="mt-5 hidden text-xs leading-relaxed text-white/40 md:block">One team. Two ways to turn a challenge into a useful digital solution.</p>
@@ -323,7 +326,7 @@
           <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-200"><span class="h-px w-8 bg-cyan-300"></span> Client work / ICAM</p>
           <h2 class="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl">A professional community, connected.</h2>
           <p class="mt-5 leading-relaxed text-white/65">We developed ICAMIS for the Institute of Chartered Accountants in Malawi: a digital platform supporting members, students, and the services that keep their professional journeys moving.</p>
-          <div class="mt-7 flex flex-wrap gap-2 text-xs font-semibold text-cyan-100/80">
+          <div class="showcase-tags mt-7 flex flex-wrap gap-2 text-xs font-semibold text-cyan-100/80">
             <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Membership services</span>
             <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Student journeys</span>
             <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Events &amp; CPD</span>
@@ -354,7 +357,7 @@
           <p class="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.23em] text-cyan-200"><span class="h-px w-8 bg-cyan-300"></span> In-house concept / Starck ERP</p>
           <h2 class="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl">One clear view of how work moves.</h2>
           <p class="mt-5 leading-relaxed text-white/65">Explore a concept for an internal ERP and project-management workspace—bringing projects, budgets, team tasks, and operations into one useful view.</p>
-          <div class="mt-7 flex flex-wrap gap-2 text-xs font-semibold text-cyan-100/80">
+          <div class="showcase-tags mt-7 flex flex-wrap gap-2 text-xs font-semibold text-cyan-100/80">
             <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Project delivery</span>
             <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Operations</span>
             <span class="rounded-full border border-cyan-100/15 bg-cyan-100/[.05] px-3 py-2">Decision support</span>
@@ -586,7 +589,7 @@
       try { localStorage.setItem("rsl-digital-solutions-theme", selectedTheme); } catch (_) {}
     };
     if (themeToggle) {
-      setTheme(document.documentElement.dataset.theme || "dark");
+      setTheme(document.documentElement.dataset.theme || "mixed");
       themeToggle.addEventListener("click", () => {
         const themes = ["dark", "light", "mixed"];
         const currentIndex = themes.indexOf(document.documentElement.dataset.theme);
