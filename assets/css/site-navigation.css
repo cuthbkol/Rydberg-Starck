@@ -1,0 +1,130 @@
+/* Shared compact navigation for the Rydberg Starck site. */
+.rsl-nav-row {
+  position: relative;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rsl-nav-row > a:first-child {
+  flex: 0 0 auto;
+}
+
+.rsl-nav-controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .75rem;
+  margin-left: auto;
+}
+
+.rsl-menu-toggle {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: .35rem;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.rsl-menu-toggle:hover,
+.rsl-menu-toggle:focus-visible {
+  border-color: #1ca0a2;
+  background: rgba(28,160,162,.16);
+  outline: none;
+}
+
+.rsl-menu-toggle > span {
+  display: block;
+  width: 1.15rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+.rsl-menu-toggle[aria-expanded="true"] > span:first-child { transform: translateY(7px) rotate(45deg); }
+.rsl-menu-toggle[aria-expanded="true"] > span:nth-child(2) { opacity: 0; }
+.rsl-menu-toggle[aria-expanded="true"] > span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+.rsl-nav-drawer {
+  position: absolute;
+  z-index: 80;
+  top: calc(100% + .75rem);
+  right: 0;
+  display: grid;
+  width: min(23rem, calc(100vw - 2rem));
+  gap: .15rem;
+  padding: .55rem;
+  border: 1px solid rgba(155,185,202,.28);
+  border-radius: .45rem;
+  background: rgba(7,21,24,.97);
+  box-shadow: 0 1.25rem 3rem rgba(0,0,0,.3);
+  opacity: 0;
+  transform: translateY(-.45rem);
+  transition: opacity .22s ease, transform .22s ease;
+  backdrop-filter: blur(18px);
+}
+
+.rsl-nav-drawer[hidden] { display: none !important; }
+.rsl-nav-drawer.is-open { opacity: 1; transform: translateY(0); }
+
+.rsl-nav-drawer a {
+  display: block;
+  padding: .8rem .9rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  color: rgba(255,255,255,.86);
+  font-size: .92rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.rsl-nav-drawer a:hover,
+.rsl-nav-drawer a:focus-visible,
+.rsl-nav-drawer a[aria-current="page"] {
+  border-color: rgba(28,160,162,.42);
+  background: rgba(28,160,162,.13);
+  color: #8fe5e7;
+  outline: none;
+}
+
+html[data-theme="light"] .rsl-menu-toggle {
+  border-color: rgba(9,40,66,.22);
+  background: rgba(255,255,255,.72);
+  color: #102a4b;
+}
+
+html[data-theme="light"] .rsl-nav-drawer {
+  border-color: rgba(16,42,75,.18);
+  background: rgba(245,249,252,.98);
+  box-shadow: 0 1.25rem 3rem rgba(16,42,75,.16);
+}
+
+html[data-theme="light"] .rsl-nav-drawer a { color: #294965; }
+html[data-theme="light"] .rsl-nav-drawer a:hover,
+html[data-theme="light"] .rsl-nav-drawer a:focus-visible,
+html[data-theme="light"] .rsl-nav-drawer a[aria-current="page"] {
+  border-color: rgba(28,160,162,.38);
+  background: rgba(28,160,162,.1);
+  color: #087b83;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rsl-menu-toggle,
+  .rsl-menu-toggle > span,
+  .rsl-nav-drawer,
+  .rsl-nav-drawer a { transition-duration: .01ms; }
+}

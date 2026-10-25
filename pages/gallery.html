@@ -18,6 +18,7 @@
     .gallery-thumb[aria-current="true"]{border-color:#67e8f9;box-shadow:0 0 0 2px rgba(103,232,249,.28)}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#gallery-slide.photo-enter,.gallery-progress.is-running{animation:none}}
   </style>
+  <link rel="stylesheet" href="../assets/css/site-navigation.css">
 </head>
 <body class="font-sans antialiased">
   <div class="fixed inset-x-0 top-0 z-[60] h-[3px] bg-gradient-to-r from-cyan-300 via-[#1ca0a2] to-[#F58220]" aria-hidden="true"></div>
@@ -102,5 +103,6 @@
       renderThumbs();draw();
     })();
   </script>
+  <script defer src="../assets/js/site-navigation.js"></script>
 </body>
 </html>

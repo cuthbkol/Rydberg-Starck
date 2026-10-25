@@ -1354,6 +1354,7 @@
 
     /* Mixed mode reuses the legible day palette for content while retaining a dark frame. */
   </style>
+  <link rel="stylesheet" href="../assets/css/site-navigation.css">
 </head>
 
 <body>
@@ -1557,6 +1558,7 @@
     }
     const progress = document.getElementById("page-progress"); let progressFrame = 0; const updateProgress = () => { if (!progress || progressFrame) return; progressFrame = requestAnimationFrame(() => { const maxScroll = document.documentElement.scrollHeight - innerHeight; progress.style.transform = "scaleX(" + (maxScroll > 0 ? scrollY / maxScroll : 0) + ")"; progressFrame = 0 }) }; updateProgress(); addEventListener("scroll", updateProgress, { passive: true }); addEventListener("resize", updateProgress, { passive: true });
   </script>
+  <script defer src="../assets/js/site-navigation.js"></script>
 </body>
 
 </html>
