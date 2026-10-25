@@ -3,6 +3,7 @@
   position: relative;
   display: flex !important;
   flex-wrap: nowrap !important;
+  flex-direction: row !important;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
@@ -127,4 +128,31 @@ html[data-theme="light"] .rsl-nav-drawer a[aria-current="page"] {
   .rsl-menu-toggle > span,
   .rsl-nav-drawer,
   .rsl-nav-drawer a { transition-duration: .01ms; }
+}
+
+@media (max-width: 520px) {
+  .rsl-nav-row { gap: .45rem; }
+
+  .rsl-nav-row > a:first-child img {
+    width: auto !important;
+    max-width: clamp(5.25rem, 31vw, 8rem) !important;
+    height: 2rem !important;
+    object-fit: contain;
+  }
+
+  .rsl-nav-controls { gap: .4rem; }
+
+  .rsl-nav-controls #theme-toggle {
+    min-height: 2.5rem;
+    gap: .35rem !important;
+    padding: .35rem !important;
+  }
+
+  .rsl-nav-controls #theme-toggle [data-theme-label] { display: none !important; }
+  .rsl-nav-controls #theme-toggle .theme-switch-track { width: 1.8rem; }
+
+  .rsl-menu-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
